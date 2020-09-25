@@ -1,7 +1,7 @@
 const express = require("express");
 const routes = require('./router');
 const path = require('path');
-// const connection = require('./config/connection');
+const connection = require('./config/connection');
 let PORT = process.env.PORT || 8080;
 let app = express();
 
@@ -19,23 +19,11 @@ app.get('*', (req, res) => {
 // Set up MySQL connection.
 const mysql = require("mysql");
 
-const connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "123456789",
-  database: "golf_app"
-});
-
-// Make connection.
-connection.connect(function(err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
-  }
-  console.log("connected as id " + connection.threadId);
-});
-
+connection.query("SELECT * FROM users", (err, res) => {
+  if (err) {console.log(err)}
+  else {console.log(res)}
+})
+// console.log(connection)
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {

@@ -7,7 +7,7 @@ if (process.env.JAWSDB_URL) {
 } else {
   connection = mysql.createConnection({
     host: "localhost",
-    port: 8080,
+    port: 3306,
     user: "root",
     password: "123456789",
     database: "golf_app"
