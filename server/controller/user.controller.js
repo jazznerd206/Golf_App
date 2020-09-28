@@ -11,25 +11,26 @@ exports.get_all_users = function(req, res) {
 };
 
 exports.create_user = function(req, res) {
-    console.log('create new user controller');
-    const new_user = new User(req.body);
-  
+    console.log('create new user controller');  
     //handles null error 
-     if(!new_user.user_name || !new_user.user_pass){
-        res.status(400).send({ error:true, message: 'Please provide name/pass' });
+    if(!req.body.name || !req.body.pass){
+      res.status(400).send({ error:true, message: 'Please provide name/pass' });
     }
-    else{
-    
-    User.createUser(new_user, function(err, user) {  
-        if (err)
-            res.send(err);
-        res.json(user);
+    else {
+    User.createUser(['user_name', 'user_pass'], [req.body.name, req.body.pass], function(err, user) {  
+        if (err) {
+          res.send(err)
+        }
+        else {
+          res.json(user);
+        }
     });
   }
 };
 
 exports.read_a_user = function(req, res) {
     console.log('get user by id controller');
+    console.log(req.params.userId)
     User.getUserById(req.params.userId, function(err, user) {
     if (err)
         res.send(err);
@@ -46,7 +47,7 @@ exports.update_a_user = function(req, res) {
 };
 
 exports.delete_a_user = function(req, res) {
-    User.remove( req.params.userId, function(err, user) {
+    User.remove(req.params.userId, function(err, user) {
       if (err)
         res.send(err);
       res.json({ message: 'User successfully deleted' });

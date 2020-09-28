@@ -1,13 +1,25 @@
 var db = require('../config/connection.js');
 
 //Task object constructor
-var User = function(user){
-    this.name = user.user_name;
-    this.pass = user.user_pass;
+function User (name, pass) {
+    this.name = name,
+    this.pass = pass
 };
-User.createUser = function (newUser, result) {    
-    db.query("INSERT INTO users SET ?", newUser, function (err, res) {
-            
+
+User.createUser = function (tableCols, tableVals, result) {
+    console.log("User.createuser")
+    console.log(`table vals = ${tableVals}`);
+    console.log(`table cols = ${tableCols}`);
+    let queryString = "INSERT INTO users (";
+    queryString += tableCols;
+    queryString += ") VALUES (";
+    const tempArray = [];
+        for (var i = 0; i < tableVals.length; i++) {
+            tempArray.push("?");
+        }
+    queryString += tempArray.toString() + ")";
+    //console.log("user model " + newUser.name, newUser.pass);   
+    db.query(queryString, tableVals, function (err, res) {            
             if(err) {
                 console.log("error: ", err);
                 result(err, null);
@@ -27,20 +39,18 @@ User.getAllUsers = function (result) {
             }
             else{
                 console.log('users : ', res);  
-
-            result(null, res);
+                result(null, res);
             }
         });   
 };
 User.getUserById = function (userId, result) {
-    db.query("SELECT user FROM users WHERE ID = ?", userId, function (err, res) {             
+    db.query(`SELECT * FROM users WHERE id = (${userId})`, function (err, res) {             
             if(err) {
                 console.log("error: ", err);
                 result(err, null);
             }
             else{
                 result(null, res);
-          
             }
         });   
 };

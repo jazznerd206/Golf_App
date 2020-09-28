@@ -5,6 +5,11 @@ const bodyParser = require('body-parser');
 let PORT = process.env.PORT || 8080;
 let app = express();
 
+// Express middleware
+// Parse application body as JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 // Parse application body as JSON
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -17,7 +22,7 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 // });
 
 // Set up MySQL connection.
-const connection = require('./config/connection');
+// const connection = require('./config/connection');
 
 
 
