@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles.css';
-import Register from '../components/Register/Register'
+import Register from '../../components/Register/Register'
 
 export default function Landing() {
     return (

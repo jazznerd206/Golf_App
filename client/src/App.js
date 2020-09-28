@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
-import Landing from './pages/Landing';
+import RouteHandler from './components/Route_Handler/index.js';
+
+
 
 function App() {
 
   return (
     <div className="App">
-      <Landing />
+      <RouteHandler />
     </div>
   );
 }
