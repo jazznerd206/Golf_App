@@ -49,7 +49,7 @@ exports.update_a_user = function(req, res) {
 exports.delete_a_user = function(req, res) {
     User.remove(req.params.userId, function(err, user) {
       if (err)
-        res.send(err);
+        res.send('error from controller ' + err);
       res.json({ message: 'User successfully deleted' });
     });
   };

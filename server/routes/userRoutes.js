@@ -16,8 +16,8 @@ module.exports = function(app) {
     app.route('/users/:userId')
         .get(user.read_a_user)
         .put(user.update_a_user)
-        .delete((req, res) => {
-            user.delete_a_user
+        .delete(user.delete_a_user, (req, res) => {
+            console.log('delete user route');
         }
     );
 }
