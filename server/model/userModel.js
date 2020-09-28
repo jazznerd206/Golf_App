@@ -1,5 +1,11 @@
 var db = require('../config/connection.js');
 
+
+// =================================================
+// UPDATE USER MODEL
+//  -- email field
+//  -- handicap field
+// =================================================
 //User object constructor
 function User (name, pass) {
     this.name = name,

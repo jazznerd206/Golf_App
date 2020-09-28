@@ -11,7 +11,12 @@ exports.get_all_users = function(req, res) {
 };
 
 exports.create_user = function(req, res) {
-    console.log('create new user controller');  
+    console.log('create new user controller');
+    
+    // =================================================
+    // CHECK FOR DUPLICATE USERNAME BEFORE CREATING USER
+    // =================================================
+
     //handles null error 
     if(!req.body.name || !req.body.pass){
       res.status(400).send({ error:true, message: 'Please provide name/pass' });
