@@ -1,0 +1,6 @@
+.page-container {
+    margin: 0 0 0 0;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to bottom, #2f781f, #165b13);
+}

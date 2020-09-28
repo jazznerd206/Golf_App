@@ -17,9 +17,6 @@ app.use(bodyParser.json());
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(path.join(__dirname, '../client/build')));
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
-// });
 
 // Set up MySQL connection.
 // const connection = require('./config/connection');
@@ -29,7 +26,12 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 // IMPORT AND REGISTER ROUTES
 const routes = require('./routes/userRoutes.js');
 routes(app);
-require('./routes/userRoutes.js')(app);
+//require('./routes/userRoutes.js')(app);
+
+// Send every other request to the React app
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 
 // Start our server so that it can begin listening to client requests.

@@ -1,15 +1,15 @@
 var db = require('../config/connection.js');
 
-//Task object constructor
+//User object constructor
 function User (name, pass) {
     this.name = name,
     this.pass = pass
 };
 
 User.createUser = function (tableCols, tableVals, result) {
-    console.log("User.createuser")
-    console.log(`table vals = ${tableVals}`);
-    console.log(`table cols = ${tableCols}`);
+    // console.log("User.createuser")
+    // console.log(`table vals = ${tableVals}`);
+    // console.log(`table cols = ${tableCols}`);
     let queryString = "INSERT INTO users (";
     queryString += tableCols;
     queryString += ") VALUES (";
