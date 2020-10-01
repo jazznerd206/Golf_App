@@ -8,15 +8,15 @@ module.exports = function(app) {
 
     app.route('/users')
         .get(user.get_all_users)
-        // .post(user.create_user, (req, res) => {
-        //     console.log('user post route'), req.body;
-        // })
+        .post(user.create_user, (req, res) => {
+             console.log('user post route'), req.body;
+        })
 
     app.route('/users/:userId')
-        // .get(user.read_a_user)
+        .get(user.read_a_user)
         // .put(user.update_a_user)
-        // .delete(user.delete_a_user, (req, res) => {
-        //     console.log('delete user route');
-        // }
-    // );
+        .delete(user.delete_a_user, (req, res) => {
+            console.log('delete user route');
+        }
+    );
 }

@@ -12,20 +12,20 @@ module.exports = function(sequelize, DataTypes) {
         username: {
             type: Sequelize.STRING(35),
             allowNull: false,
-            unique: true
+            unique: false
         },
         passwd: {
             type: Sequelize.STRING(20),
             allowNull: false
         }
     })
-    Users.sync({ force: true }).then(() => {
-        // Now the `users` table in the database corresponds to the model definition
-        return Users.create({
-          username: 'John',
-          passwd: 'passwd'
-        });
-      });
+    // Users.sync({ force: true }).then(() => {
+    //     // Now the `users` table in the database corresponds to the model definition
+    //     return Users.create({
+    //       username: 'John',
+    //       passwd: 'passwd'
+    //     });
+    //   });
     return Users;
 
     
