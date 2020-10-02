@@ -9,7 +9,7 @@ exports.get_all_users = (req, res) => {
           .catch(err => {
             res.status(500).send({
               message:
-                err.message || "Some error occurred while retrieving users."
+                err.message || 'Some error occurred while retrieving users'
             });
         });
 }
@@ -22,9 +22,9 @@ exports.create_user = (req,res) => {
         res.status(400).send({ error:true, message: 'Please provide name/pass' });
       }
     Users.create(req.body).then(user => {
-            console.log(user);
-            console.log(user.username);
-            res.send('ok');
+        console.log(user);
+        console.log(user.username);
+        res.send('ok');
         })
     .catch(error => {
             console.log(error);
@@ -36,18 +36,22 @@ exports.read_a_user = (req, res) => {
     Users.findOne({ where: {
         id: req.params.userId
     }}).then(user => {
-        res.send(JSON.stringify(user));
+            res.send(JSON.stringify(user));
     })
     .catch(error => {
         console.log(error);
     })
 }
 
+exports.update_a_user = (req, res) => {
+    
+}
+
 exports.delete_a_user = (req, res) => {
     Users.delete({ where: {
         id: req.params.userId
     }}).then(user => {
-        res.send(user);
+            res.send(user);
     })
     .catch(error => {
         console.log(error);
