@@ -4,3 +4,9 @@
     width: 100vw;
     background: linear-gradient(to bottom, #2f781f, #165b13);
 }
+
+.scores-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

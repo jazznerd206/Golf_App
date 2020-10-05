@@ -1,11 +1,22 @@
 import React from 'react';
 import './styles.css';
-import Register from '../../components/Register/Register'
+import Register from '../../components/Register/Register';
+import Navbar from '../../components/Navbar/Navbar';
+import TopScores from '../../components/Top_Scores/Top_Scores';
+import NewestScores from '../../components/Newest_Scores/Newest_Scores';
 
 export default function Landing() {
     return (
         <div className="page-container">
-            <h1>Golf App</h1>
+            <Navbar />
+            <div className="scores-container">
+                <div className="top-scores">
+                    <TopScores />
+                </div>
+                <div className="newest-scores">
+                    <NewestScores />
+                </div>
+            </div>
             <Register />
         </div>
     )
