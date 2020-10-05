@@ -26,8 +26,10 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 
 
 // IMPORT AND REGISTER ROUTES
-const routes = require('./routes/userRoutes.js');
-routes(app);
+const userRoutes = require('./routes/userRoutes.js');
+userRoutes(app);
+const courseRoutes = require('./routes/courseRoutes.js');
+courseRoutes(app);
 //require('./routes/userRoutes.js')(app);
 
 // initialize Sequelize connection
@@ -39,7 +41,7 @@ const syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
-if (process.env.NODE_ENV === "test") {
+if (process.env.NODE_ENV === "test" || "development") {
   syncOptions.force = true;
 }
 

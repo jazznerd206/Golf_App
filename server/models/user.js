@@ -19,15 +19,8 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         }
     })
-    // Users.sync({ force: true }).then(() => {
-    //     // Now the `users` table in the database corresponds to the model definition
-    //     return Users.create({
-    //       username: 'John',
-    //       passwd: 'passwd'
-    //     });
-    //   });
+
     return Users;
 
     
 };
-
