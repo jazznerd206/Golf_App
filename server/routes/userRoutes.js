@@ -1,21 +1,20 @@
 const express = require('express');
-const router = express.Router();
-const user = require('../controller/user.controller.js')
+const user = require('../controllers/user.controller.js')
 
 
 console.log('user routes');
 
 module.exports = function(app) {
 
-    app.route('/users')
+    app.route('/api/users')
         .get(user.get_all_users)
         .post(user.create_user, (req, res) => {
-            console.log('user post route'), req.body;
+             console.log('user post route'), req.body;
         })
 
-    app.route('/users/:userId')
+    app.route('/api/users/:userId')
         .get(user.read_a_user)
-        .put(user.update_a_user)
+        // .put(user.update_a_user)
         .delete(user.delete_a_user, (req, res) => {
             console.log('delete user route');
         }

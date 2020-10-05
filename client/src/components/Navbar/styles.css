@@ -1,0 +1,15 @@
+.navbar-wrapper {
+    width: 100%;
+    height: auto;
+    background: linear-gradient(to bottom, #165b13, #2f781f);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.navbar-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
