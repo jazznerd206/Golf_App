@@ -6,7 +6,7 @@ exports.get_all_courses = (req, res) => {
         .then(courses => {
             res.send(courses);
           })
-          .catch(err => {
+        .catch(err => {
             res.status(500).send({
               message:
                 err.message || 'Some error occurred while retrieving courses'
@@ -17,13 +17,14 @@ exports.get_all_courses = (req, res) => {
 exports.create_course = (req,res) => {
     console.log(JSON.stringify(req.body));
     //handles null error
-    Courses.create(req.body).then(course => {
-        console.log(course);
-        console.log(course.name);
-        res.send('course created');
-        })
-    .catch(error => {
-            console.log('create a course error ' + error);
+    Courses.create(req.body)
+        .then(course => {
+            console.log(course);
+            console.log(course.name);
+            res.send('course created');
+            })
+        .catch(error => {
+                console.log('create a course error ' + error);
     })
 
 }

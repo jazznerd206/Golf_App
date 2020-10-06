@@ -30,6 +30,8 @@ const userRoutes = require('./routes/userRoutes.js');
 userRoutes(app);
 const courseRoutes = require('./routes/courseRoutes.js');
 courseRoutes(app);
+const holeRoutes = require('./routes/holeRoutes.js');
+holeRoutes(app);
 //require('./routes/userRoutes.js')(app);
 
 // initialize Sequelize connection
@@ -41,7 +43,7 @@ const syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
-if (process.env.NODE_ENV === "test" || "development") {
+if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
