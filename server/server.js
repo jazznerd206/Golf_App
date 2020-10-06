@@ -1,11 +1,17 @@
 const express = require("express");
 const path = require('path');
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const passport = require('passport');
+const session = require('express-session');
 let PORT = process.env.PORT || 8080;
 let app = express();
 
 // .env config
 require('dotenv').config();
+
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Express middleware
 // Parse application body as JSON
@@ -17,25 +23,31 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-// Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use( (req, res, next) => {
+  return next();
+});
 
-// Set up MySQL connection.
-// const connection = require('./config/connection');
+
+
+//passport local strategy
+app.use(session({ secret: 'secret' }));
+app.use(passport.initialize());
+app.use(passport.session());
+require('./Passport/index');
 
 
 
 // IMPORT AND REGISTER ROUTES
 const userRoutes = require('./routes/userRoutes.js');
-userRoutes(app);
+userRoutes(app, passport);
 const courseRoutes = require('./routes/courseRoutes.js');
-courseRoutes(app);
+courseRoutes(app, passport);
 const holeRoutes = require('./routes/holeRoutes.js');
-holeRoutes(app);
+holeRoutes(app, passport);
 //require('./routes/userRoutes.js')(app);
 
-// initialize Sequelize connection
-// require("./config/connection");
+
+
 
 // require and connect sequelize to models
 const db = require('./models');

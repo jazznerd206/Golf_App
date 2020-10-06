@@ -1,41 +1,38 @@
 import React, { useState } from 'react';
-import './styles.css';
-import API from '../../utils/API.js';
-// import axios from 'axios';
+import API from '../../utils/API';
 
-function Register() {
+function Login() {
 
-    const [name, setName] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [username, setName] = useState('');
     const [password, setPassword] = useState('');
 
 
-    const registerUser = event => {
+    const submitLogin = (event) => {
         event.preventDefault();
-        // console.log(name, password);
-        const newUser = {
-            name: name,
-            passwd: password
+        console.log(`User log in clicked ====== ${username} +++ ${password} ======`);
+        const user = {
+            name: username,
+            password: password
         }
-        if ( !name || !password) {
-            console.log('must provide name and password, pass this message to user eventually');
-        }
-        console.log('new user ' + newUser);
-        API.signUpUser(
+        console.log('user ' + user);
+        API.loginUser(
             {
-                username: name,
+                username: username,
                 password: password
             }
-        );
+        )
         setName('');
         setPassword('');
     }
 
 
+    
     return (
-        <div className="register-wrapper">
-            <div className="register-form">
-                <h3>Sign Up</h3>
+        <div className="login-wrapper">
+            <div className="login-form">
                 <form>
+                    <h3>Log In</h3>
                     <div className="form-group row">
                         <label htmlFor="username" className="col-sm-2 col-form-label fadeUp">User Name</label>
                         <div className="col-sm-10">
@@ -43,8 +40,8 @@ function Register() {
                                 type="text"
                                 className="form-control fadeUp"
                                 id="name"
-                                name={name}
-                                value={name}
+                                name={username}
+                                value={username}
                                 // ref={userName}
                                 onChange={(e) => setName(e.target.value)}
                             />
@@ -68,9 +65,9 @@ function Register() {
                     <div className="form-group row">
                         <button 
                             type="submit" 
-                            onClick={registerUser} 
+                            onClick={submitLogin} 
                             className="btn btn-outline-light fadeUp">
-                            Register
+                            Log In
                         </button>
                     </div>
                 </form>
@@ -79,4 +76,4 @@ function Register() {
     )
 }
 
-export default Register;
+export default Login;

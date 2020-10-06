@@ -9,8 +9,11 @@ module.exports = function(app) {
     app.route('/api/users')
         .get(user.get_all_users)
         .post(user.create_user, (req, res) => {
-             console.log('user post route'), req.body;
+            console.log('user post route'), req.body;
         })
+    
+    app.route('/api/login')
+        .post(user.login_user);
 
     app.route('/api/users/:userId')
         .get(user.read_a_user)

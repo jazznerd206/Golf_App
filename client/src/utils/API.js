@@ -17,6 +17,22 @@ export default {
             });
     },
 
+    loginUser: function(user) {
+        console.log(JSON.stringify(user));
+        console.log('axios find user post on API page');
+        axios.post('/api/login', user)
+            .then(response => {
+                if (response) {
+                    console.log(response.data);
+                } else {
+                    console.log('Login error');
+                }
+            }).catch(error => {
+                console.log('Login server error: ');
+                console.log(error);
+            });
+        },
+
 
     // =======================================
     // UPDATE USER FUNCTION, NOT YET NECESSARY

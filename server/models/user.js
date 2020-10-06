@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 
+
 module.exports = function(sequelize, DataTypes) {
 
     const Users = sequelize.define("user", {
@@ -14,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             unique: false
         },
-        passwd: {
+        password: {
             type: Sequelize.STRING(20),
             allowNull: false
         }
