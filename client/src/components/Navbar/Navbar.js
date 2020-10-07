@@ -13,7 +13,7 @@ function Navbar() {
                     <span><h1>Golf App</h1></span>
                 </div>
             </div>
-            <div className="navbar-left">
+            {/* <div className="navbar-left">
                 <Link to="/dashboard">
                     <div className="login-button">
                         <button>
@@ -26,7 +26,7 @@ function Navbar() {
                         Sign Up
                     </button>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

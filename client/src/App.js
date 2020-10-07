@@ -13,14 +13,14 @@ function App() {
 
   return (
     <div className="App">
-      <UserContext.Provider value={[isLoggedIn, setLoggedIn, user, applyUser]}>
-        <Router>
+      <Router>
+        <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser}}>
           <Switch>
               <Route exact path="/" component={Landing} />
               <Route exact path="/dashboard" component={Dashboard} />
           </Switch>
-        </Router>
-      </UserContext.Provider>
+        </UserContext.Provider>
+      </Router>
     </div>
     
 

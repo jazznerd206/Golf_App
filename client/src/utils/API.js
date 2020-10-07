@@ -24,14 +24,14 @@ export default {
             axios.post("/api/users/login", user)
                 .then(response => {
                     console.log(`this is the response data ${JSON.stringify(response.data)}`)
-                    if (response.data){
+                    if (response.data) {
                         resolve(response)
                     }
                     else{
                         console.log('log in error')
                     }
                 })
-                .catch(error=>{
+                .catch(error => {
                     reject(Error('login server error: ' + error))
                 })
             })
@@ -39,12 +39,17 @@ export default {
     
         logoutUser: function(user) {
             return new Promise((resolve, reject) =>{
-                axios.post("/api/user/logout", user)
+                axios.post("/api/users/logout", user)
                 .then(response => {
-                    resolve(response)
+                    if (response.data) {
+                        resolve(response)
+                    }
+                    else{
+                        console.log('log in error')
+                    }
                 })
                 .catch(error => {
-                    reject(Error("failed to login error: " + error))
+                    reject(Error('login server error: ' + JSON.stringify(error)))
                 })
             })
         

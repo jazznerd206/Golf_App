@@ -5,11 +5,17 @@ import { UserContext } from '../../UserContext.js';
 
 function Login() {
 
-    const [ isLoggedIn, setLoggedIn ] = useContext(UserContext);
-    const [ user, applyUser ] = useContext(UserContext)
+    const { isLoggedIn, setLoggedIn } = useContext(UserContext);
+    const { applyUser } = useContext(UserContext)
+    
+
+    // on page state setters
     const [ username, setName ] = useState('');
     const [ password, setPassword ] = useState('');
     // const [ user, applyUser ] = useState({});
+
+    // placeholed value for getting user context, top of login form
+    const value = useContext(UserContext);
 
 
     const submitLogin = (event) => {
@@ -24,33 +30,40 @@ function Login() {
                     console.log("logged in user response on front end " + JSON.stringify(response.data))
                     setLoggedIn(true);
                     applyUser(response.data);
-                    console.log(`is logged in bool ${isLoggedIn}`);
-                    console.log(`response.data.user ${response.data.user}`);
                 }
             }).catch(err => {
                 console.log(err);
             })
         setName('');
         setPassword('');
-        console.log(`user ${user}`);
     }
+    console.log("context " + JSON.stringify(value));
+    console.log(`is logged in bool ${isLoggedIn}`);
+
 
     const submitLogout = (event) => {
         event.preventDefault();
-        API.logoutUser();
+        API.logoutUser()
+            .then(response => {
+                console.log(response)
+            }).catch(err => {
+                console.log(err)
+            })
         setLoggedIn(false);
         console.log('user signed out')
     }
+    console.log("context " + JSON.stringify(value));
+    console.log(`is logged in bool ${isLoggedIn}`);
 
     // console.log(`this is from the login component ${JSON.stringify(user)}`);
 
 
-    
+    if (isLoggedIn === false) {
     return (
         <div className="login-wrapper">
             <div className="login-form">
                 <form>
-                    <h3>Log In</h3>
+                    <h3>Log In</h3><span>{[isLoggedIn]}</span>
                     <div className="form-group row">
                         <label htmlFor="username" className="col-sm-2 col-form-label fadeUp">User Name</label>
                         <div className="col-sm-10">
@@ -90,6 +103,16 @@ function Login() {
                     </div>
                 </form>
             </div>
+        </div>
+    )}
+    return(
+        <div className="form-group row">
+            <button 
+                type="submit" 
+                onClick={submitLogout} 
+                className="btn btn-outline-light fadeUp">
+                Log Out
+            </button>
         </div>
     )
 }

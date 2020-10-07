@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 import Login from '../../components/Login/Login';
 import Register from '../../components/Register/Register';
@@ -21,7 +21,7 @@ function Landing() {
                     <NewestScores />
                 </div>
             </div> */}
-            <Register />
+            {/* <Register /> */}
             <Login />
         </div>
     )
