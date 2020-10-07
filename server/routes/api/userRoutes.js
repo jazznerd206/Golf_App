@@ -14,6 +14,9 @@ console.log('user routes');
     router.route('/login')
         .post(user.login_user);
 
+    router.route('/logout')
+        .post(user.logout_user);
+
     router.route('/:userId')
         .get(user.read_a_user)
         // .put(user.update_a_user)

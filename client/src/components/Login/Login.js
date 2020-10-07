@@ -1,30 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import API from '../../utils/API';
+import { UserContext } from '../../UserContext.js';
+
 
 function Login() {
 
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [username, setName] = useState('');
-    const [password, setPassword] = useState('');
-    const [user, applyUser] = useState({});
+    const [ isLoggedIn, setLoggedIn ] = useContext(UserContext);
+    const [ user, applyUser ] = useContext(UserContext)
+    const [ username, setName ] = useState('');
+    const [ password, setPassword ] = useState('');
+    // const [ user, applyUser ] = useState({});
 
 
     const submitLogin = (event) => {
         event.preventDefault();
-        console.log(`User log in clicked ====== ${username} +++ ${password} ======`);
+        // console.log(`User log in clicked ====== ${username} +++ ${password} ======`);
         API.loginUser(
             {
-                username: username,
-                password: password
+                username,
+                password
             }).then(response => {
-                if (response.data.success) {
-                    applyUser(response.data)
+                if (response.data.loggedIn === true ) {
+                    console.log("logged in user response on front end " + JSON.stringify(response.data))
+                    setLoggedIn(true);
+                    applyUser(response.data);
+                    console.log(`is logged in bool ${isLoggedIn}`);
+                    console.log(`response.data.user ${response.data.user}`);
                 }
             }).catch(err => {
                 console.log(err);
             })
         setName('');
         setPassword('');
+        console.log(`user ${user}`);
+    }
+
+    const submitLogout = (event) => {
+        event.preventDefault();
+        API.logoutUser();
+        setLoggedIn(false);
+        console.log('user signed out')
     }
 
     // console.log(`this is from the login component ${JSON.stringify(user)}`);

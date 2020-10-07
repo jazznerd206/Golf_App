@@ -62,6 +62,15 @@ exports.login_user = (req, res, next) => {
     })(req, res, next)
 }
 
+exports.logout_user = (req, res, next) => {
+    if (req.user) {
+        req.logOut();
+        res.json({ message: 'Logging out' });
+    } else {
+        res.json({ message: 'No user to log out' });
+    }(req, res, next)
+}
+
 exports.read_a_user = (req, res) => {
     Users.findOne({ where: {
         id: req.params.userId

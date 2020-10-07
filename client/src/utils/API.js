@@ -36,6 +36,19 @@ export default {
                 })
             })
         },
+    
+        logoutUser: function(user) {
+            return new Promise((resolve, reject) =>{
+                axios.post("/api/user/logout", user)
+                .then(response => {
+                    resolve(response)
+                })
+                .catch(error => {
+                    reject(Error("failed to login error: " + error))
+                })
+            })
+        
+        },
 
 
     // =======================================
