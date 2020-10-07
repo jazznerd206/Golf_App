@@ -1,6 +1,5 @@
 const express = require("express");
 const path = require('path');
-const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const session = require('express-session');
@@ -23,14 +22,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
+// initialize a blank return function
 app.use( (req, res, next) => {
   return next();
 });
 
 
-
 //passport local strategy
-app.use(session({ secret: 'secret' }));
+app.use(session({ 
+  secret: 'secret',
+  resave: false, // Required
+  saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 require('./Passport/index');
@@ -38,15 +40,16 @@ require('./Passport/index');
 
 
 // IMPORT AND REGISTER ROUTES
-const userRoutes = require('./routes/userRoutes.js');
-userRoutes(app, passport);
-const courseRoutes = require('./routes/courseRoutes.js');
-courseRoutes(app, passport);
-const holeRoutes = require('./routes/holeRoutes.js');
-holeRoutes(app, passport);
+// const userRoutes = require('./routes/userRoutes.js');
+// userRoutes(app, passport);
+// const courseRoutes = require('./routes/courseRoutes.js');
+// courseRoutes(app, passport);
+// const holeRoutes = require('./routes/holeRoutes.js');
+// holeRoutes(app, passport);
 //require('./routes/userRoutes.js')(app);
 
-
+const routes = require('./routes');
+app.use(routes);
 
 
 // require and connect sequelize to models

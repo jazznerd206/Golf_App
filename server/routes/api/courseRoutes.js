@@ -1,22 +1,22 @@
-const express = require('express');
-const course = require('../controllers/course.controller.js')
+const router = require('express').Router();
+const course = require('../../controllers/course.controller.js')
 
 
 console.log('course routes');
 
-module.exports = function(app) {
 
-    app.route('/api/courses')
+    router.route('/')
         .get(course.get_all_courses)
         .post(course.create_course, (req, res) => {
              console.log('course post route'), req.body;
         })
 
-    app.route('/api/courses/:Id')
+    router.route('/:Id')
         .get(course.read_a_course)
         // .put(course.update_a_course)
         .delete(course.delete_a_course, (req, res) => {
             console.log('delete course route');
         }
     );
-}
+
+module.exports = router;

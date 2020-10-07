@@ -58,7 +58,7 @@ exports.login_user = (req, res, next) => {
                 'loggedIn': true
             })
         })
-        //console.log('req.user ' + req.user.username)
+        // console.log('req.user ' + req.user.username)
     })(req, res, next)
 }
 
