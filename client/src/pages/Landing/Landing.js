@@ -21,7 +21,7 @@ function Landing() {
                     <NewestScores />
                 </div>
             </div> */}
-            {/* <Register /> */}
+            <Register />
             <Login />
         </div>
     )

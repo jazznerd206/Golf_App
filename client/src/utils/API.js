@@ -20,7 +20,7 @@ export default {
     loginUser: function(user) {
         console.log(JSON.stringify(user));
         console.log('axios find user post on API page');
-        axios.post('/api/login', user)
+        axios.post('/api/users/login', user)
             .then(response => {
                 if (response) {
                     console.log(response.data);
