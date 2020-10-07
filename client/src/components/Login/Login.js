@@ -6,25 +6,28 @@ function Login() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [username, setName] = useState('');
     const [password, setPassword] = useState('');
+    const [user, applyUser] = useState({});
 
 
     const submitLogin = (event) => {
         event.preventDefault();
         console.log(`User log in clicked ====== ${username} +++ ${password} ======`);
-        const user = {
-            name: username,
-            password: password
-        }
-        console.log('user ' + user);
         API.loginUser(
             {
                 username: username,
                 password: password
-            }
-        )
+            }).then(response => {
+                if (response.data.success) {
+                    applyUser(response.data)
+                }
+            }).catch(err => {
+                console.log(err);
+            })
         setName('');
         setPassword('');
     }
+
+    // console.log(`this is from the login component ${JSON.stringify(user)}`);
 
 
     

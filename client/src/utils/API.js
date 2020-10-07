@@ -20,17 +20,21 @@ export default {
     loginUser: function(user) {
         console.log(JSON.stringify(user));
         console.log('axios find user post on API page');
-        axios.post('/api/users/login', user)
-            .then(response => {
-                if (response) {
-                    console.log(response.data);
-                } else {
-                    console.log('Login error');
-                }
-            }).catch(error => {
-                console.log('Login server error: ');
-                console.log(error);
-            });
+        return new Promise((resolve, reject) => {
+            axios.post("/api/users/login", user)
+                .then(response => {
+                    console.log(`this is the response data ${JSON.stringify(response.data)}`)
+                    if (response.data){
+                        resolve(response)
+                    }
+                    else{
+                        console.log('log in error')
+                    }
+                })
+                .catch(error=>{
+                    reject(Error('login server error: ' + error))
+                })
+            })
         },
 
 
