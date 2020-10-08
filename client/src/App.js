@@ -4,6 +4,7 @@ import './App.css';
 import { UserContext } from './UserContext.js';
 import Landing from './pages/Landing/Landing.js';
 import Dashboard from './pages/Dashboard/Dashboard.js';
+import Login from './components/Login/Login';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser}}>
           <Switch>
               <Route exact path="/" component={Landing} />
+              <Route exact path="/login" component={Login} />
               <Route exact path="/dashboard" component={Dashboard} />
           </Switch>
         </UserContext.Provider>

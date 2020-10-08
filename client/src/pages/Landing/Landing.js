@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './styles.css';
 import Login from '../../components/Login/Login';
 import Register from '../../components/Register/Register';
-// import Navbar from '../../components/Navbar/Navbar';
+import Navbar from '../../components/Navbar/Navbar';
 import Header from '../../components/Header/Header';
 import TopScores from '../../components/Top_Scores/Top_Scores';
 import NewestScores from '../../components/Newest_Scores/Newest_Scores';
@@ -13,7 +13,7 @@ function Landing() {
 
     return (
             <div className="page-container">
-                {/* <Navbar /> */}
+                <Navbar />
                 <Header />
                 <div className="scores-container">
                     <div className="top-scores">
@@ -24,7 +24,6 @@ function Landing() {
                     </div>
                 </div>
                 {/* <Register /> */}
-                <Login />
             </div>
     )
 }

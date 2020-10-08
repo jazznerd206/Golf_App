@@ -25,6 +25,6 @@
 .row-two .sub-title {
     margin: 25px 50px;
     width: 500px;
-    height: 100px;
+    height: auto;
     background:yellow;
 }
