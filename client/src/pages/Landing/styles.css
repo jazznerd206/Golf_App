@@ -1,6 +1,6 @@
 .page-container {
     margin: 0 0 0 0;
-    height: 100vh;
+    height: auto;
     width: 100vw;
     background: linear-gradient(to bottom, #2f781f, #165b13);
 }
@@ -9,4 +9,5 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding-top: 100px
 }

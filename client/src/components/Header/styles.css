@@ -1,0 +1,30 @@
+.header-wrapper {
+    width: 100%;
+    height: 80vh;
+    background: green;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.row-one {
+    margin: 25px 50px;
+    height: 100px;
+    background: greenyellow;
+}
+
+.row-two .sub-title {
+    margin: 25px 50px;
+    width: 500px;
+    height: 100px;
+    background:yellow;
+}
