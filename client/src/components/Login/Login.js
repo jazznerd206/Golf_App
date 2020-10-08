@@ -1,5 +1,11 @@
+// REACT DEPENDENCIES
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+
+// IMPORT API
 import API from '../../utils/API';
+
+// USER CONTEXT
 import { UserContext } from '../../UserContext.js';
 
 
@@ -7,6 +13,8 @@ function Login() {
 
     const { isLoggedIn, setLoggedIn } = useContext(UserContext);
     const { applyUser } = useContext(UserContext)
+
+    const history = useHistory();
     
 
     // on page state setters

@@ -1,10 +1,19 @@
+// REACT DEPENDENCIES
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, } from 'react-router-dom';
 import './App.css';
-import { UserContext } from './UserContext.js';
+
+// ON PAGE COMPONENTS
 import Landing from './pages/Landing/Landing.js';
 import Dashboard from './pages/Dashboard/Dashboard.js';
-import Login from './components/Login/Login';
+import Login from './components/Login/Login.js';
+
+// ROUTE PROTECTION
+import ProtectedRoute from './components/Protected_Route/ProtectedRoute.js';
+
+// USER CONTEXT AND HISTORY
+import { UserContext } from './UserContext.js';
+import { createHistory } from './components/History/History.js';
 
 
 function App() {
@@ -14,12 +23,12 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      <Router history={history}>
         <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser}}>
           <Switch>
               <Route exact path="/" component={Landing} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/dashboard" component={Dashboard} />
+              <ProtectedRoute exact path="/dashboard" component={Dashboard} />
           </Switch>
         </UserContext.Provider>
       </Router>
