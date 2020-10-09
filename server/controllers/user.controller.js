@@ -23,15 +23,35 @@ exports.create_user = (req,res) => {
     if(!req.body.username || !req.body.password){
         res.status(400).send({ error:true, message: 'Please provide name/pass' });
       }
-    Users.create(req.body).then(user => {
-        // console.log(user);
-        console.log(user.username);
-        res.send('ok');
+    Users.findOne( { where: { username: req.body.username }})
+        .then(user => {
+            if (user) {
+                console.log(`user found, choose a different name ${user}`)
+                return res.json({
+                    success: false,
+                    username: null,
+                    loggedIn: false
+                })
+            }
+            else {
+                console.log(`no user found, ready to create`)
+                Users.create(req.body).then(user => {
+                    // console.log(user);
+                    console.log(user.username);
+                    return res.json({
+                        success: true,
+                        username: user.username,
+                        loggedIn: true
+                    })
+                })
+                .catch(error => {
+                        console.log(error);
+                })
+            }
         })
-    .catch(error => {
-            console.log(error);
-    })
-
+        .catch (err => {
+            console.log(err)
+        })
 }
 
 exports.login_user = (req, res, next) => {
