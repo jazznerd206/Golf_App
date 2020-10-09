@@ -1,6 +1,6 @@
 // REACT DEPENDENCIES
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, } from 'react-router-dom';
+import { Router, Route, Switch, } from 'react-router-dom';
 import './App.css';
 
 // ON PAGE COMPONENTS
@@ -13,7 +13,7 @@ import ProtectedRoute from './components/Protected_Route/ProtectedRoute.js';
 
 // USER CONTEXT AND HISTORY
 import { UserContext } from './UserContext.js';
-import { createHistory } from './components/History/History.js';
+import createHistory from './components/History/index';
 
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router history={history}>
+      <Router history={createHistory}>
         <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser}}>
           <Switch>
               <Route exact path="/" component={Landing} />

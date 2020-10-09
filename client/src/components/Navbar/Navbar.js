@@ -8,8 +8,8 @@ import { UserContext } from '../../UserContext.js';
 function Navbar() {
 
     const { isLoggedIn, setLoggedIn } = useContext(UserContext);
-    const { applyUser } = useContext(UserContext);
-    const { value } = useContext(UserContext);
+    // const { applyUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     const submitLogout = (event) => {
         event.preventDefault();
@@ -22,17 +22,16 @@ function Navbar() {
         setLoggedIn(false);
         console.log('user signed out')
     }
-    console.log("context " + JSON.stringify(value));
-    console.log(`is logged in bool ${isLoggedIn}`);
+    // console.log("context " + JSON.stringify(value));
 
-    // console.log(`this is from the login component ${JSON.stringify(user)}`);
-
+    // console.log(`is logged in bool ${isLoggedIn}`);
+    console.log(`this is from the user ${user.username}`);
 
     if (isLoggedIn === true) {
     return (
         <div className="navbar-wrapper">
             <div className="navbar-right">
-                <span><h1>Welcome User</h1></span>
+                <span><h1>Welcome {user.username}</h1></span>
             </div>
             <div className="navbar-center">
                 <div className="title-container">
@@ -49,7 +48,6 @@ function Navbar() {
         </div>
         </div>
     )}
-    {
     return (
         <div className="navbar-wrapper">
             <div className="navbar-right">
@@ -68,7 +66,7 @@ function Navbar() {
             </Link>
             </div>
         </div>
-    )}
+    )
 }
 
 export default Navbar;

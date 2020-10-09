@@ -1,0 +1,14 @@
+.login-wrapper {
+    height: 100vh;
+    margin: auto;
+    padding-top: 30vh;
+    background-color: green;
+}
+
+.login-form {
+    margin: auto;
+    background: radial-gradient(#C0C0C0, #D3D3D3);
+    padding: 30px 30px 30px 30px;
+    width: 400px;
+    border-radius: 25px;
+}

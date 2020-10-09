@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './styles.css';
-import Login from '../../components/Login/Login';
-import Register from '../../components/Register/Register';
 import Navbar from '../../components/Navbar/Navbar';
 import Header from '../../components/Header/Header';
 import TopScores from '../../components/Top_Scores/Top_Scores';

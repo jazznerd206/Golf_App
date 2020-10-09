@@ -53,9 +53,9 @@ exports.login_user = (req, res, next) => {
         req.logIn(user, (err) => {
             if (err) {return next(err)}
             return res.json({
-                'success': true,
-                'user': user,
-                'loggedIn': true
+                success: true,
+                username: user.username,
+                loggedIn: true
             })
         })
         // console.log('req.user ' + req.user.username)

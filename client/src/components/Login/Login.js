@@ -1,6 +1,7 @@
 // REACT DEPENDENCIES
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import './styles.css';
 
 // IMPORT API
 import API from '../../utils/API';
@@ -22,8 +23,8 @@ function Login() {
     const [ password, setPassword ] = useState('');
     // const [ user, applyUser ] = useState({});
 
-    // placeholed value for getting user context, top of login form
-    const value = useContext(UserContext);
+    // placeholder value for getting user context, top of login form
+    // const user = useContext(UserContext);
 
 
     const submitLogin = (event) => {
@@ -38,6 +39,7 @@ function Login() {
                     console.log("logged in user response on front end " + JSON.stringify(response.data))
                     setLoggedIn(true);
                     applyUser(response.data);
+                    history.push('/');
                 }
             }).catch(err => {
                 console.log(err);
@@ -45,8 +47,8 @@ function Login() {
         setName('');
         setPassword('');
     }
-    console.log("context " + JSON.stringify(value));
-    console.log(`is logged in bool ${isLoggedIn}`);
+    // console.log("context " + JSON.stringify(value));
+    // console.log(`is logged in bool ${isLoggedIn}`);
 
 
     const submitLogout = (event) => {
@@ -60,8 +62,8 @@ function Login() {
         setLoggedIn(false);
         console.log('user signed out')
     }
-    console.log("context " + JSON.stringify(value));
-    console.log(`is logged in bool ${isLoggedIn}`);
+    // console.log("context " + JSON.stringify(value));
+    // console.log(`is logged in bool ${isLoggedIn}`);
 
     // console.log(`this is from the login component ${JSON.stringify(user)}`);
 
