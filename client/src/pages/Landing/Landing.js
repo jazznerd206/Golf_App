@@ -4,6 +4,8 @@ import Navbar from '../../components/Navbar/Navbar';
 import Header from '../../components/Header/Header';
 import TopScores from '../../components/Top_Scores/Top_Scores';
 import NewestScores from '../../components/Newest_Scores/Newest_Scores';
+import AddCourse from '../../components/Add_Course/AddCourse';
+
 
 
 
@@ -13,6 +15,7 @@ function Landing() {
             <div className="page-container">
                 <Navbar />
                 <Header />
+                <AddCourse />
                 <div className="scores-container">
                     <div className="top-scores">
                         <TopScores />

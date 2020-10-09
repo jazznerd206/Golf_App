@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Router, Route, Switch, } from 'react-router-dom';
 import './App.css';
 
-// ON PAGE COMPONENTS
+// REQUIRED COMPONENTS
 import Landing from './pages/Landing/Landing.js';
 import Dashboard from './pages/Dashboard/Dashboard.js';
 import Login from './components/Login/Login.js';

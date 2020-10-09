@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
     })
 
     Hole.associate = function(models) {
-        Hole.belongsTo(models.course, {foreignKey: 'courseID', as: 'course'})
+        Hole.belongsTo(models.course, {foreignKey: 'name', as: 'course'})
     }
 
     return Hole;

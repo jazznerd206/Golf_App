@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
             autoIncrement: true,
             primaryKey: true
         },
-        name: {
+        courseName: {
             type: Sequelize.STRING(250),
             allowNull: false,
             unique: false
@@ -28,6 +28,9 @@ module.exports = function(sequelize, DataTypes) {
             type: Sequelize.INTEGER(2),
             allowNull: false
         },
+        rating: {
+            type: Sequelize.FLOAT(4,1)
+        }
     })
 
     Course.associate = function(models) {
