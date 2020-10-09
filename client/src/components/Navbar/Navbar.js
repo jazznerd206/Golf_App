@@ -63,6 +63,11 @@ function Navbar() {
                 <span><h1>Golf App</h1></span>
             </div>
             <div className="navbar-center">
+            <Link to="/">
+                <button type="button">
+                    Home
+                </button>
+            </Link>
             <Link to="/login">
                 <button type="button">
                     Login

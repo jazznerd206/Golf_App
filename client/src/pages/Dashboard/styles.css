@@ -1,0 +1,7 @@
+.scores-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 200px;
+    padding-bottom: 200px;
+}

@@ -4,6 +4,8 @@ import './styles.css';
 
 // COMPONENT IMPORTS
 import Navbar from '../../components/Navbar/Navbar';
+import TopScores from '../../components/Top_Scores/Top_Scores';
+import NewestScores from '../../components/Newest_Scores/Newest_Scores';
 
 function Dashboard() {
 
@@ -11,7 +13,14 @@ function Dashboard() {
     return (
         <div className="dashboard-wrapper">
             <Navbar />
-            
+            <div className="scores-container">
+                    <div className="top-scores">
+                        <TopScores />
+                    </div>
+                    <div className="newest-scores">
+                        <NewestScores />
+                    </div>
+                </div>
         </div>
     )
 }
