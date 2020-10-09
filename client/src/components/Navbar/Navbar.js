@@ -1,7 +1,12 @@
+// REACT DEPENDENCIES
 import React, { useContext } from 'react';
-import API from '../../utils/API';
+import { Link, useHistory } from 'react-router-dom';
 import './styles.css';
-import { Link } from 'react-router-dom';
+
+// API FUNCTIONS
+import API from '../../utils/API';
+
+// USER CONTEXT
 import { UserContext } from '../../UserContext.js';
 
 
@@ -10,6 +15,9 @@ function Navbar() {
     const { isLoggedIn, setLoggedIn } = useContext(UserContext);
     // const { applyUser } = useContext(UserContext);
     const { user } = useContext(UserContext);
+
+    const history = useHistory();
+
 
     const submitLogout = (event) => {
         event.preventDefault();
@@ -20,12 +28,13 @@ function Navbar() {
                 console.log(err)
             })
         setLoggedIn(false);
-        console.log('user signed out')
+        history.push('/');
+        // console.log('user signed out')
     }
     // console.log("context " + JSON.stringify(value));
 
     // console.log(`is logged in bool ${isLoggedIn}`);
-    console.log(`this is from the user ${user.username}`);
+    // console.log(`this is from the user ${user.username}`);
 
     if (isLoggedIn === true) {
     return (

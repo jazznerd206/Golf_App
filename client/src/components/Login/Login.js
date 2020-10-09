@@ -36,10 +36,10 @@ function Login() {
                 password
             }).then(response => {
                 if (response.data.loggedIn === true ) {
-                    console.log("logged in user response on front end " + JSON.stringify(response.data))
+                    // console.log("logged in user response on front end " + JSON.stringify(response.data))
                     setLoggedIn(true);
                     applyUser(response.data);
-                    history.push('/');
+                    history.push('/dashboard');
                 }
             }).catch(err => {
                 console.log(err);
@@ -60,6 +60,7 @@ function Login() {
                 console.log(err)
             })
         setLoggedIn(false);
+        history.push('/')
         console.log('user signed out')
     }
     // console.log("context " + JSON.stringify(value));

@@ -1,12 +1,17 @@
+// REACT DEPENDENCIES
 import React from 'react';
 import './styles.css';
 
+// COMPONENT IMPORTS
+import Navbar from '../../components/Navbar/Navbar';
+
 function Dashboard() {
+
+    
     return (
-        <div>
-            <h1>Dashboard</h1>
-            <p>Secret Page</p>
-            {/* <button>Log Out</button> */}
+        <div className="dashboard-wrapper">
+            <Navbar />
+            
         </div>
     )
 }

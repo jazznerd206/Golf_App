@@ -18,13 +18,13 @@ exports.get_all_users = (req, res) => {
 
 exports.create_user = (req,res) => {
     //handles null error
-    console.log(req.body.username);
-    console.log(req.body.password);
+    // console.log(req.body.username);
+    // console.log(req.body.password);
     if(!req.body.username || !req.body.password){
         res.status(400).send({ error:true, message: 'Please provide name/pass' });
       }
     Users.create(req.body).then(user => {
-        console.log(user);
+        // console.log(user);
         console.log(user.username);
         res.send('ok');
         })
@@ -35,12 +35,12 @@ exports.create_user = (req,res) => {
 }
 
 exports.login_user = (req, res, next) => {
-    console.log('=================================')
-    console.log('login user on controller');
-    console.log("name " + req.body.username);
-    console.log("password " + req.body.password);
-    console.log('login user on controller');
-    console.log('=================================')
+    // console.log('=================================')
+    // console.log('login user on controller');
+    // console.log("name " + req.body.username);
+    // console.log("password " + req.body.password);
+    // console.log('login user on controller');
+    // console.log('=================================')
     // console.log(`body parsing ${JSON.stringify(req.body)}`);
     passport.authenticate('local', { successRedirect: '/dashboard', failureRedirect: '/cannotget' } ,function(err, user) {
         if (err) {
@@ -75,7 +75,7 @@ exports.read_a_user = (req, res) => {
     Users.findOne({ where: {
         id: req.params.userId
     }}).then(user => {
-            console.log(`user object returned === ${user}`)
+            // console.log(`user object returned === ${user}`)
             res.send(JSON.stringify(user));
     })
     .catch(error => {

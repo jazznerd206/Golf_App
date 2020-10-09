@@ -1,7 +1,7 @@
 .navbar-wrapper {
     width: 100%;
     height: 100px;
-    background: green;
+    background: linear-gradient(to top, #2f781f, #165b13);
     display: flex;
     flex-direction: row;
     justify-content: space-around;
