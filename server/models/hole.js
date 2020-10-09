@@ -26,10 +26,6 @@ module.exports = function(sequelize, DataTypes) {
             type: Sequelize.INTEGER(4),
             allowNull: false
         },
-        courseID: {
-            type: Sequelize.INTEGER(11),
-            allowNull: false
-        }
     })
 
     Hole.associate = function(models) {

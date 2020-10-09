@@ -1,5 +1,6 @@
 const db = require('../models');
 const Courses = db['course'];
+const Holes = db['hole'];
 
 exports.get_all_courses = (req, res) => {
     Courses.findAll()
@@ -26,7 +27,6 @@ exports.create_course = (req,res) => {
         .catch(error => {
                 console.log('create a course error ' + error);
     })
-
 }
 
 exports.read_a_course = (req, res) => {

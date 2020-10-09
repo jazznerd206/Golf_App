@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import './styles.css';
 import API from '../../utils/API';
 
-
 function AddCourse() {
 
     // COURSE STATE SETTERS
@@ -26,13 +25,19 @@ function AddCourse() {
     // ADD COURSE TO DB
     const submitCourse = event => {
         event.preventDefault();
-        console.log(`${courseName} (${lengthHoles} holes) staged for DB entry @ ${lengthYards} yards, par ${par}, rating ${rating}`);
         API.designCourse({
             courseName,
             lengthYards,
             lengthHoles,
             par,
             rating
+        })
+        holes.forEach(hole => {
+            API.addHole({
+                par: holePar,
+                handicap: handicap,
+                yardage: holeLength
+            })
         })
     }
 
@@ -95,7 +100,7 @@ function AddCourse() {
                             </div>
                         </div>
                         <div className="form-group row">
-                            <label htmlFor="lengthHoles" className="">9 or 18?</label>
+                            <label htmlFor="lengthHoles" className="">Holes</label>
                             <div className="">
                                 <input
                                     type="number"
@@ -204,15 +209,15 @@ function AddCourse() {
                     </form>
                 </div>
             )}
-            {lengthHoles != 0 && formIndex > lengthHoles && (
+            {lengthHoles !== 0 && formIndex > lengthHoles && (
                 <div>
                     <h1>SUBMIT COURSE</h1>
                         <div className="form-group row">
                             <button 
                                 type="submit" 
-                                onClick={submitCourse} 
+                                onClick={submitCourse}
                                 className="">
-                                Add Holes
+                                Submit
                             </button>
                         </div>
                 </div>
