@@ -7,6 +7,7 @@ import './App.css';
 import Landing from './pages/Landing/Landing.js';
 import Dashboard from './pages/Dashboard/Dashboard.js';
 import Login from './components/Login/Login.js';
+import Register from './components/Register/Register.js';
 
 // ROUTE PROTECTION
 import ProtectedRoute from './components/Protected_Route/ProtectedRoute.js';
@@ -29,6 +30,7 @@ function App() {
           <Switch>
               <Route exact path="/" component={Landing} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/register" component={Register} />
               <ProtectedRoute exact path="/dashboard" component={Dashboard} />
           </Switch>
         </UserContext.Provider>

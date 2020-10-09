@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
+//REACT DEPENDENCIES
+import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import './styles.css';
+
+// API IMPORT
 import API from '../../utils/API.js';
-// import axios from 'axios';
+
+// USER CONTEXT
+import { UserContext } from '../../UserContext.js';
 
 function Register() {
 
+    // CONTEXT FUNCTIONS FROM APP.JS
+    const { isLoggedIn, setLoggedIn } = useContext(UserContext);
+    const { applyUser } = useContext(UserContext)
+
+    // ON PAGE STATE
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+
+    // HISTORY
+    const history = useHistory();
+
 
 
     const registerUser = event => {
@@ -26,8 +41,23 @@ function Register() {
                 password: password
             }
         );
+        API.loginUser(
+            {
+                username: name,
+                password: password
+            }).then(response => {
+                if (response.data.loggedIn === true ) {
+                    // console.log("logged in user response on front end " + JSON.stringify(response.data))
+                    setLoggedIn(true);
+                    applyUser(response.data);
+                    history.push('/dashboard');
+                }
+            }).catch(err => {
+                console.log(err);
+            })
         setName('');
         setPassword('');
+        history.push('/dashboard')
     }
 
 

@@ -1,6 +1,14 @@
 .register-wrapper {
+    height: 100vh;
+    margin: auto;
+    padding-top: 30vh;
+    background-color: green;
+}
+
+.register-form {
+    margin: auto;
+    background: radial-gradient(#C0C0C0, #D3D3D3);
+    padding: 30px 30px 30px 30px;
     width: 400px;
-    height: auto;
-    margin: 0 auto;
-    background: #eeeeee;
+    border-radius: 25px;
 }

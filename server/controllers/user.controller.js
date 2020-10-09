@@ -30,7 +30,8 @@ exports.create_user = (req,res) => {
                 return res.json({
                     success: false,
                     username: null,
-                    loggedIn: false
+                    loggedIn: false,
+                    error: `Username ${req.body.username} has already been taken.`
                 })
             }
             else {
@@ -62,7 +63,7 @@ exports.login_user = (req, res, next) => {
     // console.log('login user on controller');
     // console.log('=================================')
     // console.log(`body parsing ${JSON.stringify(req.body)}`);
-    passport.authenticate('local', { successRedirect: '/dashboard', failureRedirect: '/cannotget' } ,function(err, user) {
+    passport.authenticate('local', { successRedirect: '/dashboard', failureRedirect: '/' } ,function(err, user) {
         if (err) {
             return next(err);
           }
