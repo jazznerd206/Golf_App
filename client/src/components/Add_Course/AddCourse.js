@@ -28,7 +28,7 @@ function AddCourse() {
 
     // ADD COURSE TO DB
     const submitCourse = event => {
-        // event.preventDefault();
+        event.preventDefault();
         API.designCourse({
             courseName,
             lengthYards,
@@ -53,7 +53,7 @@ function AddCourse() {
     }
 
     // SET HOLES TO STATE IN HOOKS
-    const addHole = async event => {
+    const addHole = event => {
         event.preventDefault();       
 
         const newHole = {

@@ -31,8 +31,7 @@ module.exports = function(sequelize, DataTypes) {
             type: Sequelize.FLOAT(4,1)
         },
         holes: {
-            type: Sequelize.TEXT,
-            type: DataTypes.STRING, 
+            type: Sequelize.TEXT('long'),
             get: function() {
                 return JSON.parse(this.getDataValue('holes'));
             }, 
