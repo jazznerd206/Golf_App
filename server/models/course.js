@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
     })
 
     Course.associate = function(models) {
-        Course.hasMany(models.hole, {as: 'holes'})
+        Course.hasMany(models.hole, {foreignKey: { name: 'courseName', allowNull: false}, as: 'holes'})
       };
 
     return Course;
