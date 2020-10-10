@@ -1,6 +1,8 @@
 // REACT DEPENDENCIES
 import React, { useState } from 'react';
 import './styles.css';
+
+// IMPORT API
 import API from '../../utils/API';
 
 function AddCourse() {
@@ -72,6 +74,9 @@ function AddCourse() {
             {formIndex === 0 && (
                 <div className="form-wrapper">
                     <form>
+                        <div className="form-title">
+                            <h3>Add new course</h3>
+                        </div>
                         <div className="form-group row">
                             <label htmlFor="courseName" className="">Course Name</label>
                             <div className="">
@@ -156,6 +161,9 @@ function AddCourse() {
             {formIndex > 0 && formIndex - 1 < lengthHoles && (
                 <div className="form-wrapper">
                     <form>
+                    <div className="form-title">
+                            <h3>Add Holes</h3>
+                        </div>
                         <h3>Hole {formIndex}</h3>
                         <div className="form-group row">
                             <label htmlFor="holePar" className="">Hole Par</label>
@@ -212,15 +220,37 @@ function AddCourse() {
             )}
             {lengthHoles !== 0 && formIndex > lengthHoles && (
                 <div>
-                    <h1>SUBMIT COURSE</h1>
-                        <div className="form-group row">
-                            <button 
-                                type="submit" 
-                                onClick={submitCourse}
-                                className="">
-                                Submit
-                            </button>
+                    <div className="form-title">
+                            <h3>Add new course</h3>
+                    </div>
+                    <div className="course-data-review">
+                        <div className="course-level-data">
+                            <span>Course Name: {courseName},  </span>
+                            <span>Yardage: {lengthYards},  </span>
+                            <span>Holes: {lengthHoles},  </span>
+                            <span>Par: {par},  </span>
+                            <span>Rating: {rating},  </span>
                         </div>
+                        <div className="hole-level-data">
+                            <ol>
+                                {holes.map(hole => (
+                                    <div>
+                                        <li><span key={holePar}>Par: {holePar},  </span>
+                                        <span key={holeLength}>Length: {holeLength},  </span>
+                                        <span key={handicap}>Handicap: {handicap},  </span></li>
+                                    </div>
+                                ))}
+                            </ol>
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                        <button 
+                            type="submit" 
+                            onClick={submitCourse}
+                            className="">
+                            Submit
+                        </button>
+                    </div>
                 </div>
             )}
         </div>

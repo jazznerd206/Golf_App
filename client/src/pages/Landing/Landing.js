@@ -15,13 +15,17 @@ function Landing() {
             <div className="page-container">
                 <Navbar />
                 <Header />
-                <AddCourse />
                 <div className="scores-container">
                     <div className="top-scores">
                         <TopScores />
                     </div>
                     <div className="newest-scores">
                         <NewestScores />
+                    </div>
+                </div>
+                <div className="action-container">
+                    <div className="add-course">
+                        <AddCourse />
                     </div>
                 </div>
                 {/* <Register /> */}
