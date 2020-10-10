@@ -28,7 +28,7 @@ function AddCourse() {
 
     // ADD COURSE TO DB
     const submitCourse = event => {
-        event.preventDefault();
+        // event.preventDefault();
         API.designCourse({
             courseName,
             lengthYards,
@@ -37,18 +37,19 @@ function AddCourse() {
             rating,
             holes
         })
-        setFormIndex(0);
-        setCourseName('');
-        setLengthYards(0);
-        setLengthHoles(0);
-        setPar(0);
-        setRating(0);
-        setHoles([]);
+        // setFormIndex(0);
+        // setCourseName('');
+        // setLengthYards(0);
+        // setLengthHoles(0);
+        // setPar(0);
+        // setRating(0);
+        // setHoles([]);
     }
 
     // HANDLE FIRST STEP IN FORM
     const nextForm = event => {
         event.preventDefault();
+        submitCourse();
         setFormIndex(formIndex + 1);
     }
 

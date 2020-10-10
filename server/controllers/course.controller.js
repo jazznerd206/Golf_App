@@ -20,7 +20,7 @@ exports.create_course = async (req,res) => {
     const courseCreate = await Courses.create(req.body)
         .then(course => {
             console.log(course);
-            console.log(course.name);
+            // console.log(course.name);
             res.send('course created');
             })
         .catch(error => {
