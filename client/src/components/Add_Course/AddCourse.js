@@ -30,15 +30,16 @@ function AddCourse() {
             lengthYards,
             lengthHoles,
             par,
-            rating
+            rating,
+            holes
         })
-        holes.forEach(hole => {
-            API.addHole({
-                par: holePar,
-                handicap: handicap,
-                yardage: holeLength
-            })
-        })
+        setFormIndex(0);
+        setCourseName('');
+        setLengthYards(0);
+        setLengthHoles(0);
+        setPar(0);
+        setRating(0);
+        setHoles([]);
     }
 
     // HANDLE FIRST STEP IN FORM

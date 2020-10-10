@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize');
-const Hole = require('./hole.js')
 
 
 module.exports = function(sequelize, DataTypes) {
@@ -30,12 +29,21 @@ module.exports = function(sequelize, DataTypes) {
         },
         rating: {
             type: Sequelize.FLOAT(4,1)
+        },
+        holes: {
+            type: DataTypes.STRING, 
+            get: function() {
+                return JSON.parse(this.getDataValue('holes'));
+            }, 
+            set: function(val) {
+                return this.setDataValue('holes', JSON.stringify(val));
+        }
         }
     })
 
-    Course.associate = function(models) {
-        Course.hasMany(models.hole, {as: 'holes'})
-      };
+    // Course.associate = function(models) {
+    //     Course.hasMany(models.hole, {as: 'holes'})
+    //   };
 
     return Course;
 };
