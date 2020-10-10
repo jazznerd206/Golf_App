@@ -31,13 +31,14 @@ module.exports = function(sequelize, DataTypes) {
             type: Sequelize.FLOAT(4,1)
         },
         holes: {
+            type: Sequelize.TEXT,
             type: DataTypes.STRING, 
             get: function() {
                 return JSON.parse(this.getDataValue('holes'));
             }, 
             set: function(val) {
                 return this.setDataValue('holes', JSON.stringify(val));
-        }
+            }
         }
     })
 

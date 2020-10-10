@@ -5,6 +5,7 @@ import './styles.css';
 // IMPORT API
 import API from '../../utils/API';
 
+
 function AddCourse() {
 
     // COURSE STATE SETTERS
@@ -19,6 +20,7 @@ function AddCourse() {
     const [ holePar, setHolePar ] = useState(0);
     const [ holeLength, setHoleLength] = useState(0);
     const [ handicap, setHandicap] = useState(0);
+    const [ holeCount, setHoleCount ] = useState(1);
 
 
     // FORM INDEX CONTROL
@@ -26,7 +28,7 @@ function AddCourse() {
 
     // ADD COURSE TO DB
     const submitCourse = event => {
-        event.preventDefault();
+        // event.preventDefault();
         API.designCourse({
             courseName,
             lengthYards,
@@ -51,10 +53,12 @@ function AddCourse() {
     }
 
     // SET HOLES TO STATE IN HOOKS
-    const addHole = event => {
-        event.preventDefault();
+    const addHole = async event => {
+        event.preventDefault();       
+
         const newHole = {
-            par: holePar,
+            hole: holeCount,
+            parPar: holePar,
             handicap: handicap,
             yardage: holeLength
         }
@@ -64,19 +68,22 @@ function AddCourse() {
         setHandicap(0);
         setHoleLength(0);
         setFormIndex(formIndex + 1);
+        setHoleCount(holeCount + 1)
     }
-    console.log(`holes from hooks ${holes}`);
-    console.log(`holes length from hooks ${holes.length}`);
+    // console.log(`holes from hooks ${holes}`);
+    // console.log(`holes length from hooks ${holes.length}`);
+    // console.log(holes);
 
 
     return (
         <div className="addCourse-wrapper">
             {formIndex === 0 && (
-                <div className="form-wrapper">
-                    <form>
-                        <div className="form-title">
-                            <h3>Add new course</h3>
-                        </div>
+                <form>
+                    <div className="form-title">
+                        <h3>Add new course</h3>
+                    </div>
+                    <div className="form-wrapper">
+                        
                         <div className="form-group row">
                             <label htmlFor="courseName" className="">Course Name</label>
                             <div className="">
@@ -155,15 +162,17 @@ function AddCourse() {
                                 Add Holes
                             </button>
                         </div>
+                        </div>
                     </form>
-                </div>
+                
             )}
             {formIndex > 0 && formIndex - 1 < lengthHoles && (
-                <div className="form-wrapper">
-                    <form>
+                <form>
                     <div className="form-title">
-                            <h3>Add Holes</h3>
-                        </div>
+                        <h3>Add Holes</h3>  
+                    </div>
+                    <div className="form-wrapper">
+                        
                         <h3>Hole {formIndex}</h3>
                         <div className="form-group row">
                             <label htmlFor="holePar" className="">Hole Par</label>
@@ -215,8 +224,8 @@ function AddCourse() {
                                 Add Holes
                             </button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             )}
             {lengthHoles !== 0 && formIndex > lengthHoles && (
                 <div>
@@ -234,11 +243,9 @@ function AddCourse() {
                         <div className="hole-level-data">
                             <ol>
                                 {holes.map(hole => (
-                                    <div>
-                                        <li><span key={holePar}>Par: {holePar},  </span>
-                                        <span key={holeLength}>Length: {holeLength},  </span>
-                                        <span key={handicap}>Handicap: {handicap},  </span></li>
-                                    </div>
+                                        <li key={hole.hole}><span>Par: {hole.parPar},  </span>
+                                        <span>Length: {hole.yardage},  </span>
+                                        <span>Handicap: {hole.handicap},  </span></li>
                                 ))}
                             </ol>
                         </div>

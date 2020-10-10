@@ -29,10 +29,10 @@ exports.create_course = (req,res) => {
 }
 
 exports.read_a_course = (req, res) => {
-    Course.findOne({ where: {
-        id: req.params.Id
+    Courses.findOne({ where: {
+        courseName: req.params.name
     }}).then(course => {
-            res.send(JSON.stringify(course));
+            res.send(course);
     })
     .catch(error => {
         console.log(error);

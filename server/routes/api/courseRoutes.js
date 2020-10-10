@@ -11,7 +11,7 @@ console.log('course routes');
              console.log('course post route'), req.body;
         })
 
-    router.route('/:Id')
+    router.route('/:name')
         .get(course.read_a_course)
         // .put(course.update_a_course)
         .delete(course.delete_a_course, (req, res) => {

@@ -1,3 +1,38 @@
+.form-wrapper {
+    background: grey;
+    padding: 50px 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+.course-data-review {
+    background: #D3D3D3;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.hole-level-data {
+    margin: auto;
+    padding: 25px 25px;
+}
+
 .hole-level-data ol {
-    list-style-type: decimal-leading-zero;
+    background: #C0C0C0;
+    width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    list-style-type: decimal;
+    list-style-position: inside;
+}
+
+.hole-level-data ol li {
+    background: #D3D3D3;
+    width: auto;
+    margin: 5px 5px;
+    padding: 10px 10px;
 }
