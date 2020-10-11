@@ -63,6 +63,7 @@ exports.login_user = (req, res, next) => {
     // console.log('login user on controller');
     // console.log('=================================')
     // console.log(`body parsing ${JSON.stringify(req.body)}`);
+    console.log(`req.user before p.auth ${req.user}`)
     passport.authenticate('local', { session: true } ,function(err, user) {
         if (err) {
             return next(err);
@@ -79,7 +80,7 @@ exports.login_user = (req, res, next) => {
                 loggedIn: true
             })
         })
-        // console.log('req.user ' + req.user.username)
+        console.log('req.user ' + req.user.username)
     })(req, res, next)
 }
 

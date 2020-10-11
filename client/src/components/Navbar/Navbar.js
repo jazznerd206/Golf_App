@@ -2,6 +2,7 @@
 import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './styles.css';
+import Cookie from 'js-cookie';
 
 // API FUNCTIONS
 import API from '../../utils/API';
@@ -27,8 +28,10 @@ function Navbar() {
             }).catch(err => {
                 console.log(err)
             })
+        Cookie.remove('this is a cookie')
         setLoggedIn(false);
         history.push('/');
+
         // console.log('user signed out')
     }
     // console.log("context " + JSON.stringify(value));

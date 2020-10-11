@@ -2,6 +2,7 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import './styles.css';
+import Cookie from 'js-cookie';
 
 // IMPORT API
 import API from '../../utils/API';
@@ -36,6 +37,7 @@ function Login() {
                 password
             }).then(response => {
                 if (response.data.loggedIn === true ) {
+                    Cookie.set("this is a cookie");
                     // console.log("logged in user response on front end " + JSON.stringify(response.data))
                     setLoggedIn(true);
                     applyUser(response.data);

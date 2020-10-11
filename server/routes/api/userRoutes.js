@@ -12,7 +12,9 @@ console.log('user routes');
         });
     
     router.route('/login')
-        .post(user.login_user);
+        .post(user.login_user, (req, res) => {
+            console.log(`req.user`)
+        });
 
     router.route('/logout')
         .post(user.logout_user);

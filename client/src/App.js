@@ -1,6 +1,8 @@
 // REACT DEPENDENCIES
 import React, { useState } from 'react';
-import { Router, Route, Switch, } from 'react-router-dom';
+
+import Cookies from 'js-cookie';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 
 // REQUIRED COMPONENTS
@@ -20,8 +22,17 @@ import createHistory from './components/History/index';
 
 function App() {
 
+  
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [user, applyUser] = useState({});
+  const [user, applyUser] = useState({});  
+
+
+
+  if (isLoggedIn === false){
+  if (Cookies.get('this is a cookie')) {
+    setLoggedIn(true);
+    }
+  }
 
   return (
     <div className="App">

@@ -22,6 +22,7 @@ exports.get_all_courses = (req, res) => {
 
 exports.create_course = async (req,res) => {
     console.log(JSON.stringify(req.body));
+    console.log(JSON.stringify(req.body));
     //handles null error
     const courseCreate = await Courses.create(req.body)
         .then(course => {

@@ -16,6 +16,9 @@ const strategy = new LocalStrategy(
       username: username
         }}).then(user => {
                 // console.log(`user object returned === ${user}`)
+                // =============================================
+                // add some kind of secondary cookie/jwt here sent to the browser for react to be able to find
+                // =============================================
                 return next(null, user);
         })
         .catch(error => {
