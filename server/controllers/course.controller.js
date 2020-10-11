@@ -25,7 +25,7 @@ exports.create_course = async (req,res) => {
     //handles null error
     const courseCreate = await Courses.create(req.body)
         .then(course => {
-            console.log(course);
+            // console.log(course);
             // console.log(course.name);
             res.send('course created');
             })
@@ -38,6 +38,7 @@ exports.read_a_course = (req, res) => {
     Courses.findOne({ where: {
         courseName: req.params.name
     }}).then(course => {
+        // console.log(`course FROM READ A COURSE ${course}`)
             res.send(course);
     })
     .catch(error => {

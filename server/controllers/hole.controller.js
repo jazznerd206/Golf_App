@@ -16,19 +16,19 @@ exports.get_all_holes = (req, res) => {
 }
 
 exports.create_hole = async (req,res) => {
-    console.log(JSON.stringify(req.body));
+    // console.log(JSON.stringify(req.body));
     //handles null error
     const findCourse = await Courses.findOne({ where: {courseName: 'Jackson'}});
     const createHole = await Holes.create(req.body)
         .then(hole => {
-            console.log(hole);
+            // console.log(hole);
             // console.log(hole.name);
             res.send('hole created');
             })
         .catch(error => {
                 console.log('create a hole error ' + error);
     })
-    console.log(findCourse);
+    // console.log(findCourse);
 }
 
 exports.read_a_hole = (req, res) => {
