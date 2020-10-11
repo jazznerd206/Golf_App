@@ -63,7 +63,7 @@ exports.login_user = (req, res, next) => {
     // console.log('login user on controller');
     // console.log('=================================')
     // console.log(`body parsing ${JSON.stringify(req.body)}`);
-    passport.authenticate('local', { successRedirect: '/dashboard', failureRedirect: '/' } ,function(err, user) {
+    passport.authenticate('local', { session: true } ,function(err, user) {
         if (err) {
             return next(err);
           }

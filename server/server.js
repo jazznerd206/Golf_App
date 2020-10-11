@@ -3,8 +3,13 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const session = require('express-session');
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 let PORT = process.env.PORT || 8080;
 let app = express();
+
+// require and connect sequelize to models
+const db = require('./models');
+const syncOptions = { force: false };
 
 // .env config
 require('dotenv').config();
@@ -27,12 +32,20 @@ app.use( (req, res, next) => {
   return next();
 });
 
+const sessionStore = new SequelizeStore({
+  db: db.sequelize
+})
 
 //passport local strategy
 app.use(session({ 
   secret: 'secret',
-  resave: false, // Required
-  saveUninitialized: false }));
+  resave: false,
+  saveUninitialized: false,
+  store: sessionStore
+}));
+
+sessionStore.sync();
+
 app.use(passport.initialize());
 app.use(passport.session());
 require('./Passport/index');
@@ -50,11 +63,6 @@ require('./Passport/index');
 
 const routes = require('./routes');
 app.use(routes);
-
-
-// require and connect sequelize to models
-const db = require('./models');
-const syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
