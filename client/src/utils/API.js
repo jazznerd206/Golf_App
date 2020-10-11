@@ -80,15 +80,15 @@ export default {
     },
 
     getCourse: function(course) {
-        console.log(`course from getCourse API ${course}`)
+        // console.log(`course from getCourse API ${course}`)
         return new Promise((resolve, reject) => {
             axios.get(`/api/courses/${course}`)
                 .then(response => {
                     if (response.data) {
-                        console.log("response.data " + JSON.stringify(response.data));
+                        // console.log("response.data " + JSON.stringify(response.data));
                         resolve(response)
                     } else {
-                        console.log('Course get error');
+                        // console.log('Course get error');
                     }
                 })
                 .catch(err => {
@@ -111,7 +111,7 @@ export default {
         axios.post('/api/holes', newHole)
             .then(response => {
                 if (response.data) {
-                    console.log(response.data);
+                    // console.log(response.data);
                 } else {
                     console.log('Hole build error');
                 }

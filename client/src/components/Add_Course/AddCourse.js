@@ -15,6 +15,7 @@ function AddCourse() {
     const [ par, setPar ] = useState(0);
     const [ rating, setRating ] = useState(0.0);
     const [ holes, setHoles] = useState([]);
+    const [ courseIdent, setCourseIdent] = useState(0);
 
     // HOLE STATE SETTERS
     const [ holePar, setHolePar ] = useState(0);
@@ -28,7 +29,7 @@ function AddCourse() {
 
     // ADD COURSE TO DB
     const submitCourse = event => {
-        event.preventDefault();
+        // event.preventDefault();
         API.designCourse({
             courseName,
             lengthYards,
@@ -37,33 +38,43 @@ function AddCourse() {
             rating,
             holes
         })
-        setFormIndex(0);
-        setCourseName('');
-        setLengthYards(0);
-        setLengthHoles(0);
-        setPar(0);
-        setRating(0);
-        setHoles([]);
+        // setFormIndex(0);
+        // setCourseName('');
+        // setLengthYards(0);
+        // setLengthHoles(0);
+        // setPar(0);
+        // setRating(0);
+        // setHoles([]);
     }
 
     // HANDLE FIRST STEP IN FORM
     const nextForm = event => {
         event.preventDefault();
+        submitCourse();
         setFormIndex(formIndex + 1);
+    }
+
+    if (courseName && rating) { 
+    API.getCourse(courseName).then(response => {
+        setCourseIdent(response.data.id);
+        setCourseName('')
+    })
     }
 
     // SET HOLES TO STATE IN HOOKS
     const addHole = event => {
-        event.preventDefault();       
-
+        event.preventDefault();
         const newHole = {
             hole: holeCount,
-            parPar: holePar,
+            par: holePar,
             handicap: handicap,
-            yardage: holeLength
+            yardage: holeLength,
+            courseName: courseIdent
         }
+        // console.log(`courseIdent ${courseIdent}`)
+        API.addHole(newHole);
         setHoles(holes => [...holes, newHole]);
-        console.log(`new hole from form ${newHole}`)
+        // console.log(`new hole from form ${newHole}`)
         setHolePar(0);
         setHandicap(0);
         setHoleLength(0);

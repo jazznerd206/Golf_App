@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
 
     const Course = sequelize.define("course", {
-        courseID: {
+        id: {
             type: Sequelize.INTEGER(11),
             allowNull: false,
             autoIncrement: true,
@@ -30,20 +30,11 @@ module.exports = function(sequelize, DataTypes) {
         rating: {
             type: Sequelize.FLOAT(4,1)
         },
-        holes: {
-            type: Sequelize.TEXT('long'),
-            get: function() {
-                return JSON.parse(this.getDataValue('holes'));
-            }, 
-            set: function(val) {
-                return this.setDataValue('holes', JSON.stringify(val));
-            }
-        }
     })
 
-    // Course.associate = function(models) {
-    //     Course.hasMany(models.hole, {as: 'holes'})
-    //   };
+    Course.associate = function(models) {
+        Course.hasMany(models.hole, {foreignKey: { name: 'courseName', allowNull: false}, as: 'holes'})
+      };
 
     return Course;
 };

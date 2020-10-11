@@ -1,8 +1,14 @@
 const db = require('../models');
 const Courses = db['course'];
+const Holes = db['hole']
 
 exports.get_all_courses = (req, res) => {
-    Courses.findAll()
+    Courses.findAll({
+        include: [{
+          model: Holes,
+          as: 'holes'
+        }]
+      })
         .then(courses => {
             res.send(courses);
           })
@@ -19,8 +25,8 @@ exports.create_course = async (req,res) => {
     //handles null error
     const courseCreate = await Courses.create(req.body)
         .then(course => {
-            console.log(course);
-            console.log(course.name);
+            // console.log(course);
+            // console.log(course.name);
             res.send('course created');
             })
         .catch(error => {
@@ -32,6 +38,7 @@ exports.read_a_course = (req, res) => {
     Courses.findOne({ where: {
         courseName: req.params.name
     }}).then(course => {
+        // console.log(`course FROM READ A COURSE ${course}`)
             res.send(course);
     })
     .catch(error => {
