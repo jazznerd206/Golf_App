@@ -54,6 +54,22 @@ function AddCourse() {
         setFormIndex(formIndex + 1);
     }
 
+    const resetForm = event => {
+        event.preventDefault();
+        setFormIndex(0);
+        setCourseName('');
+        setLengthYards(0);
+        setLengthHoles(0);
+        setPar(0);
+        setRating(0);
+        setHoles([]);
+    }
+
+    const formBack = event => {
+        event.preventDefault();
+        setFormIndex(formIndex - 1);
+    }
+
     if (courseName && rating) { 
     API.getCourse(courseName).then(response => {
         setCourseIdent(response.data.id);
@@ -235,6 +251,22 @@ function AddCourse() {
                                 Add Holes
                             </button>
                         </div>
+                        <div className="form-group row">
+                            <button 
+                                type="submit" 
+                                onClick={formBack} 
+                                className="">
+                                Back
+                            </button>
+                        </div>
+                        <div className="form-group row">
+                            <button 
+                                type="submit" 
+                                onClick={resetForm} 
+                                className="">
+                                Cancel and Reset
+                            </button>
+                        </div>
                     </div>
                 </form>
             )}
@@ -264,7 +296,7 @@ function AddCourse() {
                     <div className="form-group row">
                         <button 
                             type="submit" 
-                            onClick={submitCourse}
+                            onClick={resetForm}
                             className="">
                             Submit
                         </button>
