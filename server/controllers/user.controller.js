@@ -64,7 +64,7 @@ exports.login_user = (req, res, next) => {
     // console.log('=================================')
     // console.log(`body parsing ${JSON.stringify(req.body)}`);
     console.log(`req.user before p.auth ${req.user}`)
-    passport.authenticate('local', { session: true } ,function(err, user) {
+    passport.authenticate('local', { session: true, successRedirect: '/dashboard', failureRedirect: '/' } ,function(err, user) {
         if (err) {
             return next(err);
           }
@@ -81,7 +81,7 @@ exports.login_user = (req, res, next) => {
             })
         })
         console.log('req.user ' + req.user.username)
-    })(req, res, next)
+    })(req, res)
 }
 
 exports.logout_user = (req, res, next) => {

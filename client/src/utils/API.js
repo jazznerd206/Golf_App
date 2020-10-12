@@ -49,7 +49,7 @@ export default {
                     }
                 })
                 .catch(error => {
-                    reject(Error('login server error: ' + JSON.stringify(error)))
+                    reject(Error('logout server error: ' + JSON.stringify(error)))
                 })
             })
         

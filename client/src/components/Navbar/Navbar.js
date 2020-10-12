@@ -1,6 +1,6 @@
 // REACT DEPENDENCIES
 import React, { useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './styles.css';
 import Cookie from 'js-cookie';
 
@@ -17,7 +17,7 @@ function Navbar() {
     // const { applyUser } = useContext(UserContext);
     const { user } = useContext(UserContext);
 
-    const history = useHistory();
+    // const history = useHistory();
 
 
     const submitLogout = (event) => {
@@ -30,7 +30,7 @@ function Navbar() {
             })
         Cookie.remove('this is a cookie')
         setLoggedIn(false);
-        history.push('/');
+        // history.push('/');
 
         // console.log('user signed out')
     }

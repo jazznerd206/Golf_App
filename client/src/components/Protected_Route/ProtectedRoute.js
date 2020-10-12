@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { UserContext } from '../../UserContext.js';
 
 
-function ProtectedRoute({ component: Component,loggedIn: LoggedIn, ...rest } ) {
+function ProtectedRoute({ component: Component, ...rest } ) {
 
 
     const {isLoggedIn} = useContext(UserContext)
@@ -14,13 +14,11 @@ function ProtectedRoute({ component: Component,loggedIn: LoggedIn, ...rest } ) {
 
     return (
         <div>
-            <Router>
                 <Route {...rest} render={(props) => (
                     isLoggedIn === true
                     ? <Component {...props} />
                     : <Redirect to='/' />
                 )} />
-             </Router>
         </div>
     )
 }

@@ -1,7 +1,6 @@
 // REACT DEPENDENCIES
-import React, { useState } from 'react';
-
-import Cookies from 'js-cookie';
+import React, { useState, useEffect } from 'react';
+// import Cookies from 'js-cookie';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 
@@ -16,7 +15,7 @@ import ProtectedRoute from './components/Protected_Route/ProtectedRoute.js';
 
 // USER CONTEXT AND HISTORY
 import { UserContext } from './UserContext.js';
-import createHistory from './components/History/index';
+// import createHistory from './components/History/index';
 
 
 
@@ -24,19 +23,23 @@ function App() {
 
   
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [user, applyUser] = useState({});  
+  const [user, applyUser] = useState({});
 
+  // initialize a blank object to store user state
 
+  // attempt auth function here, send down as prop
 
-  if (isLoggedIn === false){
-  if (Cookies.get('this is a cookie')) {
-    setLoggedIn(true);
-    }
-  }
+  // pass necessary state to components
+
+  // if (isLoggedIn === false){
+  // if (Cookies.get('this is a cookie')) {
+  //   setLoggedIn(true);
+  //   }
+  // }
 
   return (
     <div className="App">
-      <Router history={createHistory}>
+      <Router>
         <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser}}>
           <Switch>
               <Route exact path="/" component={Landing} />

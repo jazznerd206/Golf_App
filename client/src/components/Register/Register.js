@@ -1,6 +1,6 @@
 //REACT DEPENDENCIES
 import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import './styles.css';
 
 // API IMPORT
@@ -20,7 +20,7 @@ function Register() {
     const [password, setPassword] = useState('');
 
     // HISTORY
-    const history = useHistory();
+    // const history = useHistory();
 
 
 
@@ -50,14 +50,14 @@ function Register() {
                     // console.log("logged in user response on front end " + JSON.stringify(response.data))
                     setLoggedIn(true);
                     applyUser(response.data);
-                    history.push('/dashboard');
+                    // history.push('/dashboard');
                 }
             }).catch(err => {
                 console.log(err);
             })
         setName('');
         setPassword('');
-        history.push('/dashboard')
+        // history.push('/dashboard')
     }
 
 

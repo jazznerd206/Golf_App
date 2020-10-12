@@ -1,6 +1,6 @@
 // REACT DEPENDENCIES
 import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import './styles.css';
 import Cookie from 'js-cookie';
 
@@ -16,7 +16,7 @@ function Login() {
     const { isLoggedIn, setLoggedIn } = useContext(UserContext);
     const { applyUser } = useContext(UserContext)
 
-    const history = useHistory();
+    // const history = useHistory();
     
 
     // on page state setters
@@ -41,7 +41,7 @@ function Login() {
                     // console.log("logged in user response on front end " + JSON.stringify(response.data))
                     setLoggedIn(true);
                     applyUser(response.data);
-                    history.push('/dashboard');
+                    // history.push('/dashboard');
                 }
             }).catch(err => {
                 console.log(err);
@@ -62,7 +62,7 @@ function Login() {
                 console.log(err)
             })
         setLoggedIn(false);
-        history.push('/')
+        // history.push('/')
         console.log('user signed out')
     }
     // console.log("context " + JSON.stringify(value));
@@ -119,14 +119,15 @@ function Login() {
         </div>
     )}
     return(
-        <div className="form-group row">
-            <button 
-                type="submit" 
-                onClick={submitLogout} 
-                className="btn btn-outline-light fadeUp">
-                Log Out
-            </button>
-        </div>
+        // <div className="form-group row">
+        //     <button 
+        //         type="submit" 
+        //         onClick={submitLogout} 
+        //         className="btn btn-outline-light fadeUp">
+        //         Log Out
+        //     </button>
+        // </div>
+        <Redirect to='/dashboard'/>
     )
 }
 
