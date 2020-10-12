@@ -25,7 +25,7 @@ function Landing() {
                 </div>
                 <div className="action-container">
                     <div className="add-course">
-                        <AddCourse />
+                        {/* <AddCourse /> */}
                     </div>
                 </div>
                 {/* <Register /> */}
