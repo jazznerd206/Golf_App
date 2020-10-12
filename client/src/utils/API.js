@@ -2,6 +2,28 @@ import axios from 'axios';
 
 export default {
 
+    findUser: function(userID) {
+        console.log(`api axios post ${userID}`);
+        if (userID === undefined) {
+            console.log(`undefined user`)
+            return(null);
+        }
+        return new Promise((resolve, reject) => {
+            axios.get(`/api/users/${userID}`)
+            .then(response => {
+                if (response.data) {
+                    resolve(response)
+                }
+                else{
+                    console.log('find user error')
+                }
+            })
+            .catch(error => {
+                reject(Error('find user server error: ' + JSON.stringify(error)))
+            })
+        })
+    },
+
     signUpUser: function(newUser) {
         console.log('axios post on the API page');
         axios.post("/api/users", newUser)

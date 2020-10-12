@@ -28,7 +28,8 @@ function Navbar() {
             }).catch(err => {
                 console.log(err)
             })
-        Cookie.remove('this is a cookie')
+        Cookie.remove('this is a cookie');
+        Cookie.remove('auth');
         setLoggedIn(false);
         // history.push('/');
 

@@ -50,19 +50,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 require('./Passport/index');
 
-
-
-// IMPORT AND REGISTER ROUTES
-// const userRoutes = require('./routes/userRoutes.js');
-// userRoutes(app, passport);
-// const courseRoutes = require('./routes/courseRoutes.js');
-// courseRoutes(app, passport);
-// const holeRoutes = require('./routes/holeRoutes.js');
-// holeRoutes(app, passport);
-//require('./routes/userRoutes.js')(app);
-
 const routes = require('./routes');
 app.use(routes);
+
+// Send every other request to the React app
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
@@ -80,15 +74,3 @@ db.sequelize.sync(syncOptions).then(function() {
     );
   });
 });
-
-// Send every other request to the React app
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
-
-
-// Start our server so that it can begin listening to client requests.
-// app.listen(PORT, function() {
-//     // Log (server-side) when our server has started
-//     console.log("Server listening on: http://localhost:" + PORT);
-//   });

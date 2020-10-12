@@ -71,29 +71,35 @@ exports.login_user = (req, res, next) => {
         if (!user) {
             return res.json({loggedIn: false});
         }
+        // res.redirect('/dashboard')
         //console.log('user in the req.login ' + user);
-        req.logIn(user, (err) => {
-            if (err) {return next(err)}
+        req.logIn(user, err => {
+            if (err) {return next(JSON.stringify(err))}
+            // res.redirect('/dashboard')
             return res.json({
                 success: true,
                 username: user.username,
+                id: user.id,
                 loggedIn: true
             })
         })
-        console.log('req.user ' + req.user.username)
-    })(req, res)
+        // next()
+        console.log('req.user after p.auth' + req.user.username)
+    })(req, res, next)
 }
 
 exports.logout_user = (req, res, next) => {
     if (req.user) {
         req.logOut();
-        res.json({ message: 'Logging out' });
+        req.session.destroy(function (err) {
+            res.json({ message: 'Logging out' });
+        })
     } else {
         res.json({ message: 'No user to log out' });
     }(req, res, next)
 }
 
-exports.read_a_user = (req, res) => {
+exports.read_a_user = (req, res, next) => {
     Users.findOne({ where: {
         id: req.params.userId
     }}).then(user => {

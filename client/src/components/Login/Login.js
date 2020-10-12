@@ -1,8 +1,9 @@
 // REACT DEPENDENCIES
 import React, { useState, useContext } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter, useHistory } from 'react-router-dom';
 import './styles.css';
 import Cookie from 'js-cookie';
+
 
 // IMPORT API
 import API from '../../utils/API';
@@ -16,7 +17,7 @@ function Login() {
     const { isLoggedIn, setLoggedIn } = useContext(UserContext);
     const { applyUser } = useContext(UserContext)
 
-    // const history = useHistory();
+    const history = useHistory();
     
 
     // on page state setters
@@ -37,20 +38,24 @@ function Login() {
                 password
             }).then(response => {
                 if (response.data.loggedIn === true ) {
-                    Cookie.set("this is a cookie");
-                    // console.log("logged in user response on front end " + JSON.stringify(response.data))
+                    Cookie.set('auth', response.data.id);
+                    console.log("logged in user response on front end " + JSON.stringify(response.data))
                     setLoggedIn(true);
                     applyUser(response.data);
-                    // history.push('/dashboard');
                 }
             }).catch(err => {
                 console.log(err);
             })
+        
         setName('');
         setPassword('');
     }
     // console.log("context " + JSON.stringify(value));
     // console.log(`is logged in bool ${isLoggedIn}`);
+    // if (isLoggedIn === true) {
+    //     console.log('user logged in check: ' + isLoggedIn)
+    //     history.push('/dashboard');
+    // }
 
 
     const submitLogout = (event) => {
@@ -117,7 +122,8 @@ function Login() {
                 </form>
             </div>
         </div>
-    )}
+    )
+}
     return(
         // <div className="form-group row">
         //     <button 
@@ -131,4 +137,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default withRouter(Login);
