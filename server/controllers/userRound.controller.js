@@ -42,7 +42,8 @@ exports.read_a_userRound = (req, res) => {
           as: 'userHoles'
         }]
       }, { where: {
-        id: req.params.Id
+        // id: req.params.Id,
+        userID: req.params.Id
     }}).then(round => {
             res.send(round);
     })

@@ -110,7 +110,7 @@ exports.read_a_user = (req, res, next) => {
         id: req.params.userId
     }}).then(user => {
             // console.log(`user object returned === ${user}`)
-            res.send(JSON.stringify(user));
+            res.send(user);
     })
     .catch(error => {
         console.log(error);

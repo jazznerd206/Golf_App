@@ -11,6 +11,7 @@ export default {
         return new Promise((resolve, reject) => {
             axios.get(`/api/users/${userID}`)
             .then(response => {
+                // console.log(`response.data from finduser promise API ${JSON.stringify(response.data)}`)
                 if (response.data) {
                     resolve(response)
                 }
@@ -141,7 +142,7 @@ export default {
                 console.log('Hole build server error: ');
                 console.log(error);
             });
-    }
+    },
 
     // =======================================
     // UPDATE HOLE FUNCTION, NOT YET NECESSARY
@@ -149,6 +150,31 @@ export default {
 
     // =======================================
     // DELETE HOLE FUNCTION, NOT YET NECESSARY
+    
+
+    // =======================================
+    getRounds: function(userID) {
+        console.log(`api axios post ${userID}`);
+        if (userID === undefined) {
+            console.log(`undefined user`)
+            return(null);
+        }
+        return new Promise((resolve, reject) => {
+            axios.get(`/api/userRounds/${userID}`)
+            .then(response => {
+                console.log(`response.data from finduser promise API ${JSON.stringify(response.data)}`)
+                if (response.data) {
+                    resolve(response)
+                }
+                else{
+                    console.log('find user error')
+                }
+            })
+            .catch(error => {
+                reject(Error('find user server error: ' + JSON.stringify(error)))
+            })
+        })
+    },
     // =======================================
 
 }

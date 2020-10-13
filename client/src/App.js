@@ -34,12 +34,12 @@ function App() {
 
   const grabCookie = async () => {
     let result = Cookies.get('auth')
-    console.log("cookie from browser " + result)
+    console.log("cookie from browser " + typeof result)
     const userData = await API.findUser(result);
     if (userData === null && user === {} && setFindUserBool === true) {
       console.log('no user')
     } else {
-      console.log(userData)
+      console.log(`userData from api call on app.s ${JSON.stringify(userData)}`)
       return userData
     }
     setLoggedIn(true);
@@ -50,7 +50,7 @@ function App() {
     let set = false;
     if (isLoggedIn === false && set === false) {
       let result = await grabCookie();
-      console.log(result);
+      console.log(`result from cookie grab ${JSON.stringify(result)}`);
       if (result === null) {
         console.log(`no user to log in`)
       } else {
@@ -63,7 +63,7 @@ function App() {
 
   }
   setUser();
-  console.log(user);
+  // console.log(user);
   
 
 
