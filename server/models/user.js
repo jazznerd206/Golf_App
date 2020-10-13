@@ -21,7 +21,14 @@ module.exports = function(sequelize, DataTypes) {
         }
     })
 
+    Users.associate = function(models) {
+        Users.hasMany(models.userRound, { foreignKey: { name: 'userID', allowNull: false }, as: 'rounds'}
+        )
+    }
+
     return Users;
+
+
 
     
 };

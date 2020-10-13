@@ -1,10 +1,16 @@
 const Sequelize = require('sequelize');
 const models = require('../models'); // loads index.js
 const Users = models.user;  
+const UserRounds = models.userRound;
 const passport = require('passport');
 
 exports.get_all_users = (req, res) => {
-    Users.findAll()
+    Users.findAll({
+        include: [{
+          model: UserRounds,
+          as: 'rounds'
+        }]
+      })
         .then(users => {
             res.send(users);
           })
