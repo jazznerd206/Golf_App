@@ -92,7 +92,7 @@ function App() {
               <Route exact path="/" component={Main} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
-              <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+              <ProtectedRoute path="/dashboard" component={Dashboard} />
           </Switch>
       </Router>
       </UserContext.Provider>
