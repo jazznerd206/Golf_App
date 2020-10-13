@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 
 module.exports = function(sequelize, DataTypes) {
 
-    const Hole = sequelize.define("hole", {
+    const UserHole = sequelize.define("userHole", {
 
         id: {
             type: Sequelize.INTEGER(11),
@@ -26,11 +26,23 @@ module.exports = function(sequelize, DataTypes) {
             type: Sequelize.INTEGER(4),
             allowNull: false
         },
+        score: {
+            type: Sequelize.INTEGER(2),
+            allowNull: false,
+        },
+        anywayStroke: {
+            type: Sequelize.INTEGER(4),
+            allowNull: false
+        },
+        anywayType: {
+            type: Sequelize.STRING(100),
+            allowNull: false
+        }
     })
 
-    Hole.associate = function(models) {
-        Hole.belongsTo(models.course, {foreignKey: { name: 'courseID', allowNull: false }, as: 'holes'})
+    UserHole.associate = function(models) {
+        UserHole.belongsTo(models.userRound, {foreignKey: { name: 'courseID', allowNull: false }, as: 'userHoles'})
     }
 
-    return Hole;
+    return UserHole;
 }

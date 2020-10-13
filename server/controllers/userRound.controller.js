@@ -1,20 +1,26 @@
 const db = require('../models');
 const UserRounds = db['userRound'];
+const UserHoles = db['userHole'];
 
-exports.get_all_rounds = (req, res) => {
-    UserRounds.findAll()
+exports.get_all_userRounds = (req, res) => {
+    UserRounds.findAll({
+        include: [{
+          model: UserHoles,
+          as: 'userHoles'
+        }]
+      })
         .then(rounds => {
             res.send(rounds);
           })
         .catch(err => {
             res.status(500).send({
               message:
-                err.message || 'Some error occurred while retrieving holes'
+                err.message || 'Some error occurred while retrieving rounds'
             });
         });
 }
 
-exports.create_round = async (req,res) => {
+exports.create_userRound = async (req,res) => {
     console.log(JSON.stringify(req.body));
     console.log(JSON.stringify(req.body));
     //handles null error
@@ -26,5 +32,21 @@ exports.create_round = async (req,res) => {
             })
         .catch(error => {
                 console.log('create a round error ' + JSON.stringify(error));
+    })
+}
+
+exports.read_a_userRound = (req, res) => {
+    UserRounds.findOne({
+        include: [{
+          model: UserHoles,
+          as: 'userHoles'
+        }]
+      }, { where: {
+        id: req.params.Id
+    }}).then(round => {
+            res.send(round);
+    })
+    .catch(error => {
+        console.log(error);
     })
 }
