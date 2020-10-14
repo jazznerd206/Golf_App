@@ -41,57 +41,6 @@ function App() {
     userFetch();
   }, [])
 
-  // const grabCookie = async () => {
-  //   let result = Cookies.get('auth');
-  //   console.log("cookie from browser " + typeof result)
-  //   const userData = await API.findUser(result);
-  //   if (userData === null && user === {} && setFindUserBool === true) {
-  //     console.log('no user')
-  //   } else {
-  //     console.log(`userData from api call on app.s ${JSON.stringify(userData)}`)
-  //     return userData
-  //   }
-  //   setLoggedIn(true);
-  //   setFindUserBool(false)
-  // }
-
-  // const setUser = async () => {
-  //   let set = false;
-  //   if (isLoggedIn === false && set === false) {
-  //     let result = await grabCookie();
-  //     console.log(`result from cookie grab ${JSON.stringify(result)}`);
-  //     if (result === null) {
-  //       console.log(`no user to log in`)
-  //     } else {
-  //       applyUser(result.data);
-  //       setLoggedIn(true);
-  //     }
-
-  //   }
-  //   set = true;
-
-  // }
-  // setUser();
-  // console.log(user);
-  
-
-
-
-
-  
-
-  // initialize a blank object to store user state
-
-  // attempt auth function here, send down as prop
-
-  // pass necessary state to components
-
-  // if (isLoggedIn === false){
-  // if (Cookies.get('this is a cookie')) {
-  //   setLoggedIn(true);
-  //   }
-  // }
-
   return (
     <div className="App">
       <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser}}>

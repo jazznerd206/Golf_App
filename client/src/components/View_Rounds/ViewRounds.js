@@ -22,46 +22,55 @@ function ViewRounds() {
         const userID = user.id
         const data = await API.getRounds(userID);
         console.log(data.data);
-        setRounds([...rounds, data.data])
+        console.log(typeof data)
+        data.data.forEach(round => 
+            setRounds(rounds => [...rounds, round])
+            )
     }
     useEffect(() => {
         roundFetch();
     }, [])
 
     console.log(user.id);
-    console.log(`these are the rounds ${JSON.stringify(rounds)}`);
+    console.log(`these are the rounds ${rounds}`);
 
     
 
 
-    
-    return (
+    if (rounds.length > 0) {
+        return (
             <div className="viewRound-wrapper">
                 {rounds.map((round, index) => (
                     // console.log(`round id ${round.id}`),
                     <div className="round-container" key={index}>
                         <div className="round-date">
-                            Date: {round.date}
+                            <span className="round-data-point">{round.date}</span>
                         </div>
                         <div className="round-course">
-                            Course: {round.course}
+                            <p>Course: <span className="round-data-point">{round.course}</span></p>
                         </div>
                         <div className="round-coursePar">
-                            Par: {round.coursePar}
+                        <p>Par: <span className="round-data-point">{round.coursePar}</span></p>
                         </div>
                         <div className="round-courseRating">
-                            Rating: {round.courseRating}
+                        <p>Rating: <span className="round-data-point">{round.courseRating}</span></p>
                         </div>
                         <div className="round-score">
-                            Score: {round.totalScore}
+                        <p>Score: <span className="round-data-point">{round.totalScore}</span></p>
                         </div>
                         <div className="round-AWstrokes">
-                            Anyway Score:{round.totalAWstrokes}
+                        <p>Anyway: <span className="round-data-point">{round.totalAWstrokes}</span></p>
                         </div>
                     </div>
                 ))}
             </div>
-    )
+        )
+    }{
+        return (
+            <div><h1>No Datas</h1></div>
+        )
+    }
+    
 }
 
 export default ViewRounds;

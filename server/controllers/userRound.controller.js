@@ -36,7 +36,7 @@ exports.create_userRound = async (req,res) => {
 }
 
 exports.read_a_userRound = (req, res) => {
-    UserRounds.findOne({ where: {
+    UserRounds.findAll({ where: {
           userID: req.params.Id
             }, 
         include: [{

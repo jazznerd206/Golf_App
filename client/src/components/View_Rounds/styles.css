@@ -1,0 +1,28 @@
+.viewRound-wrapper {
+    margin: 50px 50px;
+    background: grey;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.round-container {
+    margin: 10px 10px;
+    padding: 20px 20px;
+    background: silver;
+    height: auto;
+    line-height: 2em;
+    border-radius: 25px;
+}
+
+.round-container p {
+    font-weight: bolder;
+    font-size: xx-large;
+    font-family: monospace;
+}
+
+.round-container .round-data-point {
+    font-family: 'Roboto';
+    
+}

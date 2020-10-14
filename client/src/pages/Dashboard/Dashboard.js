@@ -5,8 +5,8 @@ import { Route, Switch, Link } from 'react-router-dom';
 
 // COMPONENT IMPORTS
 // import Navbar from '../../components/Navbar/Navbar';
-import TopScores from '../../components/Top_Scores/Top_Scores';
-import NewestScores from '../../components/Newest_Scores/Newest_Scores';
+// import TopScores from '../../components/Top_Scores/Top_Scores';
+// import NewestScores from '../../components/Newest_Scores/Newest_Scores';
 import AddCourse from '../../components/Add_Course/AddCourse';
 import AddRound from '../../components/Add_Round/AddRound';
 import ViewRounds from '../../components/View_Rounds/ViewRounds';
@@ -14,7 +14,6 @@ import ViewRounds from '../../components/View_Rounds/ViewRounds';
 class Dashboard extends Component {
     render() {
         return (
-
             <div className="dashboard-wrapper">
                 <Link to="/dashboard/addcourse">
                 <button type="button">
@@ -44,20 +43,6 @@ class Dashboard extends Component {
                     <Route exact path='/dashboard/viewRounds' component={ViewRounds} />
                 </Switch>
 
-
-
-
-
-        
-
-                <div className="scores-container">
-                        <div className="top-scores">
-                            <TopScores />
-                        </div>
-                        <div className="newest-scores">
-                            <NewestScores />
-                        </div>
-                    </div>
             </div>
         )
     }
