@@ -36,15 +36,13 @@ exports.create_userRound = async (req,res) => {
 }
 
 exports.read_a_userRound = (req, res) => {
-    UserRounds.findOne({
+    UserRounds.findOne({ where: {
+          userID: req.params.Id
+            }, 
         include: [{
           model: UserHoles,
           as: 'userHoles'
-        }]
-      }, { where: {
-        // id: req.params.Id,
-        userID: req.params.Id
-    }}).then(round => {
+        }]}).then(round => {
             res.send(round);
     })
     .catch(error => {

@@ -16,11 +16,16 @@ function ViewRounds() {
 
     const { user, applyUser } = useContext(UserContext)
 
+    API.getRounds(user.id).then(round => {
+        console.log(round);
+        setRounds(rounds => [...rounds, round])
+    })
+
 
     
     return (
             <div className="viewRound-wrapper">
-                {/* {rounds.map(round => (
+                {rounds.map(round => (
                     <div className="round-container" key={round.id}>
                         <div className="round-date">
                             Date: {round.date}
@@ -41,7 +46,7 @@ function ViewRounds() {
                             Anyway Score:{round.totalAWstrokes}
                         </div>
                     </div>
-                ))} */}
+                ))}
             </div>
     )
 }
