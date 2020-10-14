@@ -32,13 +32,19 @@ function App() {
   
 
   const userFetch = async () => {
-    let result = Cookies.get('auth');
-    const userData = await API.findUser(result);
-    applyUser(userData.data);
-    setLoggedIn(true);
+    const result = Cookies.get('auth');
+    console.log(`result ${result}`)
+    if (result === undefined) { 
+        console.log(`no user to log in`)
+        setLoggedIn(false);
+    } else {
+      const userData = await API.findUser(result);
+      applyUser(userData.data);
+      setLoggedIn(true);
+    }
   }
   useEffect(() => {
-    userFetch();
+      userFetch();
   }, [])
 
   return (

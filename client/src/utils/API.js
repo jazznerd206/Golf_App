@@ -120,6 +120,25 @@ export default {
             })
             
         },
+    
+    getCourses: function(course) {
+        // console.log(`course from getCourse API ${course}`)
+        return new Promise((resolve, reject) => {
+            axios.get(`/api/courses`)
+                .then(response => {
+                    if (response.data) {
+                        // console.log("response.data " + JSON.stringify(response.data));
+                        resolve(response)
+                    } else {
+                        // console.log('Course get error');
+                    }
+                })
+                .catch(err => {
+                    reject(Error('get course server error: ' + JSON.stringify(err)))
+                })
+            })
+            
+        },
 
     // =======================================
     // UPDATE COURSE FUNCTION, NOT YET NECESSARY
@@ -153,6 +172,8 @@ export default {
     
 
     // =======================================
+    // GET ROUNDS BY USER ID
+    // =======================================
     getRounds: function(userID) {
         console.log(`api axios post ${userID}`);
         if (userID === undefined) {
@@ -176,5 +197,28 @@ export default {
         })
     },
     // =======================================
+
+    
+    // =======================================
+    // CREATE NEW USER ROUND
+    // =======================================
+
+    createNewRound: function(newUserRound) {
+        console.log('axios post create round on the API page');
+        axios.post("/api/userRounds", newUserRound)
+            .then(response => {
+                if (response.data) {
+                    console.log(response.data);
+                } else {
+                    console.log('create user round error');
+                }
+            }).catch(error => {
+                console.log('create user round server error: ');
+                console.log(error);
+            });
+    },
+
+    // =======================================
+
 
 }
