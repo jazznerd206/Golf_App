@@ -31,38 +31,47 @@ function App() {
   // const [cookie, setCookie] = useState('');
   
 
-
-  const grabCookie = async () => {
-    let result = Cookies.get('auth')
-    console.log("cookie from browser " + typeof result)
+  const userFetch = async () => {
+    let result = Cookies.get('auth');
     const userData = await API.findUser(result);
-    if (userData === null && user === {} && setFindUserBool === true) {
-      console.log('no user')
-    } else {
-      console.log(`userData from api call on app.s ${JSON.stringify(userData)}`)
-      return userData
-    }
+    applyUser(userData.data);
     setLoggedIn(true);
-    setFindUserBool(false)
   }
+  useEffect(() => {
+    userFetch();
+  }, [])
 
-  const setUser = async () => {
-    let set = false;
-    if (isLoggedIn === false && set === false) {
-      let result = await grabCookie();
-      console.log(`result from cookie grab ${JSON.stringify(result)}`);
-      if (result === null) {
-        console.log(`no user to log in`)
-      } else {
-        applyUser(result.data);
-        setLoggedIn(true);
-      }
+  // const grabCookie = async () => {
+  //   let result = Cookies.get('auth');
+  //   console.log("cookie from browser " + typeof result)
+  //   const userData = await API.findUser(result);
+  //   if (userData === null && user === {} && setFindUserBool === true) {
+  //     console.log('no user')
+  //   } else {
+  //     console.log(`userData from api call on app.s ${JSON.stringify(userData)}`)
+  //     return userData
+  //   }
+  //   setLoggedIn(true);
+  //   setFindUserBool(false)
+  // }
 
-    }
-    set = true;
+  // const setUser = async () => {
+  //   let set = false;
+  //   if (isLoggedIn === false && set === false) {
+  //     let result = await grabCookie();
+  //     console.log(`result from cookie grab ${JSON.stringify(result)}`);
+  //     if (result === null) {
+  //       console.log(`no user to log in`)
+  //     } else {
+  //       applyUser(result.data);
+  //       setLoggedIn(true);
+  //     }
 
-  }
-  setUser();
+  //   }
+  //   set = true;
+
+  // }
+  // setUser();
   // console.log(user);
   
 

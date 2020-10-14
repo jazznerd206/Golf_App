@@ -1,5 +1,5 @@
 // REACT DEPENDENCIES
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './styles.css';
 
 // API FUNCTIONS
@@ -16,17 +16,30 @@ function ViewRounds() {
 
     const { user, applyUser } = useContext(UserContext)
 
-    API.getRounds(user.id).then(round => {
-        console.log(round);
-        setRounds(rounds => [...rounds, round])
-    })
+
+
+    const roundFetch = async () => {
+        const userID = user.id
+        const data = await API.getRounds(userID);
+        console.log(data.data);
+        setRounds([...rounds, data.data])
+    }
+    useEffect(() => {
+        roundFetch();
+    }, [])
+
+    console.log(user.id);
+    console.log(`these are the rounds ${JSON.stringify(rounds)}`);
+
+    
 
 
     
     return (
             <div className="viewRound-wrapper">
-                {rounds.map(round => (
-                    <div className="round-container" key={round.id}>
+                {rounds.map((round, index) => (
+                    // console.log(`round id ${round.id}`),
+                    <div className="round-container" key={index}>
                         <div className="round-date">
                             Date: {round.date}
                         </div>
