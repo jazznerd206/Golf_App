@@ -1,7 +1,23 @@
-import React from 'react';
+// REACT DEPENDENCIES
+import React, { useState, useEffect } from 'react';
 import "./styles.css";
 
+// API FUNCTIONS
+import API from '../../utils/API.js';
+
 function Newest_Scores() {
+
+    const [ allScores, setAllScores] = useState([]);
+
+
+    const loadAllScores = () => {
+        console.log(`load all scores`);
+    }
+    useEffect(() => {
+        loadAllScores();
+    }, [])
+
+
     return (
         <div className="newestscores-wrapper">
             <h3>Newest Scores</h3>

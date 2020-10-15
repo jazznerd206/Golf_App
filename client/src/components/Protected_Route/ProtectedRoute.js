@@ -1,6 +1,6 @@
 // REACT DEPENDENCIES
 import React, { useContext } from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 // USER CONTEXT
 import { UserContext } from '../../UserContext.js';

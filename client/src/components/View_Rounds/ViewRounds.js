@@ -10,19 +10,18 @@ import { UserContext } from '../../UserContext.js';
 
 function ViewRounds() {
 
-    // unnecesary?
     // ROUND HOOKS
     const [ rounds, setRounds ] = useState([]);
 
-    const { user, applyUser } = useContext(UserContext)
+    const { user } = useContext(UserContext)
 
 
 
     const roundFetch = async () => {
         const userID = user.id
         const data = await API.getRounds(userID);
-        console.log(data.data);
-        console.log(typeof data)
+        // console.log(data.data);
+        // console.log(typeof data)
         data.data.forEach(round => 
             setRounds(rounds => [...rounds, round])
             )
@@ -31,8 +30,8 @@ function ViewRounds() {
         roundFetch();
     }, [])
 
-    console.log(user.id);
-    console.log(`these are the rounds ${rounds}`);
+    // console.log(user.id);
+    // console.log(`these are the rounds ${rounds}`);
 
     
 
@@ -65,12 +64,10 @@ function ViewRounds() {
                 ))}
             </div>
         )
-    }{
-        return (
-            <div><h1>No Datas</h1></div>
-        )
     }
-    
+    return (
+        <div><h1>No Datas</h1></div>
+    )
 }
 
 export default ViewRounds;

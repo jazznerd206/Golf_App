@@ -1,6 +1,6 @@
 // REACT DEPENDENCIES
 import React, { useState, useContext } from 'react';
-import { Redirect, withRouter, useHistory } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import './styles.css';
 import Cookie from 'js-cookie';
 
@@ -15,18 +15,11 @@ import { UserContext } from '../../UserContext.js';
 function Login() {
 
     const { isLoggedIn, setLoggedIn } = useContext(UserContext);
-    const { applyUser } = useContext(UserContext)
-
-    const history = useHistory();
-    
+    const { applyUser } = useContext(UserContext)    
 
     // on page state setters
     const [ username, setName ] = useState('');
     const [ password, setPassword ] = useState('');
-    // const [ user, applyUser ] = useState({});
-
-    // placeholder value for getting user context, top of login form
-    // const user = useContext(UserContext);
 
 
     const submitLogin = (event) => {
@@ -39,7 +32,7 @@ function Login() {
             }).then(response => {
                 if (response.data.loggedIn === true ) {
                     Cookie.set('auth', response.data.id);
-                    console.log("logged in user response on front end " + JSON.stringify(response.data))
+                    // console.log("logged in user response on front end " + JSON.stringify(response.data))
                     setLoggedIn(true);
                     applyUser(response.data);
                 }
@@ -50,32 +43,8 @@ function Login() {
         setName('');
         setPassword('');
     }
-    // console.log("context " + JSON.stringify(value));
-    // console.log(`is logged in bool ${isLoggedIn}`);
-    // if (isLoggedIn === true) {
-    //     console.log('user logged in check: ' + isLoggedIn)
-    //     history.push('/dashboard');
-    // }
 
-
-    const submitLogout = (event) => {
-        event.preventDefault();
-        API.logoutUser()
-            .then(response => {
-                console.log(response)
-            }).catch(err => {
-                console.log(err)
-            })
-        setLoggedIn(false);
-        // history.push('/')
-        console.log('user signed out')
-    }
-    // console.log("context " + JSON.stringify(value));
-    // console.log(`is logged in bool ${isLoggedIn}`);
-
-    // console.log(`this is from the login component ${JSON.stringify(user)}`);
-
-
+    
     if (isLoggedIn === false) {
     return (
         <div className="login-wrapper">

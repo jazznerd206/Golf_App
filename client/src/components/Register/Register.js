@@ -1,6 +1,5 @@
 //REACT DEPENDENCIES
 import React, { useState, useContext } from 'react';
-// import { useHistory } from 'react-router-dom';
 import './styles.css';
 
 // API IMPORT
@@ -12,7 +11,7 @@ import { UserContext } from '../../UserContext.js';
 function Register() {
 
     // CONTEXT FUNCTIONS FROM APP.JS
-    const { isLoggedIn, setLoggedIn } = useContext(UserContext);
+    const { setLoggedIn } = useContext(UserContext);
     const { applyUser } = useContext(UserContext)
 
     // ON PAGE STATE

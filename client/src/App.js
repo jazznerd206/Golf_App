@@ -8,7 +8,6 @@ import './App.css';
 // REQUIRED COMPONENTS
 import Main from './pages/Main/Main.js';
 import Navbar from './components/Navbar/Navbar.js';
-import Landing from './pages/Landing/Landing.js';
 import Dashboard from './pages/Dashboard/Dashboard.js';
 import Login from './components/Login/Login.js';
 import Register from './components/Register/Register.js';
@@ -18,22 +17,18 @@ import ProtectedRoute from './components/Protected_Route/ProtectedRoute.js';
 
 // USER CONTEXT AND HISTORY
 import { UserContext } from './UserContext.js';
-// import createHistory from './components/History/index';
 
 
 
 function App() {
 
-  const [findUserBool, setFindUserBool] = useState(true)
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [user, applyUser] = useState({});
-  const [cookie, setCookie] = useState(0);
-  // const [cookie, setCookie] = useState('');
   
 
   const userFetch = async () => {
     const result = Cookies.get('auth');
-    console.log(`result ${result}`)
+    // console.log(`result ${result}`)
     if (result === undefined) { 
         console.log(`no user to log in`)
         setLoggedIn(false);
