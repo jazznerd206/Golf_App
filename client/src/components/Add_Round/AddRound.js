@@ -109,10 +109,34 @@ function AddRound() {
             userID: user.id
         }
         API.createNewRound(newUserRound);
-        const roundArray = await API.getRounds(user.id);
+        const roundData = await API.getRounds(user.id);
+        const roundID = await roundData.data[roundData.data.length - 1].id;
+        console.log(roundID);
+        arrayOfHoleByHole.forEach(hole => {
+            const holeToDB = {
+                par: hole.par,
+                handicap: hole.handicap,
+                yardage: hole.yardage, 
+                score: hole.score,
+                anywayStroke: hole.anywayStroke,
+                anywayType: hole.anywayType,
+                courseID: roundID
+            }
+            console.log(holeToDB);
+            API.createNewHole(holeToDB);
+        })
         // ======================================
-        // FIGURE OUT HOW TO GET ROUND ID RETURNED TO SET HOLES TO ROUND
+        // clear all data
         // ======================================
+        setFormIndex(0);
+        setholeFormIndex(0);
+        setholeIndex(0);
+        setObjIndex(0);
+        setCourseSelected(0);
+        setHoleByHole(false);
+        setFullRoundScore(0);
+        setAnywayStrokes(0);
+        setArrayOfHoleByHole([]);
     }
     // console.log(`courses ${JSON.stringify(courses)}`)
 

@@ -241,6 +241,26 @@ export default {
     },
 
     // =======================================
+    // =======================================
+    // CREATE NEW USER ROUND
+    // =======================================
+
+    createNewHole: function(newUserHole) {
+        console.log('axios post create round on the API page');
+        axios.post("/api/userHoles", newUserHole)
+            .then(response => {
+                if (response.data) {
+                    console.log(response.data);
+                } else {
+                    console.log('create user round error');
+                }
+            }).catch(error => {
+                console.log('create user round server error: ');
+                console.log(error);
+            });
+    },
+
+    // =======================================
 
 
 }
