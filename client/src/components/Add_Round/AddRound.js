@@ -14,12 +14,18 @@ function AddRound() {
     const { user } = useContext(UserContext);
 
     const [ formIndex, setFormIndex ] = useState(0);
+    const [ holeFormIndex, setholeFormIndex ] = useState(0);
+    const [ holeIndex, setholeIndex ] = useState(0);
+    const [ objIndex, setObjIndex ] = useState(0);
     const [ courses, setCourses ] = useState([]);
     const [ courseSelected, setCourseSelected ] = useState({});
     const [ fullRound, setFullRound ] = useState(false);
     const [ holeByHole, setHoleByHole ] = useState(false);
     const [ fullRoundScore, setFullRoundScore ] = useState(0);
     const [ anywayStrokes, setAnywayStrokes ] = useState(0);
+    const [ holeByHoleScore, setHoleByHoleScore ] = useState(0);
+    const [ holeByHoleAWstrokes, setHoleByHoleAWstrokes ] = useState(0);
+    const [ arrayOfHoleByHole, setArrayOfHoleByHole ] = useState([]);
 
     const loadCourses = () => {
         API.getCourses().then(response => {
@@ -33,23 +39,25 @@ function AddRound() {
     const selectCourse = async event => {
         event.preventDefault();
         const courseToApply = await API.getCourse(event.target.value);
-        console.log(`course to apply ${JSON.stringify(courseToApply.data)}`)
+        // console.log(`course to apply ${JSON.stringify(courseToApply.data)}`)
         setCourseSelected(courseToApply.data);
         setFormIndex(formIndex + 1);
     }
 
     const selectFullScore = event => {
         event.preventDefault();
-        console.log(`select 18 hole scores and create round associated to user ${user}`);
+        // console.log(`select 18 hole scores and create round associated to user ${user}`);
         setFullRound(true);
         setFormIndex(formIndex + 1);
     }
 
     const selectHoleByHole = event => {
         event.preventDefault();
-        console.log(`select hole by hole scores and create round associated to user ${user}`)
+        // console.log(`select hole by hole scores and create round associated to user ${user}`)
+        setholeFormIndex(1);
         setHoleByHole(true);
         setFormIndex(formIndex + 1);
+        // console.log(courseSelected.holes)
     }
 
     const submitFullScore = event => {
@@ -63,12 +71,48 @@ function AddRound() {
             userID: user.id
         }
         API.createNewRound(newUserRound);
-        console.log(`new user round: ${JSON.stringify(newUserRound)}`);
+        // console.log(`new user round: ${JSON.stringify(newUserRound)}`);
+        setFormIndex(formIndex + 1);
+        setFullRound(false);
+    }
+
+    const submitHoleByHoleToHook = async event => {
+        event.preventDefault();
+        setholeIndex(holeIndex + 1);
+        const newHole = {
+            par: courseSelected.holes[objIndex].par,
+            handicap: courseSelected.holes[objIndex].handicap,
+            yardage: courseSelected.holes[objIndex].yardage, 
+            score: holeByHoleScore,
+            anywayStroke: holeByHoleAWstrokes,
+            anywayType: 'anyway'
+        }
+        // console.log(`new hole, send to hook ${JSON.stringify(newHole)}`)
+        setFullRoundScore(parseInt(fullRoundScore) + parseInt(holeByHoleScore))
+        setAnywayStrokes(parseInt(anywayStrokes) + parseInt(holeByHoleAWstrokes))
+        setArrayOfHoleByHole(arrayOfHoleByHole => [...arrayOfHoleByHole, newHole])
+        setHoleByHoleScore(0);
+        setHoleByHoleAWstrokes(0);
+        setObjIndex(objIndex + 1);
         setFormIndex(formIndex + 1);
     }
 
-    const submitHoleByHole = async event => {
-        event.preventDefault();
+    const submitHoleByHoleScore = async event => {
+        console.log(`submit score`)
+        console.log(fullRoundScore, anywayStrokes)
+        const newUserRound = {
+            course: courseSelected.courseName,
+            coursePar: courseSelected.par,
+            courseRating: courseSelected.rating,
+            totalScore: fullRoundScore,
+            totalAWstrokes: anywayStrokes,
+            userID: user.id
+        }
+        API.createNewRound(newUserRound);
+        const roundArray = await API.getRounds(user.id);
+        // ======================================
+        // FIGURE OUT HOW TO GET ROUND ID RETURNED TO SET HOLES TO ROUND
+        // ======================================
     }
     // console.log(`courses ${JSON.stringify(courses)}`)
 
@@ -93,6 +137,8 @@ function AddRound() {
         setHoleByHole(false)
         setFormIndex(formIndex - 1);
     }
+
+    console.log(arrayOfHoleByHole);
 
     return (
         <div className="addRound-wrapper">
@@ -202,7 +248,7 @@ function AddRound() {
                     </button>
                 </div>
             )}
-            {formIndex === 2 && holeByHole === true && (
+            {formIndex >= 2 && formIndex < courseSelected.lengthHoles + 2 && holeByHole === true && (
                 <div className="form-container">
 
                     {/* ===================================== */}
@@ -212,35 +258,73 @@ function AddRound() {
                     {/* 3. create round, retrieve index/pop from most recent by user */}
                     {/* 4. create holes, associate with round id */}
                     {/* ===================================== */}
-                    <div className="course-data-point">
-                        <p>Course: <span>{courseSelected.courseName}</span></p>
-                        <p>Lenth: <span>{courseSelected.lengthHoles}</span></p>
-                        <p>Par: <span>{courseSelected.par}</span></p>
-                        <p>Holes: <span>{courseSelected.holes[0]}</span></p>
+                    
+                    {holeFormIndex < courseSelected.lengthHoles && formIndex < courseSelected.lengthHoles + 3 && (
+                        <div>
+                            <div className="course-data-point">
+                                <h1>HOLE BY HOLE</h1>
+                                <p>Course: <span>{courseSelected.courseName}</span></p>
+                                <p>Lenth: <span>{courseSelected.lengthHoles}</span></p>
+                                <p>Par: <span>{courseSelected.par}</span></p>
+                            </div>
+                            <p>Hole: <span>{holeFormIndex}</span></p>
+                            <p>Par: <span>{courseSelected.holes[holeIndex].par}</span></p>
+                            <p>Handicap: <span>{courseSelected.holes[holeIndex].handicap}</span></p>
+                            <div className="form-group row">
+                            <label htmlFor="holeByHoleScore" className="">Hole Par</label>
+                            <div className="">
+                                <input
+                                    type="number"
+                                    className="form-control fadeUp"
+                                    id="name"
+                                    name={holeByHoleScore}
+                                    value={holeByHoleScore}
+                                    // ref={holeByHoleScore}
+                                    onChange={(e) => setHoleByHoleScore(e.target.value)}
+                                />
+                            </div>
+                        </div>
+                        <div className="form-group row">
+                            <label htmlFor="holeByHoleAWstrokes" className="">Hole Length</label>
+                            <div className="">
+                                <input
+                                    type="number"
+                                    className="form-control fadeUp"
+                                    id="name"
+                                    name={holeByHoleAWstrokes}
+                                    value={holeByHoleAWstrokes}
+                                    // ref={holeByHoleAWstrokes}
+                                    onChange={(e) => setHoleByHoleAWstrokes(e.target.value)}
+                                />
+                            </div>
+                        </div>
+                        <button 
+                            type="submit" 
+                            onClick={submitHoleByHoleToHook} 
+                            className="">
+                            Submit
+                        </button>
                     </div>
-                    <button 
-                        type="submit" 
-                        onClick={submitHoleByHole} 
-                        className="">
-                        Submit
-                    </button>
-                    <button 
-                        type="submit" 
-                        onClick={backFromHoleByHole} 
-                        className="">
-                        Back
-                    </button>
+                    )}
                 </div>
             )}
-            {formIndex === 3 && (
+            {formIndex > courseSelected.lengthHoles + 1 && (
                 <div className="form-container">
-                    <h1>Your round has been submitted.</h1>
+                    <h1>Review and submit round</h1>
                     <h3>round details</h3>
+                    {arrayOfHoleByHole.map((hole, index) => (
+                        <div key={index}>
+                            {index + 1}
+                            {hole.par}
+                            {hole.score}
+                            {hole.anywayStroke}
+                        </div>
+                    ))}
                     <button 
                         type="submit" 
-                        onClick={clearForm} 
+                        onClick={submitHoleByHoleScore} 
                         className="">
-                        Back
+                        Submit
                     </button>
                 </div>
             )}
