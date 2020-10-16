@@ -1,6 +1,6 @@
-.newestscores-wrapper {
-    width: 400px;
-    height: 300px;
+.newestScores-wrapper {
+    width: auto;
+    height: auto;
     background: white;
     border-radius: 25px;
     background: radial-gradient(#C0C0C0, #D3D3D3);

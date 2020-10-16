@@ -11,6 +11,9 @@ console.log('user round routes');
             console.log('round post route'), req.body;
         })
 
+    router.route('/:attribute/:value')
+        .get(userRound.get_all_userRounds_where)
+        
     router.route('/:Id')
         .get(userRound.read_a_userRound)
         // .put(userRound.update_a_userRound)

@@ -12,8 +12,8 @@
 .App {
   text-align: center;
   background: linear-gradient(to bottom, #2f781f, #165b13);
-  background-attachment: fixed;
-  height: 100vh;
+  background-attachment: scroll;
+  height: max-content;
   width: 100vw;
   display: flex;
   flex-direction: column;

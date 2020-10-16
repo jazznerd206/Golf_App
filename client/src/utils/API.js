@@ -169,7 +169,29 @@ export default {
 
     // =======================================
     // DELETE HOLE FUNCTION, NOT YET NECESSARY
-    
+
+    // =======================================
+    // GET ALL ROUNDS
+    // =======================================
+    getAllScoresWhere: function() {
+        // console.log(`api axios post get all scores`);
+        return new Promise((resolve, reject) => {
+            axios.get(`/api/userRounds`)
+            .then(response => {
+                console.log(`response.data from get all scores where ${JSON.stringify(response.data)}`)
+                if (response.data) {
+                    resolve(response)
+                }
+                else{
+                    console.log('get all scores where user error')
+                }
+            })
+            .catch(error => {
+                reject(Error('get all scores where server error: ' + JSON.stringify(error)))
+            })
+        })
+    },
+    // =======================================
 
     // =======================================
     // GET ROUNDS BY USER ID

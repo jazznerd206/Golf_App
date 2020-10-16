@@ -1,4 +1,5 @@
 const Sequelize = require("sequelize");
+const moment = require('moment');
 
 
 module.exports = function(sequelize, DataTypes) {
@@ -13,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
         date: {
             type: Sequelize.DATE,
             allowNull: false,
-            defaultValue: new Date()
+            defaultValue: new Date(),
         },
         course: {
             type: Sequelize.STRING(250),

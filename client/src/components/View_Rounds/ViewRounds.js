@@ -20,8 +20,8 @@ function ViewRounds() {
     const roundFetch = async () => {
         const userID = user.id
         const data = await API.getRounds(userID);
-        // console.log(data.data);
-        // console.log(typeof data)
+        console.log(data.data);
+        console.log(typeof data.data)
         data.data.forEach(round => 
             setRounds(rounds => [...rounds, round])
             )
