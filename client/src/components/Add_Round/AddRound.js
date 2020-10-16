@@ -30,11 +30,11 @@ function AddRound() {
         loadCourses()
     }, [])
 
-    const selectCourse = event => {
+    const selectCourse = async event => {
         event.preventDefault();
-        const courseFromArray = courses.find(element => element.courseName = event.target.value)
-        // console.log(`course from array ${JSON.stringify(courseFromAray)}`)
-        setCourseSelected(courseFromArray);
+        const courseToApply = await API.getCourse(event.target.value);
+        console.log(`course to apply ${JSON.stringify(courseToApply.data)}`)
+        setCourseSelected(courseToApply.data);
         setFormIndex(formIndex + 1);
     }
 
@@ -70,16 +70,13 @@ function AddRound() {
     const submitHoleByHole = async event => {
         event.preventDefault();
     }
+    // console.log(`courses ${JSON.stringify(courses)}`)
 
-
-
-
-    console.log(`courses ${JSON.stringify(courses)}`)
-
-    console.log(`course selected ${JSON.stringify(courseSelected)}`);
+    // console.log(`course selected ${JSON.stringify(courseSelected)}`);
 
     const backForm = event => {
         event.preventDefault();
+        setCourseSelected({});
         setFormIndex(formIndex - 1);
     }
     const clearForm = event => {
