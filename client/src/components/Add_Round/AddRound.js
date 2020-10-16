@@ -67,6 +67,10 @@ function AddRound() {
         setFormIndex(formIndex + 1);
     }
 
+    const submitHoleByHole = async event => {
+        event.preventDefault();
+    }
+
 
 
 
@@ -203,10 +207,26 @@ function AddRound() {
             )}
             {formIndex === 2 && holeByHole === true && (
                 <div className="form-container">
+
+                    {/* ===================================== */}
+                    {/* HOLE BY HOLE LOGIC GOES HERE */}
+                    {/* 1. confirm course data, make sure hole count is available */}
+                    {/* 2. new form and index to step through holes */}
+                    {/* 3. create round, retrieve index/pop from most recent by user */}
+                    {/* 4. create holes, associate with round id */}
+                    {/* ===================================== */}
                     <div className="course-data-point">
                         <p>Course: <span>{courseSelected.courseName}</span></p>
+                        <p>Lenth: <span>{courseSelected.lengthHoles}</span></p>
+                        <p>Par: <span>{courseSelected.par}</span></p>
+                        <p>Holes: <span>{courseSelected.holes[0]}</span></p>
                     </div>
-                    
+                    <button 
+                        type="submit" 
+                        onClick={submitHoleByHole} 
+                        className="">
+                        Submit
+                    </button>
                     <button 
                         type="submit" 
                         onClick={backFromHoleByHole} 

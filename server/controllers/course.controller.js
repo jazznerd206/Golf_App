@@ -1,6 +1,6 @@
 const db = require('../models');
 const Courses = db['course'];
-const Holes = db['hole']
+const Holes = db['hole'];
 
 exports.get_all_courses = (req, res) => {
     Courses.findAll({
@@ -9,15 +9,15 @@ exports.get_all_courses = (req, res) => {
           as: 'holes'
         }]
       })
-        .then(courses => {
-            res.send(courses);
-          })
-        .catch(err => {
-            res.status(500).send({
-              message:
-                err.message || 'Some error occurred while retrieving courses'
-            });
+    .then(courses => {
+        res.send(courses);
+        })
+    .catch(err => {
+        res.status(500).send({
+            message:
+            err.message || 'Some error occurred while retrieving courses'
         });
+    });
 }
 
 exports.create_course = async (req,res) => {
@@ -38,8 +38,15 @@ exports.create_course = async (req,res) => {
 exports.read_a_course = (req, res) => {
     Courses.findOne({ where: {
         courseName: req.params.name
-    }}).then(course => {
-        // console.log(`course FROM READ A COURSE ${course}`)
+    },
+        include: [
+            {
+          model: Holes,
+          as: 'holes',
+        }
+    ]
+      }).then(course => {
+        console.log(`course FROM READ A COURSE ${JSON.stringify(course)}`)
             res.send(course);
     })
     .catch(error => {

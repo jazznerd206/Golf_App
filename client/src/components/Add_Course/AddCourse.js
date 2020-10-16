@@ -1,5 +1,5 @@
 // REACT DEPENDENCIES
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles.css';
 
 // IMPORT API
@@ -9,6 +9,7 @@ import API from '../../utils/API';
 function AddCourse() {
 
     // COURSE STATE SETTERS
+    const [ courseCreated, setCourseCreated ] = useState(false);
     const [ courseName, setCourseName] = useState('');
     const [ lengthYards, setLengthYards ] = useState(0);
     const [ lengthHoles, setLengthHoles ] = useState(0);
@@ -29,29 +30,46 @@ function AddCourse() {
 
     // ADD COURSE TO DB
     const submitCourse = event => {
-        // event.preventDefault();
+        event.preventDefault();
         API.designCourse({
             courseName,
             lengthYards,
             lengthHoles,
             par,
             rating,
-            holes
+            // holes
         })
-        // setFormIndex(0);
         // setCourseName('');
         // setLengthYards(0);
         // setLengthHoles(0);
         // setPar(0);
         // setRating(0);
-        // setHoles([]);
-    }
-
-    // HANDLE FIRST STEP IN FORM
-    const nextForm = event => {
-        event.preventDefault();
-        submitCourse();
+        setCourseCreated(true)
         setFormIndex(formIndex + 1);
+    }
+    // console.log(`courseIdent ${courseIdent}`)
+
+    // ADD HOLES TO DB UPON EACH ITERATION OF THE FORM
+    // ITERATIONS ARE DETERMINED BY HOLE COUNT SET IN THE 
+    const addHole = async event => {
+        event.preventDefault();
+        const ID = await API.getCourse(courseName);
+        const objectID = ID.data.id;
+        const newHole = {
+            hole: holeCount,
+            par: holePar,
+            handicap: handicap,
+            yardage: holeLength,
+            courseID: objectID
+        }
+        // console.log(`courseIdent ${courseIdent}`)
+        API.addHole(newHole);
+        setHoles(holes => [...holes, newHole]);
+        setHolePar(0);
+        setHandicap(0);
+        setHoleLength(0);
+        setFormIndex(formIndex + 1);
+        setHoleCount(holeCount + 1)
     }
 
     const resetForm = event => {
@@ -63,6 +81,8 @@ function AddCourse() {
         setPar(0);
         setRating(0);
         setHoles([]);
+        setHoleCount(1);
+        setCourseIdent(0)
     }
 
     const formBack = event => {
@@ -70,40 +90,27 @@ function AddCourse() {
         setFormIndex(formIndex - 1);
     }
 
-    if (courseName && rating) { 
-    API.getCourse(courseName).then(response => {
-        setCourseIdent(response.data.id);
-        setCourseName('')
-    })
+    const retrieveID = () => { 
+        API.getCourse(courseName).then(response => {
+            console.log(response.data)
+            // setCourseIdent(response.data.id);
+            // setCourseName('')
+            })
     }
 
-    // SET HOLES TO STATE IN HOOKS
-    const addHole = event => {
-        event.preventDefault();
-        const newHole = {
-            hole: holeCount,
-            par: holePar,
-            handicap: handicap,
-            yardage: holeLength,
-            courseName: courseIdent
-        }
-        // console.log(`courseIdent ${courseIdent}`)
-        API.addHole(newHole);
-        setHoles(holes => [...holes, newHole]);
-        // console.log(`new hole from form ${newHole}`)
-        setHolePar(0);
-        setHandicap(0);
-        setHoleLength(0);
-        setFormIndex(formIndex + 1);
-        setHoleCount(holeCount + 1)
-    }
-    // console.log(`holes from hooks ${holes}`);
-    // console.log(`holes length from hooks ${holes.length}`);
-    // console.log(holes);
+    // useEffect(() => {
+    //     retrieveID();
+    // }, [courseCreated])
 
 
     return (
         <div className="addCourse-wrapper">
+
+
+            {/* ============================================================================================ */}
+            {/* INPUT COURSE NAME, HOLES, PAR, LENGTH, RATING */}
+            {/* Course is created on completion of this step. Requires name, yards, hole count, par and rating */}
+            {/* ============================================================================================ */}
             {formIndex === 0 && (
                 <form>
                     <div className="form-title">
@@ -184,7 +191,7 @@ function AddCourse() {
                         <div className="form-group row">
                             <button 
                                 type="submit" 
-                                onClick={nextForm} 
+                                onClick={submitCourse} 
                                 className="">
                                 Add Holes
                             </button>
@@ -193,6 +200,12 @@ function AddCourse() {
                     </form>
                 
             )}
+
+
+            {/* ============================================================================================ */}
+            {/* INPUT HOLE, PAR, LENGTH, HANDICAP */}
+            {/* Holes are created upon each iteration of the form. Requires the ID of the course it's being set to, par, length, handicap. */}
+            {/* ============================================================================================ */}
             {formIndex > 0 && formIndex - 1 < lengthHoles && (
                 <form>
                     <div className="form-title">
@@ -270,6 +283,12 @@ function AddCourse() {
                     </div>
                 </form>
             )}
+
+
+            {/* ================================ */}
+            {/* END OF FORM, DISPLAY DATA */}
+            {/* Requires clear all data from form */}
+            {/* ================================ */}
             {lengthHoles !== 0 && formIndex > lengthHoles && (
                 <div>
                     <div className="form-title">
@@ -286,7 +305,7 @@ function AddCourse() {
                         <div className="hole-level-data">
                             <ol>
                                 {holes.map(hole => (
-                                        <li key={hole.hole}><span>Par: {hole.parPar},  </span>
+                                        <li key={hole.hole}><span>Par: {hole.par},  </span>
                                         <span>Length: {hole.yardage},  </span>
                                         <span>Handicap: {hole.handicap},  </span></li>
                                 ))}
@@ -298,7 +317,7 @@ function AddCourse() {
                             type="submit" 
                             onClick={resetForm}
                             className="">
-                            Submit
+                            Reset
                         </button>
                     </div>
                 </div>
