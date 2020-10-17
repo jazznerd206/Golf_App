@@ -34,6 +34,10 @@ module.exports = function(sequelize, DataTypes) {
             type: Sequelize.INTEGER(3),
             allowNull: false
         },
+        putts: {
+            type: Sequelize.INTEGER(3),
+            allowNull: false
+        },
         totalAWstrokes: {
             type: Sequelize.INTEGER(3),
             allowNull: false

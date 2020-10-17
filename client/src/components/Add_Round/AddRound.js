@@ -22,8 +22,11 @@ function AddRound() {
     const [ fullRound, setFullRound ] = useState(false);
     const [ holeByHole, setHoleByHole ] = useState(false);
     const [ fullRoundScore, setFullRoundScore ] = useState(0);
+    const [ fullRoundPutts, setFullRoundPutts ] = useState(0);
     const [ anywayStrokes, setAnywayStrokes ] = useState(0);
     const [ holeByHoleScore, setHoleByHoleScore ] = useState(0);
+    const [ holeByHolePutts, setHoleByHolePutts ] = useState(0);
+    const [ holeByHoleGIR, setHoleByHoleGIR ] = useState(false);
     const [ holeByHoleAWstrokes, setHoleByHoleAWstrokes ] = useState(0);
     const [ holeByHoleAWstrokeType, setHoleByHoleAWstrokeType ] = useState('');
     const [ arrayOfHoleByHole, setArrayOfHoleByHole ] = useState([]);
@@ -68,6 +71,7 @@ function AddRound() {
             coursePar: courseSelected.par,
             courseRating: courseSelected.rating,
             totalScore: fullRoundScore,
+            putts: fullRoundPutts,
             totalAWstrokes: anywayStrokes,
             userID: user.id
         }
@@ -80,19 +84,28 @@ function AddRound() {
     const submitHoleByHoleToHook = async event => {
         event.preventDefault();
         setholeIndex(holeIndex + 1);
+        if (holeByHoleAWstrokes <= courseSelected.holes[objIndex].par && holeByHolePutts <= 2) {
+            setHoleByHoleGIR(true);
+        }
         const newHole = {
             par: courseSelected.holes[objIndex].par,
             handicap: courseSelected.holes[objIndex].handicap,
             yardage: courseSelected.holes[objIndex].yardage, 
             score: holeByHoleScore,
+            greenInRegulation: holeByHoleGIR,
+            putts: holeByHolePutts,
             anywayStroke: holeByHoleAWstrokes,
             anywayType: holeByHoleAWstrokeType
         }
+        
         // console.log(`new hole, send to hook ${JSON.stringify(newHole)}`)
         setFullRoundScore(parseInt(fullRoundScore) + parseInt(holeByHoleScore))
+        setFullRoundPutts(parseInt(fullRoundPutts) + parseInt(holeByHolePutts))
         setAnywayStrokes(parseInt(anywayStrokes) + parseInt(holeByHoleAWstrokes))
         setArrayOfHoleByHole(arrayOfHoleByHole => [...arrayOfHoleByHole, newHole])
+        setHoleByHoleGIR(false);
         setHoleByHoleScore(0);
+        setHoleByHolePutts(0);
         setHoleByHoleAWstrokes(0);
         setObjIndex(objIndex + 1);
         setFormIndex(formIndex + 1);
@@ -106,20 +119,24 @@ function AddRound() {
             coursePar: courseSelected.par,
             courseRating: courseSelected.rating,
             totalScore: fullRoundScore,
+            putts: fullRoundPutts,
             totalAWstrokes: anywayStrokes,
             userID: user.id
         }
         API.createNewRound(newUserRound);
         const roundData = await API.getRounds(user.id);
-        const roundIDholder = await roundData.data[roundData.data.length - 1].id;
+        console.log(roundData.data)
+        const roundIDholder = roundData.data[roundData.data.length - 1].id;
+        console.log(roundIDholder)
         const roundID = roundIDholder;
-        // console.log(roundID);
         arrayOfHoleByHole.forEach(hole => {
             const holeToDB = {
                 par: hole.par,
                 handicap: hole.handicap,
                 yardage: hole.yardage, 
                 score: hole.score,
+                putts: hole.putts,
+                greenInRegulation: hole.greenInRegulation,
                 scoreType: hole.score - hole.par,
                 anywayStroke: hole.anywayStroke,
                 anywayType: hole.anywayType,
@@ -241,7 +258,7 @@ function AddRound() {
                         <label htmlFor="fullRoundScore">Score: </label>
                         <input
                             type="number"
-                            className="form-control fadeUp"
+                            className=""
                             id="fullRoundScore"
                             name={fullRoundScore}
                             value={fullRoundScore}
@@ -249,11 +266,23 @@ function AddRound() {
                             onChange={(e) => setFullRoundScore(e.target.value)}
                         />
                     </div>
+                    <div className="user-input-putts">
+                        <label htmlFor="fullRoundPutts">Putts: </label>
+                        <input
+                            type="number"
+                            className=""
+                            id="fullRoundPutts"
+                            name={fullRoundPutts}
+                            value={fullRoundPutts}
+                            // ref={fullRoundPutts}
+                            onChange={(e) => setFullRoundPutts(e.target.value)}
+                        />
+                    </div>
                     <div className="user-input-AWstrokes">
                         <label htmlFor="anywayStrokes">Anyway Strokes: </label>
                         <input
                             type="number"
-                            className="form-control fadeUp"
+                            className=""
                             id="anywayStrokes"
                             name={anywayStrokes}
                             value={anywayStrokes}
@@ -297,33 +326,47 @@ function AddRound() {
                             <p>Hole: <span>{holeIndex + 1}</span></p>
                             <p>Par: <span>{courseSelected.holes[holeIndex].par}</span></p>
                             <p>Handicap: <span>{courseSelected.holes[holeIndex].handicap}</span></p>
-                            <div className="form-group row">
+                        <div className="form-group row">
                             <label htmlFor="holeByHoleScore" className="">Score: </label>
-                            <div className="">
-                                <input
-                                    type="number"
-                                    className="form-control fadeUp"
-                                    id="name"
-                                    name={holeByHoleScore}
-                                    value={holeByHoleScore}
-                                    // ref={holeByHoleScore}
-                                    onChange={(e) => setHoleByHoleScore(e.target.value)}
-                                />
+                                <div className="">
+                                    <input
+                                        type="number"
+                                        className=""
+                                        id="name"
+                                        name={holeByHoleScore}
+                                        value={holeByHoleScore}
+                                        // ref={holeByHoleScore}
+                                        onChange={(e) => setHoleByHoleScore(e.target.value)}
+                                    />
+                                </div>
+                        </div>
+                        <div className="form-group row">
+                            <label htmlFor="holeByHolePutts" className="">Putts: </label>
+                                <div className="">
+                                    <input
+                                        type="number"
+                                        className=""
+                                        id="name"
+                                        name={holeByHolePutts}
+                                        value={holeByHolePutts}
+                                        // ref={holeByHolePutts}
+                                        onChange={(e) => setHoleByHolePutts(e.target.value)}
+                                    />
                             </div>
                         </div>
                         <div className="form-group row">
                             <label htmlFor="holeByHoleAWstrokes" className="">Anyway: </label>
-                            <div className="">
-                                <input
-                                    type="number"
-                                    className="form-control fadeUp"
-                                    id="name"
-                                    name={holeByHoleAWstrokes}
-                                    value={holeByHoleAWstrokes}
-                                    // ref={holeByHoleAWstrokes}
-                                    onChange={(e) => setHoleByHoleAWstrokes(e.target.value)}
-                                />
-                            </div>
+                                <div className="">
+                                    <input
+                                        type="number"
+                                        className=""
+                                        id="name"
+                                        name={holeByHoleAWstrokes}
+                                        value={holeByHoleAWstrokes}
+                                        // ref={holeByHoleAWstrokes}
+                                        onChange={(e) => setHoleByHoleAWstrokes(e.target.value)}
+                                    />
+                                </div>
                             <label htmlFor="holeByHoleAWstrokeType" className="">Type: </label>
                             <div className="">
                                 <select

@@ -30,6 +30,14 @@ module.exports = function(sequelize, DataTypes) {
             type: Sequelize.INTEGER(2),
             allowNull: false,
         },
+        putts: {
+            type: Sequelize.INTEGER(2),
+            allowNull: false,
+        },
+        greenInRegulation: {
+            type: Sequelize.BOOLEAN,
+            allowNull: false,
+        },
         scoreType: {
           type: Sequelize.INTEGER(2),
           allowNull: false,
