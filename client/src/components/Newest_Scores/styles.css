@@ -6,36 +6,29 @@
     background: radial-gradient(#C0C0C0, #D3D3D3);
 }
 
-.single-row {
-    margin: 5px 10px;
+.newestScores-container {
+    width: 500px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    height: 2.5rem;
-    background:	#191970;
-    color: #C0C0C0;
-    border-radius: 5px;
+    flex-direction: column;
 }
 
-.top-row {
-    margin: 5px 10px;
+.newestScores-title {
+    padding: 10px 10px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    height: 2.5rem;
-    background:		#808080;
-    color: #191970;
-    border-radius: 5px;
+    justify-content: space-between;
 }
 
-.single-row p {
-    line-height: 2.5;
-    display: inline-block;
-    vertical-align: middle;
-  }
+.newestScores-data {
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+    background: linear-gradient(to bottom, #192841, #152238)
+}
 
-.top-row p {
-    line-height: 2.5;
-    display: inline-block;
-    vertical-align: middle;
+.newestScores-data:hover {
+    background: #165b13;
+    
 }

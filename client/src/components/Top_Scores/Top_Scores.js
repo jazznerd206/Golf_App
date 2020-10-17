@@ -29,35 +29,34 @@ function Top_Scores() {
 
     if (allScores.length > 0 ) {
         return (
-            <div className="newestScores-wrapper">
-                <div className="newestScores-container">
-                    <div className="newestScores-title">
-                        <div className="newestScores-heading">
+            <div className="topscore-wrapper">
+                <div className="topScores-container">
+                    <div className="topScores-title">
+                        <div className="topScores-heading">
                             Name
                         </div>
-                        <div className="newestScores-heading">
+                        <div className="topScores-heading">
                             Course
                         </div>
-                        <div className="newestScores-heading">
+                        <div className="topScores-heading">
                             Score
                         </div>
-                        <div className="newestScores-heading">
+                        <div className="topScores-heading">
                             AW Strokes
                         </div>
                     </div>
                     {allScores.map((round, index) => (
-                        <div className='newestScores-data' key={index}>
-                            {round.course}
-                            <div className='newestScores-datapoint'>
+                        <div className='topScores-data' key={index}>
+                            <div className='topScores-datapoint'>
                                 USER NAME HERE
                             </div>
-                            <div className='newestScores-datapoint'>
+                            <div className='topScores-datapoint'>
                                 {round.course}
                             </div>
-                            <div className='newestScores-datapoint'>
+                            <div className='topScores-datapoint'>
                                 {round.totalScore}
                             </div>
-                            <div className='newestScores-datapoint'>
+                            <div className='topScores-datapoint'>
                                 {round.totalAWstrokes}
                             </div>
                         </div>

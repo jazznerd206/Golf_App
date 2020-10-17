@@ -98,8 +98,8 @@ function AddRound() {
     }
 
     const submitHoleByHoleScore = async event => {
-        console.log(`submit score`)
-        console.log(fullRoundScore, anywayStrokes)
+        // console.log(`submit score`)
+        // console.log(fullRoundScore, anywayStrokes)
         const newUserRound = {
             course: courseSelected.courseName,
             coursePar: courseSelected.par,
@@ -111,7 +111,7 @@ function AddRound() {
         API.createNewRound(newUserRound);
         const roundData = await API.getRounds(user.id);
         const roundID = await roundData.data[roundData.data.length - 1].id;
-        console.log(roundID);
+        // console.log(roundID);
         arrayOfHoleByHole.forEach(hole => {
             const holeToDB = {
                 par: hole.par,
@@ -122,7 +122,7 @@ function AddRound() {
                 anywayType: hole.anywayType,
                 courseID: roundID
             }
-            console.log(holeToDB);
+            // console.log(holeToDB);
             API.createNewHole(holeToDB);
         })
         // ======================================
@@ -162,7 +162,7 @@ function AddRound() {
         setFormIndex(formIndex - 1);
     }
 
-    console.log(arrayOfHoleByHole);
+    // console.log(arrayOfHoleByHole);
 
     return (
         <div className="addRound-wrapper">
@@ -291,11 +291,11 @@ function AddRound() {
                                 <p>Lenth: <span>{courseSelected.lengthHoles}</span></p>
                                 <p>Par: <span>{courseSelected.par}</span></p>
                             </div>
-                            <p>Hole: <span>{holeFormIndex}</span></p>
+                            <p>Hole: <span>{holeIndex + 1}</span></p>
                             <p>Par: <span>{courseSelected.holes[holeIndex].par}</span></p>
                             <p>Handicap: <span>{courseSelected.holes[holeIndex].handicap}</span></p>
                             <div className="form-group row">
-                            <label htmlFor="holeByHoleScore" className="">Hole Par</label>
+                            <label htmlFor="holeByHoleScore" className="">Score: </label>
                             <div className="">
                                 <input
                                     type="number"
@@ -309,7 +309,7 @@ function AddRound() {
                             </div>
                         </div>
                         <div className="form-group row">
-                            <label htmlFor="holeByHoleAWstrokes" className="">Hole Length</label>
+                            <label htmlFor="holeByHoleAWstrokes" className="">Anyway: </label>
                             <div className="">
                                 <input
                                     type="number"

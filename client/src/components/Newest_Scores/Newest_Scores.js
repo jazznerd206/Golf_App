@@ -54,8 +54,7 @@ function Newest_Scores() {
                         </div>
                     </div>
                     {allScores.map((round, index) => (
-                        <div className='newestScores-data' key={index}>
-                            {round.course}
+                    <div className="newestScores-data" key={index}>
                             <div className='newestScores-datapoint'>
                                 USER NAME HERE
                             </div>
@@ -68,7 +67,7 @@ function Newest_Scores() {
                             <div className='newestScores-datapoint'>
                                 {round.totalAWstrokes}
                             </div>
-                        </div>
+                    </div>
                     ))}
                     
                 </div>
