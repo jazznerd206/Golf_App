@@ -67,3 +67,15 @@ exports.read_a_userRound = (req, res) => {
       console.log(error);
   })
 }
+
+exports.delete_a_userRound = (req, res) => {
+  UserRounds.destroy({ where: {
+      id: req.params.Id
+  }}).then(user => {
+          res.send(user);
+  })
+  .catch(error => {
+      console.log(error);
+  })
+  
+}

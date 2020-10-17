@@ -25,6 +25,7 @@ function AddRound() {
     const [ anywayStrokes, setAnywayStrokes ] = useState(0);
     const [ holeByHoleScore, setHoleByHoleScore ] = useState(0);
     const [ holeByHoleAWstrokes, setHoleByHoleAWstrokes ] = useState(0);
+    const [ holeByHoleAWstrokeType, setHoleByHoleAWstrokeType ] = useState('');
     const [ arrayOfHoleByHole, setArrayOfHoleByHole ] = useState([]);
 
     const loadCourses = () => {
@@ -85,7 +86,7 @@ function AddRound() {
             yardage: courseSelected.holes[objIndex].yardage, 
             score: holeByHoleScore,
             anywayStroke: holeByHoleAWstrokes,
-            anywayType: 'anyway'
+            anywayType: holeByHoleAWstrokeType
         }
         // console.log(`new hole, send to hook ${JSON.stringify(newHole)}`)
         setFullRoundScore(parseInt(fullRoundScore) + parseInt(holeByHoleScore))
@@ -320,6 +321,20 @@ function AddRound() {
                                     // ref={holeByHoleAWstrokes}
                                     onChange={(e) => setHoleByHoleAWstrokes(e.target.value)}
                                 />
+                            </div>
+                            <label htmlFor="holeByHoleAWstrokeType" className="">Type: </label>
+                            <div className="">
+                                <select
+                                    name={holeByHoleAWstrokeType}
+                                    value={holeByHoleAWstrokeType}
+                                    onChange={(e) => setHoleByHoleAWstrokeType(e.target.value)}
+                                > 
+                                    <option name="Driver"> Driver</option>
+                                    <option name="Wood">Wood</option>
+                                    <option name="Iron">Iron</option>
+                                    <option name="Wedge">Wedge</option>
+                                    <option name="Putter">Putter</option>
+                                </select>
                             </div>
                         </div>
                         <button 

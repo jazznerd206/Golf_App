@@ -10,7 +10,7 @@ function ProtectedRoute({ component: Component, ...rest } ) {
 
 
     const {isLoggedIn} = useContext(UserContext)
-    console.log(`is logged in bool ${isLoggedIn}`);
+    // console.log(`is logged in bool ${isLoggedIn}`);
 
     return (
         <div>

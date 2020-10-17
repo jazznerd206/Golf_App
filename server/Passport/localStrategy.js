@@ -7,19 +7,24 @@ const LocalStrategy = require('passport-local').Strategy;
 
 const strategy = new LocalStrategy(
   {
-    usernameField: 'username' // not necessary, DEFAULT
+    usernameField: 'username'
   },
   function(username, password, next) {
-    // console.log(`local strategy ${username}`);
-    // console.log(`local strategy ${password}`);
     User.findOne({ where: {
       username: username
         }}).then(user => {
                 // console.log(`user object returned === ${user}`)
                 // =============================================
-                // add some kind of secondary cookie/jwt here sent to the browser for react to be able to find
+                if (!user) {
+                  return next(null, false, 'This user does not exist.');
+                }
+                else if (password != user.password) {
+                  return next(null, false, 'You have entered an incorrect password.');
+                } else {
+                  return next(null, user);
+                }
                 // =============================================
-                return next(null, user);
+                
         })
         .catch(error => {
             console.log(error);

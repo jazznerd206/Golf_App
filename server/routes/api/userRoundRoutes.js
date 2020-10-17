@@ -17,9 +17,9 @@ console.log('user round routes');
     router.route('/:Id')
         .get(userRound.read_a_userRound)
         // .put(userRound.update_a_userRound)
-        // .delete(userRound.delete_a_userRound, (req, res) => {
+        .delete(userRound.delete_a_userRound, (req, res) => {
             // console.log('delete userRound route');
-        // }
-    // );
+        }
+    );
 
 module.exports = router;

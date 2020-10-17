@@ -94,14 +94,6 @@ function Login() {
     )
 }
     return(
-        // <div className="form-group row">
-        //     <button 
-        //         type="submit" 
-        //         onClick={submitLogout} 
-        //         className="btn btn-outline-light fadeUp">
-        //         Log Out
-        //     </button>
-        // </div>
         <Redirect to='/dashboard'/>
     )
 }

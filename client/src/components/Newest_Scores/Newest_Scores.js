@@ -25,7 +25,7 @@ function Newest_Scores() {
                 return 'No scores available';
             }
             });
-            console.log('holder array: ' + holderArray);
+            // console.log('holder array: ' + holderArray);
     }
     useEffect(() => {
         loadAllScores();

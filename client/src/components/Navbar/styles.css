@@ -1,4 +1,5 @@
 .navbar-wrapper {
+    padding: 10px 50px;
     width: 100%;
     height: 100px;
     display: flex;
@@ -14,6 +15,7 @@
 
 @media only screen and (max-width: 600px) {
     .navbar-wrapper {
+        padding: 5px 10px;
         flex-direction: column;
         height: auto;
         margin-bottom: 50px;
