@@ -1,4 +1,5 @@
 .login-wrapper {
+    border-radius: 25px;
     height: 100vh;
     margin: auto;
     padding-top: 30vh;
@@ -12,3 +13,15 @@
     width: 400px;
     border-radius: 25px;
 }
+
+@media only screen and (max-width: 600px) {
+    .login-wrapper {
+        height: auto;
+        padding-top: 0px;
+    }
+    .login-form {
+        height: auto;
+        margin: 5px 10px;
+        width: auto;
+    }
+  }

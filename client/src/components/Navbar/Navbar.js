@@ -46,11 +46,11 @@ function Navbar() {
             <div className="navbar-right">
                 <span><h1>Welcome {user.username}</h1></span>
             </div>
-            <div className="navbar-center">
+            {/* <div className="navbar-center">
                 <div className="title-container">
                     <span><h1>Golf App</h1></span>
                 </div>
-            </div>
+            </div> */}
             <div className="form-group row">
             <button 
                 type="submit" 

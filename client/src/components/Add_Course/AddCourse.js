@@ -9,7 +9,7 @@ import API from '../../utils/API';
 function AddCourse() {
 
     // COURSE STATE SETTERS
-    const [ courseCreated, setCourseCreated ] = useState(false);
+    // const [ courseCreated, setCourseCreated ] = useState(false);
     const [ courseName, setCourseName] = useState('');
     const [ lengthYards, setLengthYards ] = useState(0);
     const [ lengthHoles, setLengthHoles ] = useState(0);
@@ -44,7 +44,7 @@ function AddCourse() {
         // setLengthHoles(0);
         // setPar(0);
         // setRating(0);
-        setCourseCreated(true)
+        // setCourseCreated(true)
         setFormIndex(formIndex + 1);
     }
     // console.log(`courseIdent ${courseIdent}`)

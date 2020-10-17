@@ -12,3 +12,10 @@
     justify-content: space-around;
 }
 
+@media only screen and (max-width: 600px) {
+    .navbar-wrapper {
+        flex-direction: column;
+        height: auto;
+        margin-bottom: 50px;
+    }
+  }

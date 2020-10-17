@@ -59,10 +59,11 @@ exports.update_a_course = (req, res) => {
 }
 
 exports.delete_a_course = (req, res) => {
-    Courses.delete({ where: {
-        id: req.params.Id
-    }}).then(course => {
-            res.send(course);
+    Courses.destroy({ where: {
+        id: req.params.name
+    }})
+    .then(course => {
+            res.send(`course destroyed ${course}`);
     })
     .catch(error => {
         console.log(error);

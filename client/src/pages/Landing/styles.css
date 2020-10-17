@@ -11,3 +11,10 @@
     padding-top: 200px;
     padding-bottom: 200px;
 }
+
+@media only screen and (max-width: 600px) {
+    .scores-container {
+        flex-direction: column;
+        height: auto;
+    }
+  }
