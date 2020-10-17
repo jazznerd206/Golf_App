@@ -126,7 +126,7 @@ function AddRound() {
         API.createNewRound(newUserRound);
         const roundData = await API.getRounds(user.id);
         console.log(roundData.data)
-        const roundIDholder = roundData.data[roundData.data.length - 1].id;
+        const roundIDholder = await roundData.data[roundData.data.length - 1].id;
         console.log(roundIDholder)
         const roundID = roundIDholder;
         arrayOfHoleByHole.forEach(hole => {
