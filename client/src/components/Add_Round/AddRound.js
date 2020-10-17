@@ -111,7 +111,8 @@ function AddRound() {
         }
         API.createNewRound(newUserRound);
         const roundData = await API.getRounds(user.id);
-        const roundID = await roundData.data[roundData.data.length - 1].id;
+        const roundIDholder = await roundData.data[roundData.data.length - 1].id;
+        const roundID = roundIDholder;
         // console.log(roundID);
         arrayOfHoleByHole.forEach(hole => {
             const holeToDB = {
@@ -119,6 +120,7 @@ function AddRound() {
                 handicap: hole.handicap,
                 yardage: hole.yardage, 
                 score: hole.score,
+                scoreType: hole.score - hole.par,
                 anywayStroke: hole.anywayStroke,
                 anywayType: hole.anywayType,
                 courseID: roundID
@@ -329,6 +331,7 @@ function AddRound() {
                                     value={holeByHoleAWstrokeType}
                                     onChange={(e) => setHoleByHoleAWstrokeType(e.target.value)}
                                 > 
+                                    <option name="none"> none</option>
                                     <option name="Driver"> Driver</option>
                                     <option name="Wood">Wood</option>
                                     <option name="Iron">Iron</option>

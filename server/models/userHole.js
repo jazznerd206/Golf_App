@@ -30,13 +30,17 @@ module.exports = function(sequelize, DataTypes) {
             type: Sequelize.INTEGER(2),
             allowNull: false,
         },
+        scoreType: {
+          type: Sequelize.INTEGER(2),
+          allowNull: false,
+        },
         anywayStroke: {
             type: Sequelize.INTEGER(4),
             allowNull: false
         },
         anywayType: {
             type: Sequelize.STRING(100),
-            allowNull: false
+            allowNull: true
         }
     })
 
