@@ -73,7 +73,7 @@ function Dashboard() {
                     </Switch>
                 </div>
                 <div className="header-wrapper">
-                    <Header />
+                    {/* <Header /> */}
                 </div>
 
             </div>
