@@ -11,6 +11,9 @@ console.log('user hole routes');
              console.log('userHole post route'), req.body;
         })
 
+    router.route('/where/:options')
+        .get(userHole.read_all_userHoles_where)
+
     router.route('/:Id')
         .get(userHole.read_a_userHole)
         // .put(userHole.update_a_userHole)

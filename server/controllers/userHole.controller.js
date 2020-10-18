@@ -39,3 +39,21 @@ exports.read_a_userHole = (req, res) => {
         console.log(error);
     })
 }
+
+exports.read_all_userHoles_where = (req, res) => {
+    console.log(req.params.options)
+    const urlParams = JSON.parse(req.params.options)
+    console.log('=======================================')
+    console.log(`url params ${urlParams}`)
+    console.log('=======================================')
+    UserHoles.findAll(urlParams)
+        .then(holes => {
+            res.send(holes);
+        })
+        .catch(err => {
+            res.status(500).send({
+            message:
+                err.message || 'Some error occurred while retrieving userHoles'
+            });
+        });
+    }

@@ -89,7 +89,7 @@ function AddRound() {
     const submitHoleByHoleToHook = async event => {
         event.preventDefault();
         setholeIndex(holeIndex + 1);
-        if (holeByHoleAWstrokes <= courseSelected.holes[objIndex].par && holeByHolePutts <= 2) {
+        if (holeByHoleScore - 2 <= courseSelected.holes[objIndex].par - 2) {
             setHoleByHoleGIR(true);
         }
         const newHole = {
