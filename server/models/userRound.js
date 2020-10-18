@@ -16,6 +16,10 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             defaultValue: new Date(),
         },
+        userName: {
+            type: Sequelize.STRING(250),
+            allowNull: false
+        },
         course: {
             type: Sequelize.STRING(250),
             allowNull: false,

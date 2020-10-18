@@ -48,7 +48,7 @@ function Top_Scores() {
                     {allScores.map((round, index) => (
                         <div className='topScores-data' key={index}>
                             <div className='topScores-datapoint'>
-                                USER NAME HERE
+                                {round.userName}
                             </div>
                             <div className='topScores-datapoint'>
                                 {round.course}

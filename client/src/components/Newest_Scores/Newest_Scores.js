@@ -56,7 +56,7 @@ function Newest_Scores() {
                     {allScores.map((round, index) => (
                     <div className="newestScores-data" key={index}>
                             <div className='newestScores-datapoint'>
-                                USER NAME HERE
+                                {round.userName}
                             </div>
                             <div className='newestScores-datapoint'>
                                 {round.course}

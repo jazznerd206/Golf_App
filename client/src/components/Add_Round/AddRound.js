@@ -18,6 +18,7 @@ function AddRound() {
     const [ holeIndex, setholeIndex ] = useState(0);
     const [ objIndex, setObjIndex ] = useState(0);
     const [ courses, setCourses ] = useState([]);
+    const [ rounds, setRounds ] = useState([]);
     const [ courseSelected, setCourseSelected ] = useState({});
     const [ fullRound, setFullRound ] = useState(false);
     const [ holeByHole, setHoleByHole ] = useState(false);
@@ -34,6 +35,9 @@ function AddRound() {
     const loadCourses = () => {
         API.getCourses().then(response => {
             setCourses(response.data)
+        })
+        API.getAllScoresWhere().then(response => {
+            setRounds(response.data)
         })
     }
     useEffect(() => {
@@ -67,6 +71,7 @@ function AddRound() {
     const submitFullScore = event => {
         event.preventDefault();
         const newUserRound = {
+            userName: user.username,
             course: courseSelected.courseName,
             coursePar: courseSelected.par,
             courseRating: courseSelected.rating,
@@ -115,6 +120,7 @@ function AddRound() {
         // console.log(`submit score`)
         // console.log(fullRoundScore, anywayStrokes)
         const newUserRound = {
+            userName: user.username,
             course: courseSelected.courseName,
             coursePar: courseSelected.par,
             courseRating: courseSelected.rating,
@@ -124,11 +130,8 @@ function AddRound() {
             userID: user.id
         }
         API.createNewRound(newUserRound);
-        const roundData = await API.getRounds(user.id);
-        console.log(roundData.data)
-        const roundIDholder = await roundData.data[roundData.data.length - 1].id;
-        console.log(roundIDholder)
-        const roundID = roundIDholder;
+        const roundID = rounds.length + 1;
+        console.log(roundID);
         arrayOfHoleByHole.forEach(hole => {
             const holeToDB = {
                 par: hole.par,
@@ -158,7 +161,7 @@ function AddRound() {
         setAnywayStrokes(0);
         setArrayOfHoleByHole([]);
     }
-    console.log(`user on add round ${JSON.stringify(user)}`)
+    console.log(`user on add round ${JSON.stringify(user.rounds)}`)
 
     // console.log(`course selected ${JSON.stringify(courseSelected)}`);
 
