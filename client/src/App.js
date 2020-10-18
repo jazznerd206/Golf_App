@@ -42,7 +42,7 @@ function App() {
       userFetch();
   }, [])
 
-  console.log(JSON.stringify(user));
+  // console.log(JSON.stringify(user));
 
   return (
     <div className="App">

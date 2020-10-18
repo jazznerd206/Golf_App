@@ -3,7 +3,7 @@ import './styles.css';
 
 function Header() {
     return (
-        <div className="header-wrapper flex-column">
+        <div className="header-wrapper">
             
         </div>
     )
