@@ -158,7 +158,7 @@ function AddRound() {
         setAnywayStrokes(0);
         setArrayOfHoleByHole([]);
     }
-    // console.log(`courses ${JSON.stringify(courses)}`)
+    console.log(`user on add round ${JSON.stringify(user)}`)
 
     // console.log(`course selected ${JSON.stringify(courseSelected)}`);
 

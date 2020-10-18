@@ -15,7 +15,7 @@ import { UserContext } from '../../UserContext.js';
 function Login() {
 
     const { isLoggedIn, setLoggedIn } = useContext(UserContext);
-    const { applyUser } = useContext(UserContext)    
+    const { user, applyUser } = useContext(UserContext)    
 
     // on page state setters
     const [ username, setName ] = useState('');
@@ -34,7 +34,7 @@ function Login() {
                     Cookie.set('auth', response.data.id);
                     // console.log("logged in user response on front end " + JSON.stringify(response.data))
                     setLoggedIn(true);
-                    applyUser(response.data);
+                    applyUser(response.data.user);
                 }
             }).catch(err => {
                 console.log(err);
@@ -43,6 +43,7 @@ function Login() {
         setName('');
         setPassword('');
     }
+    console.log(JSON.stringify(user))
 
     
     if (isLoggedIn === false) {

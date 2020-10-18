@@ -86,6 +86,7 @@ exports.login_user = (req, res, next) => {
                 success: true,
                 username: user.username,
                 id: user.id,
+                user,
                 loggedIn: true
             })
         })
@@ -106,9 +107,15 @@ exports.logout_user = (req, res, next) => {
 }
 
 exports.read_a_user = (req, res, next) => {
-    Users.findOne({ where: {
+    Users.findOne({
+        where: {
         id: req.params.userId
-    }}).then(user => {
+    }, include: [{
+        model: UserRounds,
+        as: 'rounds'
+      }]
+    })
+    .then(user => {
             // console.log(`user object returned === ${user}`)
             res.send(user);
     })

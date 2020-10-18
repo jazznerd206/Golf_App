@@ -1,6 +1,12 @@
-import React, { Component } from 'react';
+import React, { useEffect, useContext } from 'react';
 import './styles.css';
 import { Route, Switch, Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import API from '../../utils/API.js';
+
+// USER CONTEXT
+import { UserContext } from '../../UserContext.js';
+
 
 
 // COMPONENT IMPORTS
@@ -11,8 +17,28 @@ import AddCourse from '../../components/Add_Course/AddCourse';
 import AddRound from '../../components/Add_Round/AddRound';
 import ViewRounds from '../../components/View_Rounds/ViewRounds';
 
-class Dashboard extends Component {
-    render() {
+function Dashboard() {
+
+    const { isLoggedIn, setLoggedIn } = useContext(UserContext);
+    const { user, applyUser } = useContext(UserContext)    
+
+    const userFetch = async () => {
+        const result = Cookies.get('auth');
+        // console.log(`result ${result}`)
+        if (result === undefined) { 
+            console.log(`no user to log in`)
+            setLoggedIn(false);
+        } else {
+          const userData = await API.findUser(result);
+          applyUser(userData.data);
+        //   setLoggedIn(true);
+        }
+      }
+      useEffect(() => {
+          userFetch();
+      }, [])
+
+
         return (
             <div className="dashboard-wrapper">
                 <Link to="/dashboard/addcourse">
@@ -46,7 +72,6 @@ class Dashboard extends Component {
             </div>
         )
     }
-}
 
 export default Dashboard;
 

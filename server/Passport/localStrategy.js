@@ -2,6 +2,7 @@ const { Strategy } = require('passport');
 const models = require('../models'); // loads index.js
 const user = require('../models/user');
 const User = models.user; 
+const UserRounds = models.UserRounds;
 // const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
@@ -10,9 +11,10 @@ const strategy = new LocalStrategy(
     usernameField: 'username'
   },
   function(username, password, next) {
-    User.findOne({ where: {
+    User.findOne({
+      where: {
       username: username
-        }}).then(user => {
+  }}).then(user => {
                 // console.log(`user object returned === ${user}`)
                 // =============================================
                 if (!user) {

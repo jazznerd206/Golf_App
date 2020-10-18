@@ -46,7 +46,7 @@ export default {
         return new Promise((resolve, reject) => {
             axios.post("/api/users/login", user)
                 .then(response => {
-                    // console.log(`this is the response data ${JSON.stringify(response.data)}`)
+                    console.log(`this is the response data ${JSON.stringify(response.data)}`)
                     if (response.data) {
                         resolve(response)
                     }
@@ -178,7 +178,7 @@ export default {
         return new Promise((resolve, reject) => {
             axios.get(`/api/userRounds`)
             .then(response => {
-                console.log(`response.data from get all scores where ${JSON.stringify(response.data)}`)
+                // console.log(`response.data from get all scores where ${JSON.stringify(response.data)}`)
                 if (response.data) {
                     resolve(response)
                 }

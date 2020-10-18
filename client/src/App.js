@@ -42,6 +42,8 @@ function App() {
       userFetch();
   }, [])
 
+  console.log(JSON.stringify(user));
+
   return (
     <div className="App">
       <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser}}>

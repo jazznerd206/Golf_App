@@ -18,7 +18,7 @@ function Newest_Scores() {
             const dateMoment = moment(dateString);
             const measureMoment= moment().subtract(1, 'days').format('YYYY-MM-DD');
             if (dateMoment.isSameOrAfter(measureMoment)) {
-                console.log(typeof score)
+                // console.log(typeof score)
                 setAllScores(allScores => [...allScores, score])
                 return score;
             } else {
