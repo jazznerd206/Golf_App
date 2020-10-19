@@ -42,7 +42,7 @@ function HeaderChartTwo() {
 
     return (
         <div>
-            <h1>Even one anyways stroke can lower that average to {((parOrBetter.length / holes.length)*100).toFixed(0)}%.</h1>
+            <h1>Even one anyway stroke can lower that average to {((parOrBetter.length / holes.length)*100).toFixed(0)}%.</h1>
         </div>
     )
 }

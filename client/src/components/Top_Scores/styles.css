@@ -25,10 +25,21 @@
     flex-direction: row;
     justify-content: space-between;
     color: white;
-    background: linear-gradient(to bottom, #192841, #152238)
+    background: linear-gradient(to bottom, #192841, #152238);
+    transition: all .1s ease-in-out;
 }
 
 .topScores-data:hover {
-    background: #165b13;
-    
+    background: #D3D3D3;
+    color: black;
+    font-weight: bolder;
+    transform: scale(1.1);
+}
+
+.topScores-datapoint {
+    width: 50px;
+}
+
+.topScores-heading {
+    width: 100px;
 }

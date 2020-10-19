@@ -1,10 +1,10 @@
 .addRound-wrapper {
-    background: linear-gradient(to bottom, #C0C0C0, #D8DDD8);
+    background: linear-gradient(to top, #192841, #152238);
     padding: 50px 50px;
     margin: 50px 50px;
     margin-top: 100px;
     border-radius: 25px;
-    box-shadow: 0px 0px 25px#C0C0C0;
+    box-shadow: 0px 0px 25px #165b13;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -13,4 +13,60 @@
 .form-container {
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
+    border: 1px solid silver;
+    background: silver;
+    color: white;
+    background: linear-gradient(to bottom, #192841, #152238);
+    padding: 10px 10px;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    /* border: 1px solid black; */
+}
+
+.course-data-point {
+    display: flex;
+    flex-direction: row;
+    justify-items: space-between;
+    padding: 0 10px;
+    border: 1px solid silver;
+}
+
+.form-group-row {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    border: 1px solid silver;
+    
+}
+
+/* label {
+    display: flex;
+    padding: 0 0;
+    margin: 0 0;
+    width: 50px;
+} */
+
+p {
+    text-align: right;
+    width: 100px;
+    padding-right: 25px;
+    font-weight: bolder;
+}
+
+.data-point {
+    font-size: larger;
+    text-align: right;
+    border-left: 1px solid silver;
+    padding-left: 10px;
+}
+
+.input-field {
+    max-width: 40px;
+    margin-left: 10px;
+    text-align: center;
 }

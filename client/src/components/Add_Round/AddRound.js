@@ -212,56 +212,58 @@ function AddRound() {
             {formIndex === 1 && (
             <div className="form-container">
                 <div className="course-data-point">
-                    <p>Course: <span>{courseSelected.courseName}</span></p>
+                    <p>Course: </p><span>{courseSelected.courseName}</span>
                 </div>
                 <div className="course-data-point">
-                    <p>Holes: <span>{courseSelected.lengthHoles}</span></p>
+                    <p>Holes: </p><span>{courseSelected.lengthHoles}</span>
                 </div>
                 <div className="course-data-point">
-                    <p>Par: <span>{courseSelected.par}</span></p>
+                    <p>Par: </p><span>{courseSelected.par}</span>
                 </div>
                 <div className="course-data-point">
-                    <p>Rating: <span>{courseSelected.rating}</span></p>
+                    <p>Rating: </p><span>{courseSelected.rating}</span>
                 </div>
                 <div className="course-data-point">
-                    <p>Yardage: <span>{courseSelected.lengthYards}</span></p>
+                    <p>Yardage: </p><span>{courseSelected.lengthYards}</span>
                 </div>
-                <button 
-                    type="submit" 
-                    onClick={selectFullScore} 
-                    className="">
-                    Totals
-                </button>
-                <button 
-                    type="submit" 
-                    onClick={selectHoleByHole} 
-                    className="">
-                    Hole By Hole
-                </button>
-                <button 
-                    type="submit" 
-                    onClick={backForm} 
-                    className="">
-                    Back
-                </button>
+                <div className="flex-column">
+                    <button 
+                        type="submit" 
+                        onClick={selectFullScore} 
+                        className="">
+                        Totals
+                    </button>
+                    <button 
+                        type="submit" 
+                        onClick={selectHoleByHole} 
+                        className="">
+                        Hole By Hole
+                    </button>
+                    <button 
+                        type="submit" 
+                        onClick={backForm} 
+                        className="">
+                        Back
+                    </button>
+                </div>
             </div>
             )}
             {formIndex === 2 && fullRound === true && (
                 <div className="form-container">
                     <div className="course-data-point">
-                        <p>Course: <span>{courseSelected.courseName}</span></p>
+                        <p>Course: </p><div className="data-point">{courseSelected.courseName}</div>
                     </div>
                     <div className="course-data-point">
-                        <p>Par: <span>{courseSelected.par}</span></p>
+                        <p>Par: </p><div className="data-point">{courseSelected.par}</div>
                     </div>
                     <div className="course-data-point">
-                        <p>Rating: <span>{courseSelected.rating}</span></p>
+                        <p>Rating: </p><div className="data-point">{courseSelected.rating}</div>
                     </div>
                     <div className="user-input-score">
                         <label htmlFor="fullRoundScore">Score: </label>
                         <input
                             type="number"
-                            className=""
+                            className="input-field"
                             id="fullRoundScore"
                             name={fullRoundScore}
                             value={fullRoundScore}
@@ -273,7 +275,7 @@ function AddRound() {
                         <label htmlFor="fullRoundPutts">Putts: </label>
                         <input
                             type="number"
-                            className=""
+                            className="input-field"
                             id="fullRoundPutts"
                             name={fullRoundPutts}
                             value={fullRoundPutts}
@@ -285,7 +287,7 @@ function AddRound() {
                         <label htmlFor="anywayStrokes">Anyway Strokes: </label>
                         <input
                             type="number"
-                            className=""
+                            className="input-field"
                             id="anywayStrokes"
                             name={anywayStrokes}
                             value={anywayStrokes}
@@ -320,21 +322,27 @@ function AddRound() {
                     
                     {holeFormIndex < courseSelected.lengthHoles && formIndex < courseSelected.lengthHoles + 3 && (
                         <div>
-                            <div className="course-data-point">
+                            <div className="form-container">
                                 <h1>HOLE BY HOLE</h1>
-                                <p>Course: <span>{courseSelected.courseName}</span></p>
-                                <p>Lenth: <span>{courseSelected.lengthHoles}</span></p>
-                                <p>Par: <span>{courseSelected.par}</span></p>
+                                <div className="course-data-point">
+                                <p>Course: </p><div className="data-point">{courseSelected.courseName}</div>
+                                </div>
+                                <div className="course-data-point">
+                                <p>Hole: </p><div className="data-point">{holeIndex + 1}</div>
+                                </div>
+                                <div className="course-data-point">
+                                <p>Par: </p><div className="data-point">{courseSelected.holes[holeIndex].par}</div>
+                                </div>
+                                <div className="course-data-point">
+                                <p>Hdcp: </p><div className="data-point">{courseSelected.holes[holeIndex].handicap}</div>
+                                </div>
                             </div>
-                            <p>Hole: <span>{holeIndex + 1}</span></p>
-                            <p>Par: <span>{courseSelected.holes[holeIndex].par}</span></p>
-                            <p>Handicap: <span>{courseSelected.holes[holeIndex].handicap}</span></p>
                         <div className="form-group row">
-                            <label htmlFor="holeByHoleScore" className="">Score: </label>
-                                <div className="">
+                                <div className="course-data-point">
+                                <label htmlFor="holeByHoleScore" className=""><p>Score: </p></label>
                                     <input
                                         type="number"
-                                        className=""
+                                        className="data-point input-field"
                                         id="name"
                                         name={holeByHoleScore}
                                         value={holeByHoleScore}
@@ -344,11 +352,11 @@ function AddRound() {
                                 </div>
                         </div>
                         <div className="form-group row">
-                            <label htmlFor="holeByHolePutts" className="">Putts: </label>
-                                <div className="">
+                                <div className="course-data-point">
+                                <label htmlFor="holeByHolePutts" className=""><p>Putts: </p></label>
                                     <input
                                         type="number"
-                                        className=""
+                                        className="data-point input-field"
                                         id="name"
                                         name={holeByHolePutts}
                                         value={holeByHolePutts}
@@ -358,11 +366,11 @@ function AddRound() {
                             </div>
                         </div>
                         <div className="form-group row">
-                            <label htmlFor="holeByHoleAWstrokes" className="">Anyway: </label>
-                                <div className="">
+                                <div className="course-data-point">
+                                <label htmlFor="holeByHoleAWstrokes" className=""><p>Anyway: </p></label>
                                     <input
                                         type="number"
-                                        className=""
+                                        className="data-point input-field"
                                         id="name"
                                         name={holeByHoleAWstrokes}
                                         value={holeByHoleAWstrokes}
@@ -370,9 +378,11 @@ function AddRound() {
                                         onChange={(e) => setHoleByHoleAWstrokes(e.target.value)}
                                     />
                                 </div>
-                            <label htmlFor="holeByHoleAWstrokeType" className="">Type: </label>
-                            <div className="">
+                        <div className="form-group row">
+                            <div className="course-data-point">
+                            <label htmlFor="holeByHoleAWstrokeType" className=""><p>Type: </p></label>
                                 <select
+                                    className="data-point input-field"
                                     name={holeByHoleAWstrokeType}
                                     value={holeByHoleAWstrokeType}
                                     onChange={(e) => setHoleByHoleAWstrokeType(e.target.value)}
@@ -386,6 +396,7 @@ function AddRound() {
                                 </select>
                             </div>
                         </div>
+                    </div>
                         <button 
                             type="submit" 
                             onClick={submitHoleByHoleToHook} 
