@@ -22,7 +22,7 @@ module.exports = {
     },
     "production": {
         "username": 'root',
-        // "host": process.env.development.HOST,
+        "host": process.env.HOST,
         "use_env_variable": process.env.PORTSGRES_URL,
         "dialect": "postgres"
     }
