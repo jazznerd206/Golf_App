@@ -21,10 +21,6 @@ module.exports = {
         "dialect": "mysql"
     },
     "production": {
-        "username": "root",
-        "password": null,
-        "database": "golf_db_production",
-        "host": "127.0.0.1",
-        "dialect": "mysql"
+        "use_env_variable": process.env.PORTSGRES_URL
     }
   };
