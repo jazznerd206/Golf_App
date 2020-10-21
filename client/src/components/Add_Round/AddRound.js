@@ -259,11 +259,11 @@ function AddRound() {
                     <div className="course-data-point">
                         <p>Rating: </p><div className="data-point">{courseSelected.rating}</div>
                     </div>
-                    <div className="user-input-score">
+                    <div className="course-data-point">
                         <label htmlFor="fullRoundScore">Score: </label>
                         <input
                             type="number"
-                            className="input-field"
+                            className="data-point input-field"
                             id="fullRoundScore"
                             name={fullRoundScore}
                             value={fullRoundScore}
@@ -271,11 +271,11 @@ function AddRound() {
                             onChange={(e) => setFullRoundScore(e.target.value)}
                         />
                     </div>
-                    <div className="user-input-putts">
+                    <div className="course-data-point">
                         <label htmlFor="fullRoundPutts">Putts: </label>
                         <input
                             type="number"
-                            className="input-field"
+                            className="data-point input-field"
                             id="fullRoundPutts"
                             name={fullRoundPutts}
                             value={fullRoundPutts}
@@ -283,11 +283,11 @@ function AddRound() {
                             onChange={(e) => setFullRoundPutts(e.target.value)}
                         />
                     </div>
-                    <div className="user-input-AWstrokes">
+                    <div className="course-data-point">
                         <label htmlFor="anywayStrokes">Anyway Strokes: </label>
                         <input
                             type="number"
-                            className="input-field"
+                            className="data-point input-field"
                             id="anywayStrokes"
                             name={anywayStrokes}
                             value={anywayStrokes}
@@ -295,18 +295,20 @@ function AddRound() {
                             onChange={(e) => setAnywayStrokes(e.target.value)}
                         />
                     </div>
-                    <button 
-                        type="submit" 
-                        onClick={submitFullScore} 
-                        className="">
-                        Submit Score
-                    </button>
-                    <button 
-                        type="submit" 
-                        onClick={backFromFullRound} 
-                        className="">
-                        Back
-                    </button>
+                    <div className="flex-column">
+                        <button 
+                            type="submit" 
+                            onClick={submitFullScore} 
+                            className="">
+                            Submit Score
+                        </button>
+                        <button 
+                            type="submit" 
+                            onClick={backFromFullRound} 
+                            className="">
+                            Back
+                        </button>
+                    </div>
                 </div>
             )}
             {formIndex >= 2 && formIndex < courseSelected.lengthHoles + 2 && holeByHole === true && (
