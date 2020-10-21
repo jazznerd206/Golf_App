@@ -21,6 +21,9 @@ module.exports = {
         "dialect": "mysql"
     },
     "production": {
-        "use_env_variable": process.env.PORTSGRES_URL
+        "username": 'root',
+        "host": process.env.development.HOST,
+        "use_env_variable": process.env.PORTSGRES_URL,
+        "dialect": "postgres"
     }
   };
