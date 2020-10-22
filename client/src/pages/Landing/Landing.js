@@ -14,14 +14,14 @@ function Landing() {
     return (
             <div className="page-container">
                 <Header />
-                <div className="scores-container">
+                {/* <div className="scores-container">
                     <div className="top-scores">
                         <TopScores />
                     </div>
                     <div className="newest-scores">
                         <NewestScores />
                     </div>
-                </div>
+                </div> */}
             </div>
     )
 }

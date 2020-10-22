@@ -42,7 +42,7 @@ function HeaderChartOne() {
 
     return (
         <div>
-            <h1>On average, zero anyway strokes can lead to par or better {((parOrBetter.length / holes.length)*100).toFixed(0)}% of the time.</h1>
+            <h1>On average, zero anyway shots can lead to par or better {((parOrBetter.length / holes.length)*100).toFixed(0)}% of the time.</h1>
         </div>
     )
 }

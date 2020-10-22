@@ -64,7 +64,7 @@ function Navbar() {
     return (
         <div className="navbar-wrapper">
             <div className="navbar-right">
-                <span><h1>Birdie.Hunter</h1></span>
+                <span><h1>Rare Bird Society</h1></span>
             </div>
             <div className="navbar-center">
             <Link to="/">
