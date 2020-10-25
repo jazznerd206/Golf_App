@@ -12,7 +12,7 @@
 .App {
   text-align: center;
   background: linear-gradient(to bottom, #C0C0C0, #D3D3D3);
-  height: 100%;
+  min-height: 100vh;
   width: auto;
   display: flex;
   flex-direction: column;

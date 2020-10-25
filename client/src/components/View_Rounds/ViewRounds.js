@@ -65,13 +65,15 @@ function ViewRounds() {
             </div>
             <div className="scoreCard-wrapper">
                 <div className="course-data-column">
+                    <div className="hole-data-point">Hole</div>
                     <div className="hole-data-point">Par</div>
                     <div className="hole-data-point">{round.userName}</div>
                     <div className="hole-data-point">Putts</div>
                     <div className="hole-data-point">AW Strokes</div>
                 </div>
-                {round.userHoles.map(hole => (
+                {round.userHoles.map((hole, index) => (
                     <div className="hole-container" key={hole.id}>
+                        <div className="hole-data-point">{index + 1}</div>
                         <div className="hole-data-point">{hole.par}</div>
                         <div className="hole-data-point">{hole.score}</div>
                         <div className="hole-data-point">{hole.putts}</div>
@@ -79,6 +81,7 @@ function ViewRounds() {
                     </div>
                 ))}
                 <div className="course-data-column">
+                    <div className="hole-data-point">Out</div>
                     <div className="hole-data-point">{round.coursePar}</div>
                     <div className="hole-data-point">{round.totalScore}</div>
                     <div className="hole-data-point">{round.putts}</div>

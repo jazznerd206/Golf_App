@@ -17,6 +17,7 @@ import AddCourse from '../../components/Add_Course/AddCourse';
 import AddRound from '../../components/Add_Round/AddRound';
 import ViewRounds from '../../components/View_Rounds/ViewRounds';
 import ViewHoles from '../../components/View_Holes/ViewHoles';
+import DataBoard from '../../components/Data_Board/DataBoard';
 
 function Dashboard() {
 
@@ -72,8 +73,8 @@ function Dashboard() {
                         <Route path='/dashboard/viewByHoles' component={ViewHoles} />
                     </Switch>
                 </div>
-                <div className="header-wrapper">
-                    {/* <Header /> */}
+                <div className="dataBoard-wrapper">
+                    <DataBoard />
                 </div>
 
             </div>

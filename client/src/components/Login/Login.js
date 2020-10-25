@@ -51,13 +51,13 @@ function Login() {
         <div className="login-wrapper">
             <div className="login-form">
                 <form>
-                    <h3>Log In</h3><span>{[isLoggedIn]}</span>
+                    <h3>Log In</h3>
                     <div className="form-group row">
-                        <label htmlFor="username" className="col-sm-2 col-form-label fadeUp">User Name</label>
+                        <label htmlFor="username" className="">User Name</label>
                         <div className="col-sm-10">
                             <input
                                 type="text"
-                                className="form-control fadeUp"
+                                className=""
                                 id="name"
                                 name={username}
                                 value={username}
@@ -67,11 +67,11 @@ function Login() {
                         </div>
                     </div>
                     <div className="form-group row">
-                        <label htmlFor="inputPassword" className="col-sm-2 col-form-label fadeUp">Password</label>
+                        <label htmlFor="inputPassword" className="">Password</label>
                         <div className="col-sm-10">
                             <input
                                 type="password"
-                                className="form-control fadeUp"
+                                className=""
                                 name={password}
                                 value={password}
                                 id="password"

@@ -1,16 +1,16 @@
 .login-wrapper {
+    width: 400px;
     border-radius: 25px;
-    height: 100vh;
-    margin: auto;
-    padding-top: 30vh;
-    background-color: green;
+    margin: 0 auto;
+    padding-top: 50px;
 }
 
 .login-form {
-    margin: auto;
-    background: radial-gradient(#C0C0C0, #D3D3D3);
+    margin: 0 auto;
+    color: white;
+    background: linear-gradient(to bottom, #192841, #152238);
     padding: 30px 30px 30px 30px;
-    width: 400px;
+    width: auto;
     border-radius: 25px;
 }
 
