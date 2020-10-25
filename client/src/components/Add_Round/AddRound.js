@@ -170,20 +170,20 @@ function AddRound() {
         setCourseSelected({});
         setFormIndex(formIndex - 1);
     }
-    const clearForm = event => {
-        event.preventDefault();
-        setFormIndex(0);
-    }
+    // const clearForm = event => {
+    //     event.preventDefault();
+    //     setFormIndex(0);
+    // }
     const backFromFullRound = event => {
         event.preventDefault();
         setFullRound(false)
         setFormIndex(formIndex - 1);
     }
-    const backFromHoleByHole = event => {
-        event.preventDefault();
-        setHoleByHole(false)
-        setFormIndex(formIndex - 1);
-    }
+    // const backFromHoleByHole = event => {
+    //     event.preventDefault();
+    //     setHoleByHole(false)
+    //     setFormIndex(formIndex - 1);
+    // }
 
     // console.log(arrayOfHoleByHole);
 

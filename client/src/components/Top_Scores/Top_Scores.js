@@ -1,7 +1,7 @@
 // REACT DEPENDENCIES
 import React, { useState, useEffect } from 'react';
 import "./styles.css";
-import moment from 'moment';
+// import moment from 'moment';
 
 // API FUNCTIONS
 import API from '../../utils/API.js';
@@ -12,7 +12,7 @@ function Top_Scores() {
 
     const loadAllScores = async () => {
         const data = await API.getAllScoresWhere();
-        const holderArray = [];
+        // const holderArray = [];
         const holder = data.data.forEach(score => {
             if (score.totalScore <= 75) {
                 setAllScores(allScores => [...allScores, score])

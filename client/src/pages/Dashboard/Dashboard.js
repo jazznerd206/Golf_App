@@ -10,7 +10,7 @@ import { UserContext } from '../../UserContext.js';
 
 
 // COMPONENT IMPORTS
-import Header from '../../components/Header/Header';
+// import Header from '../../components/Header/Header';
 // import TopScores from '../../components/Top_Scores/Top_Scores';
 // import NewestScores from '../../components/Newest_Scores/Newest_Scores';
 import AddCourse from '../../components/Add_Course/AddCourse';
@@ -20,8 +20,8 @@ import ViewHoles from '../../components/View_Holes/ViewHoles';
 
 function Dashboard() {
 
-    const { isLoggedIn, setLoggedIn } = useContext(UserContext);
-    const { user, applyUser } = useContext(UserContext)    
+    const { setLoggedIn } = useContext(UserContext);
+    const { applyUser } = useContext(UserContext)    
 
     const userFetch = async () => {
         const result = Cookies.get('auth');
@@ -69,7 +69,7 @@ function Dashboard() {
                         <Route exact path='/dashboard/addCourse' component={AddCourse} />
                         <Route exact path='/dashboard/addRound' component={AddRound} />
                         <Route exact path='/dashboard/viewRounds' component={ViewRounds} />
-                        <Route exact path='/dashboard/viewByHoles' component={ViewHoles} />
+                        <Route path='/dashboard/viewByHoles' component={ViewHoles} />
                     </Switch>
                 </div>
                 <div className="header-wrapper">

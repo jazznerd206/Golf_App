@@ -51,7 +51,7 @@
     width: 50px;
 } */
 
-p {
+.course-data-point p {
     text-align: right;
     width: 100px;
     padding-right: 25px;

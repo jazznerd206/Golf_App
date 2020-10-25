@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import './styles.css';
 
 // COMPONENTS
-import HeaderChartOne from '../Header_Chart_One/HeaderChartOne.js';
-import HeaderChartTwo from '../Header_Chart_One/HeaderChartTwo.js';
+// import HeaderChartOne from '../Header_Chart_One/HeaderChartOne.js';
+// import HeaderChartTwo from '../Header_Chart_One/HeaderChartTwo.js';
 
 function Header() {
 

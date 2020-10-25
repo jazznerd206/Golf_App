@@ -12,7 +12,7 @@ function Newest_Scores() {
 
     const loadAllScores = async () => {
         const data = await API.getAllScoresWhere();
-        const holderArray = [];
+        // const holderArray = [];
         const holder = data.data.forEach(score => {
             const dateString = score.date.toString().slice(0,10);
             const dateMoment = moment(dateString);

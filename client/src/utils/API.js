@@ -218,6 +218,30 @@ export default {
     // =======================================
 
     // =======================================
+    // GET SINGLE ROUND
+    // =======================================
+    getRound: function(roundID) {
+        console.log(`api axios post get single round ${roundID}`);
+        return new Promise((resolve, reject) => {
+            axios.get(`/api/userRounds/single/${roundID}`)
+            .then(response => {
+                // console.log(`response.data from get single round ${JSON.stringify(response.data)}`)
+                if (response.data) {
+                    resolve(response)
+                }
+                else {
+                    console.log('get single round user error')
+                }
+            })
+            .catch(error => {
+                reject(Error('get single round server error: ' + JSON.stringify(error)))
+            })
+
+        })
+    },
+    // =======================================
+
+    // =======================================
     // GET ROUNDS BY USER ID
     // =======================================
     getRounds: function(userID) {

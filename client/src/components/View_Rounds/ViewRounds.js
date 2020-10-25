@@ -1,6 +1,6 @@
 // REACT DEPENDENCIES
 import React, { useState, useContext, useEffect } from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './styles.css';
 
 // API FUNCTIONS
@@ -12,9 +12,10 @@ import { UserContext } from '../../UserContext.js';
 function ViewRounds() {
 
     // ROUND HOOKS
-    const [ rounds, setRounds ] = useState([]);
+    const [ round, setRound ] = useState({});
     const [ roundsWithHoles, setRoundsWithHoles ] = useState([]);
     const [ roundsWithOutHoles, setRoundsWithOutHoles ] = useState([]);
+    const [ viewHoles, setViewHoles ] = useState(false);
 
     const { user } = useContext(UserContext)
 
@@ -40,17 +41,65 @@ function ViewRounds() {
         roundFetch();
     }, [])
 
-    // console.log(user.id);
-    
+    const backToRounds = event => {
+        event.preventDefault();
+        setViewHoles(false);
+    }
 
+    const askForRoundData = async (event) => {
+        event.preventDefault();
+        console.log(`ask for round data ${event.target.value}`);
+        const roundToSet = await API.getRound(event.target.value);
+        console.log(roundToSet)
+        setRound(roundToSet.data[0])
+        setViewHoles(true);
+    }
+    
+    if (viewHoles === true) {
+        return (
+        <div className="singleRound-wrapper">
+            <div className="hole-container">
+                <div className="hole-data-point">{round.course}</div>
+                <div className="hole-data-point">{round.coursePar}</div>
+                <div className="hole-data-point">{round.courseRating}</div>
+            </div>
+            <div className="scoreCard-wrapper">
+                <div className="course-data-column">
+                    <div className="hole-data-point">Par</div>
+                    <div className="hole-data-point">{round.userName}</div>
+                    <div className="hole-data-point">Putts</div>
+                    <div className="hole-data-point">AW Strokes</div>
+                </div>
+                {round.userHoles.map(hole => (
+                    <div className="hole-container" key={hole.id}>
+                        <div className="hole-data-point">{hole.par}</div>
+                        <div className="hole-data-point">{hole.score}</div>
+                        <div className="hole-data-point">{hole.putts}</div>
+                        <div className="hole-data-point">{hole.anywayStroke}</div>
+                    </div>
+                ))}
+                <div className="course-data-column">
+                    <div className="hole-data-point">{round.coursePar}</div>
+                    <div className="hole-data-point">{round.totalScore}</div>
+                    <div className="hole-data-point">{round.putts}</div>
+                    <div className="hole-data-point">{round.totalAWstrokes}</div>
+                </div>
+            </div>
+            <div>
+                <button onClick={backToRounds}>
+                    Back To Rounds
+                </button>
+            </div>
+        </div>
+        )
+    }
 
     if (roundsWithHoles.length > 0 || roundsWithOutHoles.length > 0) {
         return (
             <div className="viewRound-wrapper">
                 {roundsWithHoles.map((round, index) => (
-                    <div>
-                        <Link to="/dashboard/viewByHoles/">
-                        <div className="round-container" key={index}>
+                    <div key={round.id}>
+                        <div className="round-container">
                             <div className="round-date">
                                 <span className="round-data-point">{round.date}</span>
                             </div>
@@ -69,8 +118,17 @@ function ViewRounds() {
                             <div className="round-AWstrokes">
                             <p>Anyway: <span className="round-data-point">{round.totalAWstrokes}</span></p>
                             </div>
+                            {/* <Link to={`/dashboard/viewByHoles/${round.id}`}> */}
+                                <button 
+                                    type="submit"
+                                    value={round.id}
+                                    onClick={askForRoundData} 
+                                    className="">
+                                    View Round
+                                </button>
+                            {/* </Link> */}
                         </div>
-                        </Link>
+                        
                     </div>
                 ))}
                 {roundsWithOutHoles.map((round, index) => (

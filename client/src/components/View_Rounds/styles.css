@@ -25,5 +25,40 @@
 
 .round-container .round-data-point {
     font-family: 'Roboto';
-    
+}
+
+.singleRound-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 530px;
+    margin: 0 auto;
+}
+
+.scoreCard-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.course-data-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: right;
+}
+
+.hole-container {
+    width: auto;
+}
+
+.hole-data-column {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.hole-data-point {
+    border: 1px solid black;
+    padding: 5px 5px;
 }

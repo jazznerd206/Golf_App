@@ -3,7 +3,7 @@ const UserRounds = db['userRound'];
 const UserHoles = db['userHole'];
 
 exports.get_all_userRounds = (req, res) => {
-  console.log(req.params)
+  // console.log(req.params)
   UserRounds.findAll({
     include: [{
       model: UserHoles,
@@ -56,6 +56,21 @@ exports.create_userRound = async (req,res) => {
 exports.read_a_userRound = (req, res) => {
   UserRounds.findAll({ where: {
         userID: req.params.Id
+          }, 
+      include: [{
+        model: UserHoles,
+        as: 'userHoles'
+      }]}).then(round => {
+          res.send(round);
+  })
+  .catch(error => {
+      console.log(error);
+  })
+}
+
+exports.get_single_round = (req, res) => {
+  UserRounds.findAll({ where: {
+        id: req.params.roundID
           }, 
       include: [{
         model: UserHoles,

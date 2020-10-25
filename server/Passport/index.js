@@ -5,20 +5,20 @@ const User = models.user;
 
 // called on login, saves the id to session req.session.passport.user = {id:'..'}
 passport.serializeUser((user, done) => {
-  console.log('*** serializeUser called, user: ');
-  console.log(user); // the whole raw user object!
-  console.log('---------');
+  // console.log('*** serializeUser called, user: ');
+  // console.log(user); // the whole raw user object!
+  // console.log('---------');
   done(null, user);
 });
 
 // user object attaches to the request as req.user
 passport.deserializeUser((user, done) => {
-  console.log('DeserializeUser called');
+  // console.log('DeserializeUser called');
   User.findOne({ where: {username: user.username}})
     .then(user => {
-    console.log('======= user ===========')
-    console.log(user)
-    console.log('========================')
+    // console.log('======= user ===========')
+    // console.log(user)
+    // console.log('========================')
     done(null, user);
   })
 });
