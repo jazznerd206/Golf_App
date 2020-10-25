@@ -230,7 +230,7 @@ export default {
                     resolve(response)
                 }
                 else {
-                    console.log('get single round user error')
+                    console.log('get single round user error');
                 }
             })
             .catch(error => {

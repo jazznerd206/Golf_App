@@ -1,7 +1,8 @@
 //REACT DEPENDENCIES
 import React, { useState, useContext } from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import './styles.css';
+import Cookie from 'js-cookie';
 
 // API IMPORT
 import API from '../../utils/API.js';
@@ -46,14 +47,14 @@ function Register() {
                 password: password
             }).then(response => {
                 if (response.data.loggedIn === true ) {
-                    // console.log("logged in user response on front end " + JSON.stringify(response.data))
-                    applyUser(response.data);
-                    // history.push('/dashboard');
+                    console.log("logged in user response on front end " + JSON.stringify(response.data))
+                    Cookie.set('auth', response.data.id);
+                    applyUser(response.data.user);
+                    setLoggedIn(true);
                 }
             }).catch(err => {
                 console.log(err);
             })
-        setLoggedIn(true);
         setName('');
         setPassword('');
     }
@@ -111,4 +112,4 @@ function Register() {
     )
 }
 
-export default withRouter(Register);
+export default Register;
