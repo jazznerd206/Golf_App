@@ -51,7 +51,7 @@ export default {
                         resolve(response)
                     }
                     else{
-                        console.log('log in error')
+                        resolve('invalid creds')
                     }
                 })
                 .catch(error => {

@@ -20,6 +20,7 @@ function Login() {
     // on page state setters
     const [ username, setName ] = useState('');
     const [ password, setPassword ] = useState('');
+    const [ msg, setMsg ] = useState('');
 
 
     const submitLogin = (event) => {
@@ -36,14 +37,19 @@ function Login() {
                     setLoggedIn(true);
                     applyUser(response.data.user);
                 }
+                if (response.data.loggedIn === false) {
+                    console.log(response.data)
+                    setMsg(response.data)
+                }
             }).catch(err => {
-                console.log(err);
+                console.log("front end err " + err);
+                setMsg(err);
             })
         
         setName('');
         setPassword('');
     }
-    console.log(JSON.stringify(user))
+    // console.log(JSON.stringify(user))
 
     
     if (isLoggedIn === false) {
@@ -88,6 +94,9 @@ function Login() {
                             className="btn btn-outline-light fadeUp">
                             Log In
                         </button>
+                    </div>
+                    <div className="error-message">
+                        {msg}
                     </div>
                 </form>
             </div>

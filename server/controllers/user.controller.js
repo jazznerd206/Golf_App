@@ -75,7 +75,10 @@ exports.login_user = (req, res, next) => {
             return next(err);
           }
         if (!user) {
-            return res.json({loggedIn: false});
+            return res.json('User does not exist');
+        }
+        if (user.password != req.body.password) {
+            return res.json('Incorrect password.');
         }
         // res.redirect('/dashboard')
         //console.log('user in the req.login ' + user);

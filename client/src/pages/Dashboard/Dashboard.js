@@ -17,7 +17,7 @@ import AddCourse from '../../components/Add_Course/AddCourse';
 import AddRound from '../../components/Add_Round/AddRound';
 import ViewRounds from '../../components/View_Rounds/ViewRounds';
 import ViewHoles from '../../components/View_Holes/ViewHoles';
-import DataBoard from '../../components/Data_Board/DataBoard';
+// import DataBoard from '../../components/Data_Board/DataBoard';
 
 function Dashboard() {
 
@@ -74,7 +74,7 @@ function Dashboard() {
                     </Switch>
                 </div>
                 <div className="dataBoard-wrapper">
-                    <DataBoard />
+                    {/* <DataBoard /> */}
                 </div>
 
             </div>
