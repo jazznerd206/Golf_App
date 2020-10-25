@@ -45,11 +45,11 @@ function Header() {
                         </div>
                     </div>
                 </div>
-                <div>
+                {/* <div>
                     <button>
                         Learn More
                     </button>
-                </div>
+                </div> */}
             </div>
             {/* <div className="stat-container">
                 <HeaderChartOne />
