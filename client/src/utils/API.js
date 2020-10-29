@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
 
     findUser: function(userID) {
-        console.log(`api axios post ${userID}`);
+        // console.log(`api axios post ${userID}`);
         if (userID === undefined) {
             console.log(`undefined user`)
             return(null);

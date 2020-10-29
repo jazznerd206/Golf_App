@@ -102,7 +102,11 @@ exports.logout_user = (req, res, next) => {
     if (req.user) {
         req.logOut();
         req.session.destroy(function (err) {
-            res.json({ message: 'Logging out' });
+            res.json({
+                username: null,
+                loggedIn: false,
+                message: 'Logging out'
+            });
         })
     } else {
         res.json({ message: 'No user to log out' });

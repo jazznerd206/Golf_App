@@ -5,25 +5,27 @@ import API from '../../utils/API.js';
 // USER CONTEXT
 import { UserContext } from '../../UserContext.js';
 
-function DataBoard() {
+function DataBoard(data) {
 
     const { user } = useContext(UserContext);
     const [ rounds, setRounds ] = useState([]);
+    console.log(user.rounds);
 
-    const roundFetch = (userId) => {
-        API.getRounds(userId).then(response => {
-            // console.log(response.data)
-            setRounds(response.data);
-        })
+    const getHoles = () => {
+        const options = '{where: {id: 1}}'
+        API.getAllHolesWhere(options)
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
     }
-
-    useEffect(() => {
-        roundFetch(user.id);
-    }, [])
 
     return (
         <div className="dataBoard-wrapper">
-            <div></div>
+            {/* {data.data.map(round => (
+                <div key={round.id}>
+                    {round.totalScore}
+                </div>
+            ))} */}
+
         </div>
     )
 }

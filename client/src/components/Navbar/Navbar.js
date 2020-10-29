@@ -15,7 +15,7 @@ function Navbar() {
 
     const { isLoggedIn, setLoggedIn } = useContext(UserContext);
     // const { applyUser } = useContext(UserContext);
-    const { user } = useContext(UserContext);
+    const { user, applyUser } = useContext(UserContext);
 
     // const history = useHistory();
 
@@ -31,7 +31,7 @@ function Navbar() {
         Cookie.remove('this is a cookie');
         Cookie.remove('auth');
         setLoggedIn(false);
-        // history.push('/');
+        applyUser({});
 
         // console.log('user signed out')
     }

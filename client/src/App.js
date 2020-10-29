@@ -24,6 +24,7 @@ function App() {
 
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [user, applyUser] = useState({});
+  const [ rounds, setRounds ] = useState([]);
   
 
   const userFetch = async () => {
@@ -35,6 +36,7 @@ function App() {
     } else {
       const userData = await API.findUser(result);
       applyUser(userData.data);
+      setRounds(userData.data.rounds)
       setLoggedIn(true);
     }
   }
@@ -42,7 +44,7 @@ function App() {
       userFetch();
   }, [])
 
-  // console.log(JSON.stringify(user));
+  // console.log(JSON.stringify(rounds));
 
   return (
     <div className="App">
@@ -53,7 +55,7 @@ function App() {
               <Route exact path="/" component={Main} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
-              <ProtectedRoute path="/dashboard" component={Dashboard} />
+              <ProtectedRoute path="/dashboard" component={Dashboard} data={rounds}/>
           </Switch>
       </Router>
       </UserContext.Provider>

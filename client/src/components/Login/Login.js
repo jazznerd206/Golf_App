@@ -1,6 +1,6 @@
 // REACT DEPENDENCIES
 import React, { useState, useContext } from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import './styles.css';
 import Cookie from 'js-cookie';
 
@@ -36,6 +36,8 @@ function Login() {
                     // console.log("logged in user response on front end " + JSON.stringify(response.data))
                     setLoggedIn(true);
                     applyUser(response.data.user);
+                    setName('');
+                    setPassword('');
                 }
                 if (response.data.loggedIn === false) {
                     console.log(response.data)
@@ -46,8 +48,7 @@ function Login() {
                 setMsg(err);
             })
         
-        setName('');
-        setPassword('');
+        
     }
     // console.log(JSON.stringify(user))
 
@@ -108,4 +109,4 @@ function Login() {
     )
 }
 
-export default withRouter(Login);
+export default Login;

@@ -1,8 +1,8 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './styles.css';
 import { Route, Switch, Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import API from '../../utils/API.js';
+// import Cookies from 'js-cookie';
+// import API from '../../utils/API.js';
 
 // USER CONTEXT
 import { UserContext } from '../../UserContext.js';
@@ -19,26 +19,20 @@ import ViewRounds from '../../components/View_Rounds/ViewRounds';
 import ViewHoles from '../../components/View_Holes/ViewHoles';
 // import DataBoard from '../../components/Data_Board/DataBoard';
 
-function Dashboard() {
+function Dashboard(rounds) {
 
-    const { setLoggedIn } = useContext(UserContext);
-    const { applyUser } = useContext(UserContext)    
-
-    const userFetch = async () => {
-        const result = Cookies.get('auth');
-        // console.log(`result ${result}`)
-        if (result === undefined) { 
-            console.log(`no user to log in`)
-            setLoggedIn(false);
-        } else {
-          const userData = await API.findUser(result);
-          applyUser(userData.data);
-        //   setLoggedIn(true);
-        }
-      }
-      useEffect(() => {
-          userFetch();
-      }, [])
+    const { isLoggedIn, setLoggedIn } = useContext(UserContext);
+    const { user, applyUser } = useContext(UserContext);
+    // const [ rounds, setRounds ] = useState([]); 
+    
+    // const roundFetch = async () => {
+    //     const roundsToSet = await user.rounds
+    //     console.log(`rounds to set ${roundsToSet}`)
+    //     setRounds(roundsToSet)
+    // }
+    // useEffect(() => {
+    //     roundFetch();
+    // }, [])
 
 
         return (
@@ -74,7 +68,7 @@ function Dashboard() {
                     </Switch>
                 </div>
                 <div className="dataBoard-wrapper">
-                    {/* <DataBoard /> */}
+                    {/* <DataBoard data={rounds} /> */}
                 </div>
 
             </div>
