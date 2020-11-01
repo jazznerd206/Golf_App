@@ -40,7 +40,7 @@ function Login() {
                     setPassword('');
                 }
                 if (response.data.loggedIn === false) {
-                    console.log(response.data)
+                    // console.log(response.data)
                     setMsg(response.data)
                 }
             }).catch(err => {

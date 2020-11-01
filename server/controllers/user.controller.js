@@ -94,7 +94,7 @@ exports.login_user = (req, res, next) => {
             })
         })
         // next()
-        console.log('req.user after p.auth' + req.user.username)
+        // console.log('req.user after p.auth' + req.user.username)
     })(req, res, next)
 }
 

@@ -46,7 +46,7 @@ export default {
         return new Promise((resolve, reject) => {
             axios.post("/api/users/login", user)
                 .then(response => {
-                    console.log(`this is the response data ${JSON.stringify(response.data)}`)
+                    // console.log(`this is the response data ${JSON.stringify(response.data)}`)
                     if (response.data) {
                         resolve(response)
                     }
@@ -111,7 +111,7 @@ export default {
                         // console.log("response.data " + JSON.stringify(response.data));
                         resolve(response)
                     } else {
-                        // console.log('Course get error');
+                        console.log('Course get error');
                     }
                 })
                 .catch(err => {
@@ -130,7 +130,7 @@ export default {
                         // console.log("response.data " + JSON.stringify(response.data));
                         resolve(response)
                     } else {
-                        // console.log('Course get error');
+                        console.log('Course get error');
                     }
                 })
                 .catch(err => {
