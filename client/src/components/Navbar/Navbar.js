@@ -44,7 +44,7 @@ function Navbar() {
     return (
         <div className="navbar-wrapper">
             <div className="navbar-right">
-                <span><h1>Welcome {user.username}</h1></span>
+                <span><h1>Welcome {user.username}{user.id}</h1></span>
             </div>
             {/* <div className="navbar-center">
                 <div className="title-container">
