@@ -34,8 +34,8 @@
   * 16 or more, turkey
 * Add data analytics to dashboard.
   * Currently having some issues with async functions not firing until after page load, resulting in data for analytics not being available until refresh. hmm.
-4. TEST SUITE
-* Josh told me to always start with a test. Josh, if you're reading this, you were right. Its easier to build from a test than to write all the tests when you're done. I know this now. I'm working on it.
+* TEST SUITE
+  * Josh told me to always start with a test. Josh, if you're reading this, you were right. Its easier to build from a test than to write all the tests when you're done. I know this now. I'm working on it.
 > ### Dependencies
 * ReactJS
   * Context API (state management)
