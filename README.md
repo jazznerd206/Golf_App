@@ -21,7 +21,7 @@
 #### Users can register and login to save scores. The registration is a simple username/password combination, accepts strings in any format (lower/uppercase, numbers, special characters)
 ### 2. Score Entry
 #### To enter a score, click the "Add Round" button from the dashboard. Select the desired course from the list, then select if you are entering total scores or hole by hole scores. Totals will ask you for score, putts and anyway strokes, and hole by hole will ask for the same statistics by hole. __*RBS is best utilized hole by hole.*__
-* Due to golf course databases being prohibitively expensive (5k/year) and this being a passion project, I have chosen to let users add courses as need be. If you do not see the course you would like to input scores for in the list, please enter the course data by clicking the "Add Course" button from the dashboard. It requires the following data: ({ TOTALS: Par, total Yardage, course rating, hole count,}{HOLES: par, yardage, handicap}). 
+* Due to golf course databases being prohibitively expensive (5k/year) and this being a passion project, I have chosen to let users add courses as need be. If you do not see the course you would like to input scores for in the list, please enter the course data by clicking the "Add Course" button from the dashboard. It requires the following data: ({ TOTALS: course name, par, yardage, course rating, hole count,}{HOLES: par, yardage, handicap}). 
 ### 3. View scores
 #### To view your saved scores, click "View Rounds" button from dashboard. This loads your saved round data and displays the totals from each round as a datapoint on the screen. If hole by hole data is available, the round will appear as a link. Clicking on the round will provide score card data.
 ***
