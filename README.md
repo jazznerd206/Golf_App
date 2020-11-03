@@ -24,6 +24,7 @@
 * Due to golf course databases being prohibitively expensive (5k/year) and this being a passion project, I have chosen to let users add courses as need be. If you do not see the course you would like to input scores for in the list, please enter the course data by clicking the "Add Course" button from the dashboard. It requires the following data: ({ TOTALS: Par, total Yardage, course rating, hole count,}{HOLES: par, yardage, handicap}). 
 ### 3. View scores
 #### To view your saved scores, click "View Rounds" button from dashboard. This loads your saved round data and displays the totals from each round as a datapoint on the screen. If hole by hole data is available, the round will appear as a link. Clicking on the round will provide score card data.
+***
 > ### How to help
 1. Any code edits will be processed using git flow. Please submit a [pull request](https://github.com/jazznerd206/Golf_App/pulls) here.
 2. Icebox items --
@@ -36,6 +37,7 @@
   * Currently having some issues with async functions not firing until after page load, resulting in data for analytics not being available until refresh. hmm.
 * TEST SUITE
   * Josh told me to always start with a test. Josh, if you're reading this, you were right. Its easier to build from a test than to write all the tests when you're done. I know this now. I'm working on it.
+***
 > ### Dependencies
 * ReactJS
   * Context API (state management)
@@ -57,5 +59,6 @@
   * PG
 * Passport
   * Passport-Local
+***
 > ## Builder
 ## __*Andrew Miller*__
