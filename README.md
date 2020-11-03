@@ -14,6 +14,7 @@
 3. "What's that bug doing on my ball?"
 4. "My grip feels funny."
 5. And for the most common: "Just make a good swing."
+#### __The anyway stroke requires a great deal of *personal honesty*, just like the game of golf__. Sometimes, a bad shot is just a bad shot, even if you were prepared for it, and sometimes an anyway stroke can result in a good shot. You'll need to find out for yourself what your anyway strokes look like, and record them honestly. If I had to guess, you will have more of them than you think the first few times you play. 
 ***
 > ## Usage
 ### 1. Register/Login
