@@ -17,22 +17,25 @@ import AddCourse from '../../components/Add_Course/AddCourse';
 import AddRound from '../../components/Add_Round/AddRound';
 import ViewRounds from '../../components/View_Rounds/ViewRounds';
 import ViewHoles from '../../components/View_Holes/ViewHoles';
-// import DataBoard from '../../components/Data_Board/DataBoard';
+import DataBoard from '../../components/Data_Board/DataBoard';
 
-function Dashboard(rounds) {
+function Dashboard(props) {
 
     const { isLoggedIn, setLoggedIn } = useContext(UserContext);
     const { user, applyUser } = useContext(UserContext);
-    // const [ rounds, setRounds ] = useState([]); 
+    console.log(`user rounds ${user.rounds}`)
+    const [ rounds, setRounds ] = useState([]); 
     
     // const roundFetch = async () => {
-    //     const roundsToSet = await user.rounds
+    //     const roundsToSet = user.rounds;
     //     console.log(`rounds to set ${roundsToSet}`)
     //     setRounds(roundsToSet)
     // }
     // useEffect(() => {
     //     roundFetch();
     // }, [])
+
+    console.log(`props.data ${props.data}`)
 
 
         return (
@@ -68,7 +71,7 @@ function Dashboard(rounds) {
                     </Switch>
                 </div>
                 <div className="dataBoard-wrapper">
-                    {/* <DataBoard data={rounds} /> */}
+                    <DataBoard data={props.data} />
                 </div>
 
             </div>

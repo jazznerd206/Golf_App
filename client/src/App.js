@@ -48,7 +48,7 @@ function App() {
 
   return (
     <div className="App">
-      <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser}}>
+      <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser, rounds}}>
       <Router>
         <Navbar />
           <Switch>
