@@ -51,23 +51,11 @@ function Dashboard(props) {
                         Add Round
                     </button>
                     </Link>
-                    <Link to="/dashboard/viewRounds">
-                    <button type="button">
-                        View Rounds
-                    </button>
-                    </Link>
-                    <Link to="/dashboard">
-                    <button type="button">
-                        Back
-                    </button>
-                    </Link>
 
 
                     <Switch>
                         <Route exact path='/dashboard/addCourse' component={AddCourse} />
                         <Route exact path='/dashboard/addRound' component={AddRound} />
-                        <Route exact path='/dashboard/viewRounds' component={ViewRounds} />
-                        <Route path='/dashboard/viewByHoles' component={ViewHoles} />
                     </Switch>
                 </div>
                 <div className="dataBoard-wrapper">

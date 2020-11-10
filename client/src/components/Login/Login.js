@@ -32,10 +32,14 @@ function Login() {
                 password
             }).then(response => {
                 if (response.data.loggedIn === true ) {
-                    Cookie.set('auth', response.data.id);
-                    // console.log("logged in user response on front end " + JSON.stringify(response.data))
+                    Cookie.set('auth', response.data.data.id);
+                    console.log('===============================================================');
+                    console.log('===============================================================');
+                    console.log("logged in user response on front end " + JSON.stringify(response.data))
+                    console.log('===============================================================');
+                    console.log('===============================================================');
                     setLoggedIn(true);
-                    applyUser(response.data.user);
+                    applyUser(response.data.data);
                     setName('');
                     setPassword('');
                 }
@@ -45,7 +49,7 @@ function Login() {
                 }
             }).catch(err => {
                 console.log("front end err " + err);
-                setMsg(err);
+                // setMsg(err);
             })
         
         

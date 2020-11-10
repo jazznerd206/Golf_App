@@ -4,22 +4,23 @@ import API from '../../utils/API.js';
 
 // USER CONTEXT
 import { UserContext } from '../../UserContext.js';
+import ViewRounds from '../View_Rounds/ViewRounds.js';
 
 function DataBoard(props) {
 
     const { user } = useContext(UserContext);
 
-    console.log(user.rounds);
+    // console.log(user.rounds);
 
-    const getHoles = () => {
-        const options = '{where:{id:1}}'
-        API.getAllHolesWhere(options)
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
-    }
-    useEffect(() => {
-        getHoles();
-    }, [])
+    // const getHoles = () => {
+    //     const options = '{where:{id:1}}'
+    //     API.getAllHolesWhere(options)
+    //         .then(res => console.log(res))
+    //         .catch(err => console.log(err));
+    // }
+    // useEffect(() => {
+    //     getHoles();
+    // }, [])
 
     return (
         
@@ -27,11 +28,7 @@ function DataBoard(props) {
             {user.rounds ? 
             (
                 <div>
-                    {user.rounds.map(round => (
-                        <div key={round.id}>
-                            {round.totalScore}
-                        </div>
-                    ))}
+                    <ViewRounds />
                 </div>
             ) : (
                 null

@@ -99,6 +99,8 @@ function ViewRounds() {
 
     if (roundsWithHoles.length > 0 || roundsWithOutHoles.length > 0) {
         return (
+        <div>
+            <h1>My rounds</h1>
             <div className="viewRound-wrapper">
                 {roundsWithHoles.map((round, index) => (
                     <div key={round.id}>
@@ -159,6 +161,7 @@ function ViewRounds() {
                     </div>
                 ))}
             </div>
+        </div>
         )
     }
     return (

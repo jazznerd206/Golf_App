@@ -80,19 +80,35 @@ exports.login_user = (req, res, next) => {
         if (user.password != req.body.password) {
             return res.json('Incorrect password.');
         }
-        // res.redirect('/dashboard')
-        //console.log('user in the req.login ' + user);
-        req.logIn(user, err => {
-            if (err) {return next(JSON.stringify(err))}
-            // res.redirect('/dashboard')
-            return res.json({
-                success: true,
-                username: user.username,
-                id: user.id,
-                user,
-                loggedIn: true
-            })
-        })
+        Users.findOne(
+            {
+                where: {
+                    id: user.id
+                }, include: [{
+                    model: UserRounds,
+                    as: 'rounds'
+                  }]
+                }).then(data => {
+                    console.log(`data from users login ${JSON.stringify(data)}`)
+                    req.logIn(user, err => {
+                        if (err) {return next(JSON.stringify(err))}
+                        console.log('===============================================================');
+                        console.log('===============================================================');
+                        console.log("logged in user response on front end " + JSON.stringify(user))
+                        console.log('===============================================================');
+                        console.log('===============================================================');
+                        return res.json({
+                            success: true,
+                            username: user.username,
+                            id: user.id,
+                            data,
+                            loggedIn: true
+                        })
+                    })
+                }).catch(err => {
+                    console.log(err);
+                })
+        
         // next()
         // console.log('req.user after p.auth' + req.user.username)
     })(req, res, next)
