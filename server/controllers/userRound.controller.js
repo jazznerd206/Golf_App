@@ -1,3 +1,4 @@
+const sequelize = require('sequelize');
 const db = require('../models');
 const UserRounds = db['userRound'];
 const UserHoles = db['userHole'];
@@ -22,11 +23,14 @@ exports.get_all_userRounds = (req, res) => {
 }
 
 exports.get_all_userRounds_where = (req, res) => {
-  UserRounds.findAll({
-    include: [{
-      model: UserHoles,
-      as: 'userHoles'
-    }]
+  // console.log(req.params.value);
+  UserRounds.findOne({
+      attributes: { include: [[sequelize.fn('min', sequelize.col('totalScore')), 'totalScore']] },
+      raw: true,
+      // include: [{
+      //   model: UserHoles,
+      //   as: 'userHoles'
+      // }]
   })
     .then(rounds => {
         res.send(rounds);

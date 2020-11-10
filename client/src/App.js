@@ -44,7 +44,6 @@ function App() {
       userFetch();
   }, [])
 
-  console.log(JSON.stringify(rounds));
 
   return (
     <div className="App">
@@ -55,9 +54,7 @@ function App() {
               <Route exact path="/" component={Main} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
-              {/* <UserContext.Consumer> */}
-                <ProtectedRoute path="/dashboard" component={Dashboard} data={rounds}/>
-              {/* </UserContext.Consumer> */}
+              <ProtectedRoute path="/dashboard" component={Dashboard} data={rounds}/>
           </Switch>
       </Router>
       </UserContext.Provider>

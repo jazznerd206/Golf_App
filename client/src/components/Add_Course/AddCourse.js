@@ -1,5 +1,5 @@
 // REACT DEPENDENCIES
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 
 // IMPORT API
@@ -16,7 +16,7 @@ function AddCourse() {
     const [ par, setPar ] = useState(0);
     const [ rating, setRating ] = useState(0.0);
     const [ holes, setHoles] = useState([]);
-    const [ courseIdent, setCourseIdent] = useState(0);
+    // const [ courseIdent, setCourseIdent] = useState(0);
 
     // HOLE STATE SETTERS
     const [ holePar, setHolePar ] = useState(0);
@@ -39,15 +39,8 @@ function AddCourse() {
             rating,
             // holes
         })
-        // setCourseName('');
-        // setLengthYards(0);
-        // setLengthHoles(0);
-        // setPar(0);
-        // setRating(0);
-        // setCourseCreated(true)
         setFormIndex(formIndex + 1);
     }
-    // console.log(`courseIdent ${courseIdent}`)
 
     // ADD HOLES TO DB UPON EACH ITERATION OF THE FORM
     // ITERATIONS ARE DETERMINED BY HOLE COUNT SET IN THE 
@@ -82,7 +75,7 @@ function AddCourse() {
         setRating(0);
         setHoles([]);
         setHoleCount(1);
-        setCourseIdent(0)
+        // setCourseIdent(0)
     }
 
     const formBack = event => {
@@ -90,13 +83,13 @@ function AddCourse() {
         setFormIndex(formIndex - 1);
     }
 
-    const retrieveID = () => { 
-        API.getCourse(courseName).then(response => {
-            console.log(response.data)
-            // setCourseIdent(response.data.id);
-            // setCourseName('')
-            })
-    }
+    // const retrieveID = () => { 
+    //     API.getCourse(courseName).then(response => {
+    //         console.log(response.data)
+    //         // setCourseIdent(response.data.id);
+    //         // setCourseName('')
+    //         })
+    // }
 
     // useEffect(() => {
     //     retrieveID();

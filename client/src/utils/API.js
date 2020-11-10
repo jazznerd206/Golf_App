@@ -60,23 +60,23 @@ export default {
             })
         },
     
-        logoutUser: function(user) {
-            return new Promise((resolve, reject) =>{
-                axios.post("/api/users/logout", user)
-                .then(response => {
-                    if (response.data) {
-                        resolve(response)
-                    }
-                    else{
-                        console.log('log in error')
-                    }
-                })
-                .catch(error => {
-                    reject(Error('logout server error: ' + JSON.stringify(error)))
-                })
+    logoutUser: function(user) {
+        return new Promise((resolve, reject) =>{
+            axios.post("/api/users/logout", user)
+            .then(response => {
+                if (response.data) {
+                    resolve(response)
+                }
+                else{
+                    console.log('log out error')
+                }
             })
-        
-        },
+            .catch(error => {
+                reject(Error('log out server error: ' + JSON.stringify(error)))
+            })
+        })
+    
+    },
 
 
     // =======================================
@@ -173,10 +173,10 @@ export default {
     // =======================================
     // GET ALL ROUNDS
     // =======================================
-    getAllScoresWhere: function() {
+    getLowRound: function() {
         // console.log(`api axios post get all scores`);
         return new Promise((resolve, reject) => {
-            axios.get(`/api/userRounds`)
+            axios.get(`/api/userRounds/where`)
             .then(response => {
                 // console.log(`response.data from get all scores where ${JSON.stringify(response.data)}`)
                 if (response.data) {
@@ -194,7 +194,7 @@ export default {
     // =======================================
 
     // =======================================
-    // GET ALL ROUNDS
+    // GET ALL HOLES WHERE
     // =======================================
     getAllHolesWhere: function(options) {
         // console.log();
@@ -221,7 +221,7 @@ export default {
     // GET SINGLE ROUND
     // =======================================
     getRound: function(roundID) {
-        console.log(`api axios post get single round ${roundID}`);
+        // console.log(`api axios post get single round ${roundID}`);
         return new Promise((resolve, reject) => {
             axios.get(`/api/userRounds/single/${roundID}`)
             .then(response => {
@@ -245,7 +245,7 @@ export default {
     // GET ROUNDS BY USER ID
     // =======================================
     getRounds: function(userID) {
-        console.log(`api axios post ${userID}`);
+        // console.log(`api axios post ${userID}`);
         if (userID === undefined) {
             console.log(`undefined user`)
             return(null);

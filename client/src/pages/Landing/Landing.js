@@ -4,8 +4,8 @@ import './styles.css';
 
 // COMPONENTS
 import Header from '../../components/Header/Header';
-import TopScores from '../../components/Top_Scores/Top_Scores';
-import NewestScores from '../../components/Newest_Scores/Newest_Scores';
+// import TopScores from '../../components/Top_Scores/Top_Scores';
+// import NewestScores from '../../components/Newest_Scores/Newest_Scores';
 
 
 

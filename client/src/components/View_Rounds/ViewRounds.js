@@ -1,6 +1,6 @@
 // REACT DEPENDENCIES
 import React, { useState, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import './styles.css';
 
 // API FUNCTIONS
@@ -28,13 +28,12 @@ function ViewRounds() {
         // console.log(typeof data.data)
         data.data.forEach(round => {
             if (round.userHoles.length > 0) {
-                console.log(`with holes ${round.id}`)
+                // console.log(`with holes ${round.id}`)
                 setRoundsWithHoles(roundsWithHoles => [...roundsWithHoles, round])
             } else if (round.userHoles.length === 0) {
-                console.log(`no holes attached to this round ${round.id}`)
+                // console.log(`no holes attached to this round ${round.id}`)
                 setRoundsWithOutHoles(roundsWithOutHoles => [...roundsWithOutHoles, round])
             }
-            // setRounds(rounds => [...rounds, round])
         })
     }
     useEffect(() => {
@@ -48,9 +47,9 @@ function ViewRounds() {
 
     const askForRoundData = async (event) => {
         event.preventDefault();
-        console.log(`ask for round data ${event.target.value}`);
+        // console.log(`ask for round data ${event.target.value}`);
         const roundToSet = await API.getRound(event.target.value);
-        console.log(roundToSet)
+        // console.log(roundToSet)
         setRound(roundToSet.data[0])
         setViewHoles(true);
     }

@@ -1,26 +1,30 @@
 // REACT DEPENDENCIES
 import React, { useState, useEffect, useContext } from 'react';
-import API from '../../utils/API.js';
+// import API from '../../utils/API.js';
 
 // USER CONTEXT
 import { UserContext } from '../../UserContext.js';
+import API from '../../utils/API.js';
 import ViewRounds from '../View_Rounds/ViewRounds.js';
 
 function DataBoard(props) {
 
     const { user } = useContext(UserContext);
+    const [ lowRound, setLowRound ] = useState({});
 
-    // console.log(user.rounds);
-
-    // const getHoles = () => {
-    //     const options = '{where:{id:1}}'
-    //     API.getAllHolesWhere(options)
-    //         .then(res => console.log(res))
-    //         .catch(err => console.log(err));
-    // }
-    // useEffect(() => {
-    //     getHoles();
-    // }, [])
+    const bestRound = () => {
+        if (user.rounds) {
+            API.getLowRound()
+                .then((data) => {
+                    // console.log(data)
+                    setLowRound(data.data)
+                })
+                .catch(err => console.log(err));
+        }
+    }
+    useEffect(() => {
+        bestRound();
+    }, [user]);
 
     return (
         
@@ -28,6 +32,9 @@ function DataBoard(props) {
             {user.rounds ? 
             (
                 <div>
+                    <div className="best-round">
+                        {lowRound.totalScore}
+                    </div>
                     <ViewRounds />
                 </div>
             ) : (
