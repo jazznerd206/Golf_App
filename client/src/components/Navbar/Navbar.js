@@ -3,6 +3,8 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './styles.css';
 import Cookie from 'js-cookie';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
 
 // API FUNCTIONS
 import API from '../../utils/API';
@@ -11,7 +13,7 @@ import API from '../../utils/API';
 import { UserContext } from '../../UserContext.js';
 
 
-function Navbar() {
+function NavbarContainer() {
 
     const { isLoggedIn, setLoggedIn } = useContext(UserContext);
     // const { applyUser } = useContext(UserContext);
@@ -38,43 +40,67 @@ function Navbar() {
     if (isLoggedIn === true) {
     return (
         <div className="navbar-wrapper">
-            <div className="navbar-right">
-                <span><h1>Welcome {user.username}</h1></span>
-            </div>
-            <div className="form-group row">
-            <button 
-                type="submit" 
-                onClick={submitLogout} 
-                className="btn btn-outline-light fadeUp">
-                Log Out
-            </button>
-        </div>
+            <Navbar
+                sticky="top"
+                bg="dark" 
+                expand="lg"
+            >
+                    <Navbar.Brand href="#">
+                       <h1>Rare Bird Society</h1> 
+                    </Navbar.Brand>                        
+                    <div className="">
+                        
+                    </div>
+                    <Navbar.Collapse className="justify-content-end">
+                        <Link to="/">
+                            <button type="button">
+                                Home
+                            </button>
+                        </Link>
+                        <button 
+                            type="submit" 
+                            onClick={submitLogout} 
+                            className="">
+                            Log Out
+                        </button>
+                    </Navbar.Collapse>
+            </Navbar>
         </div>
     )}
     return (
-        <div className="navbar-wrapper">
-            <div className="navbar-right">
-                <span><h1>Rare Bird Society</h1></span>
-            </div>
-            <div className="navbar-center">
-            <Link to="/">
-                <button type="button">
-                    Home
-                </button>
-            </Link>
-            <Link to="/login">
-                <button type="button">
-                    Login
-                </button>
-            </Link>
-            <Link to="/register">
-                <button type="button">
-                    Register
-                </button>
-            </Link>
-            </div>
+        <div>
+            <Navbar
+                sticky="top"
+                bg="dark" 
+                expand="lg"
+            >
+                    <Navbar.Brand href="#">
+                       <h1>Rare Bird Society</h1> 
+                    </Navbar.Brand>                        
+                    <div className="">
+                        
+                    </div>
+                    <Navbar.Collapse className="justify-content-end">
+                        <Link to="/">
+                            <button type="button">
+                                Home
+                            </button>
+                        </Link>
+                        <Link to="/login">
+                            <button type="button">
+                                Login
+                            </button>
+                        </Link>
+                        <Link to="/register">
+                            <button type="button">
+                                Register
+                            </button>
+                        </Link>
+                    </Navbar.Collapse>
+            </Navbar>
         </div>
+        
     )
 }
 
-export default Navbar;
+export default NavbarContainer;

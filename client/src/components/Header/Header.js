@@ -16,12 +16,7 @@ function Header() {
                 <h1>THINK MORE.</h1>
                 <h1>SWING LESS.</h1>
             </div>
-            <div>
-                <h2>
-                    Welcome to the Rare Bird Society.
-                </h2>
-            </div>
-            <div className="header-body">
+            {/* <div className="header-body">
                 <div className="header-row blue">
                     <div className="header-row-left">
                         <div className="header-content">
@@ -44,13 +39,13 @@ function Header() {
                             At the Rare Bird Society, tracking your anyway shots in addition to your score will allow you to dial in where your mistakes happen. Analysis of round data will provide you with metrics you can use in future rounds.
                         </div>
                     </div>
-                </div>
+                </div> */}
                 {/* <div>
                     <button>
                         Learn More
                     </button>
                 </div> */}
-            </div>
+            {/* </div> */}
             {/* <div className="stat-container">
                 <HeaderChartOne />
                 <HeaderChartTwo />
