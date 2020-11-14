@@ -9,21 +9,16 @@ import ViewRounds from '../View_Rounds/ViewRounds.js';
 function DataBoard(props) {
 
     const { user } = useContext(UserContext);
-    const [ lowRound, setLowRound ] = useState({});
+    const [ lowRound, setLowRound ] = useState([]);
 
-    const bestRound = () => {
-        if (user.rounds) {
-            API.getLowRound()
-                .then((data) => {
-                    console.log(data)
-                    setLowRound(data.data)
-                })
-                .catch(err => console.log(err));
-        }
+    const bestRound = async () => {
+        const dataHolder = await API.getLowRound();
+        const d = await dataHolder.data;
+        setLowRound(d);        
     }
     useEffect(() => {
         bestRound();
-    }, [user]);
+    }, [user, lowRound]);
 
     return (
         
@@ -32,7 +27,11 @@ function DataBoard(props) {
             (
                 <div>
                     <div className="best-round">
-                        {lowRound[0].totalScore}
+                        {lowRound.map((score, index) => (
+                            <div key={index}>
+                                {score.totalScore}
+                            </div>
+                        ))}
                         {console.log(lowRound)}
                     </div>
                     <ViewRounds />

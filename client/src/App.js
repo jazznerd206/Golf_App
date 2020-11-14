@@ -35,8 +35,10 @@ function App() {
         setLoggedIn(false);
     } else {
       const userData = await API.findUser(result);
-      applyUser(userData.data);
-      setRounds(userData.data.rounds)
+      const dataHolder = await userData.data;
+      console.log(`dataHolder ${JSON.stringify(dataHolder)}`)
+      applyUser(dataHolder);
+      setRounds(dataHolder.rounds)
       setLoggedIn(true);
     }
   }
