@@ -49,7 +49,7 @@ function App() {
     <div className="App">
       <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser, rounds}}>
       <Router>
-        <NavbarContainer />
+        {/* <NavbarContainer /> */}
           <Switch>
               <Route exact path="/" component={Main} />
               <Route exact path="/login" component={Login} />

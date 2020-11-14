@@ -42,11 +42,10 @@ function NavbarContainer() {
         <div className="navbar-wrapper">
             <Navbar
                 sticky="top"
-                bg="dark" 
-                expand="lg"
+                expand="sm"
             >
                     <Navbar.Brand href="#">
-                       <h1>Rare Bird Society</h1> 
+                       <h1>Rare Bird Society {user.username}</h1> 
                     </Navbar.Brand>                        
                     <div className="">
                         
@@ -71,8 +70,7 @@ function NavbarContainer() {
         <div>
             <Navbar
                 sticky="top"
-                bg="dark" 
-                expand="lg"
+                expand="sm"
             >
                     <Navbar.Brand href="#">
                        <h1>Rare Bird Society</h1> 

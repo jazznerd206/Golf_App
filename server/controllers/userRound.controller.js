@@ -22,10 +22,11 @@ exports.get_all_userRounds = (req, res) => {
     });
 }
 
-exports.get_all_userRounds_where = (req, res) => {
+exports.get_all_userRounds_lowest = (req, res) => {
   // console.log(req.params.value);
-  UserRounds.findOne({
-      attributes: { include: [[sequelize.fn('min', sequelize.col('totalScore')), 'totalScore']] },
+  UserRounds.findAll({
+      where: { userID: 1 },
+      attributes: [[sequelize.fn('min', sequelize.col('totalScore')), 'totalScore']],
       raw: true,
       // include: [{
       //   model: UserHoles,

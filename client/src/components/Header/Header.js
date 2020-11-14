@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from '../Navbar/Navbar'
 
 import './styles.css';
 
@@ -12,6 +13,7 @@ function Header() {
 
     return (
         <div className="header-wrapper">
+            <Navbar />
             <div className="header-title">
                 <h1>THINK MORE.</h1>
                 <h1>SWING LESS.</h1>

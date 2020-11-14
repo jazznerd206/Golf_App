@@ -12,6 +12,7 @@ import { Route, Switch, Link } from 'react-router-dom';
 // COMPONENT IMPORTS
 import AddCourse from '../../components/Add_Course/AddCourse';
 import AddRound from '../../components/Add_Round/AddRound';
+import Navbar from '../../components/Navbar/Navbar';
 
 import DataBoard from '../../components/Data_Board/DataBoard';
 
@@ -33,6 +34,7 @@ function Dashboard(props) {
 
         return (
             <div className="dashboard-wrapper">
+                <Navbar />
                 <div className="router-wrapper">
                     <Link to="/dashboard/addcourse">
                     <button type="button">

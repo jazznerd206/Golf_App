@@ -1,6 +1,8 @@
 .header-wrapper {
     width: 100%;
     height: auto;
+    position: relative;
+    top: -15;
     /* background: #EEEEEE; */
 }
 

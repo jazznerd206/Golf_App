@@ -1,14 +1,15 @@
-/* .navbar-wrapper {
+.navbar-wrapper {
     padding: 50px 0px;
     margin: 0 auto;
-    width: 100%;
+    width: auto;
     height: 200px;
-    background-image: url('../../Images/Fairway.JPG');
+    /* background: blue; */
+    /* background-image: url('../../Images/Fairway.JPG');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: cover; */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     position: relative;
-} */
+}

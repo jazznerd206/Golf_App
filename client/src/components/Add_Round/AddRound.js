@@ -36,7 +36,8 @@ function AddRound() {
         API.getCourses().then(response => {
             setCourses(response.data)
         })
-        API.getAllScoresWhere().then(response => {
+        let options = JSON.stringify({where:{id:user.id}});
+        API.getAllHolesWhere(options).then(response => {
             setRounds(response.data)
         })
     }

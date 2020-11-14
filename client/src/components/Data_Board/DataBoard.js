@@ -1,6 +1,5 @@
 // REACT DEPENDENCIES
 import React, { useState, useEffect, useContext } from 'react';
-// import API from '../../utils/API.js';
 
 // USER CONTEXT
 import { UserContext } from '../../UserContext.js';
@@ -16,7 +15,7 @@ function DataBoard(props) {
         if (user.rounds) {
             API.getLowRound()
                 .then((data) => {
-                    // console.log(data)
+                    console.log(data)
                     setLowRound(data.data)
                 })
                 .catch(err => console.log(err));
@@ -33,7 +32,8 @@ function DataBoard(props) {
             (
                 <div>
                     <div className="best-round">
-                        {lowRound.totalScore}
+                        {lowRound[0].totalScore}
+                        {console.log(lowRound)}
                     </div>
                     <ViewRounds />
                 </div>

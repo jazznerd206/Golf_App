@@ -56,7 +56,7 @@ function ViewRounds() {
     
     if (viewHoles === true) {
         return (
-        <div className="singleRound-wrapper">
+        <div className="singleRound-wrapper" key={round.id}>
             <div className="hole-container">
                 <div className="hole-data-point">{round.course}</div>
                 <div className="hole-data-point">{round.coursePar}</div>
@@ -136,26 +136,24 @@ function ViewRounds() {
                     </div>
                 ))}
                 {roundsWithOutHoles.map((round, index) => (
-                    <div>
-                        <div className="round-container" key={index}>
-                            <div className="round-date">
-                                <span className="round-data-point">{round.date}</span>
-                            </div>
-                            <div className="round-course">
-                                <p>Course: <span className="round-data-point">{round.course}</span></p>
-                            </div>
-                            <div className="round-coursePar">
-                            <p>Par: <span className="round-data-point">{round.coursePar}</span></p>
-                            </div>
-                            <div className="round-courseRating">
-                            <p>Rating: <span className="round-data-point">{round.courseRating}</span></p>
-                            </div>
-                            <div className="round-score">
-                            <p>Score: <span className="round-data-point">{round.totalScore}</span></p>
-                            </div>
-                            <div className="round-AWstrokes">
-                            <p>Anyway: <span className="round-data-point">{round.totalAWstrokes}</span></p>
-                            </div>
+                    <div className="round-container" key={index}>
+                        <div className="round-date">
+                            <span className="round-data-point">{round.date}</span>
+                        </div>
+                        <div className="round-course">
+                            <p>Course: <span className="round-data-point">{round.course}</span></p>
+                        </div>
+                        <div className="round-coursePar">
+                        <p>Par: <span className="round-data-point">{round.coursePar}</span></p>
+                        </div>
+                        <div className="round-courseRating">
+                        <p>Rating: <span className="round-data-point">{round.courseRating}</span></p>
+                        </div>
+                        <div className="round-score">
+                        <p>Score: <span className="round-data-point">{round.totalScore}</span></p>
+                        </div>
+                        <div className="round-AWstrokes">
+                        <p>Anyway: <span className="round-data-point">{round.totalAWstrokes}</span></p>
                         </div>
                     </div>
                 ))}
