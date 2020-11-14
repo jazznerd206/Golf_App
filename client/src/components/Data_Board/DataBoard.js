@@ -18,7 +18,7 @@ function DataBoard(props) {
     }
     useEffect(() => {
         bestRound();
-    }, [user, lowRound]);
+    }, []);
 
     return (
         
