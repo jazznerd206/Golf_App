@@ -7,7 +7,7 @@ require('dotenv').config();
 
 module.exports = {
     "development": {
-        "username": 'root',
+        "username": 'andrew',
         "password": process.env.MYSQL_PW,
         "database": 'golf_db',
         "host": 'localhost',

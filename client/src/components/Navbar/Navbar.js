@@ -44,9 +44,9 @@ function NavbarContainer() {
                 sticky="top"
                 expand="sm"
             >
-                    <Navbar.Brand href="#">
+                    {/* <Navbar.Brand href="#">
                        <h1>Rare Bird Society {user.username}</h1> 
-                    </Navbar.Brand>                        
+                    </Navbar.Brand>                         */}
                     <div className="">
                         
                     </div>
@@ -72,9 +72,9 @@ function NavbarContainer() {
                 sticky="top"
                 expand="sm"
             >
-                    <Navbar.Brand href="#">
-                       <h1>Rare Bird Society</h1> 
-                    </Navbar.Brand>                        
+                    {/* <Navbar.Brand href="#"> */}
+                       {/* <h1>Rare Bird Society</h1>  */}
+                    {/* </Navbar.Brand>*/}
                     <div className="">
                         
                     </div>

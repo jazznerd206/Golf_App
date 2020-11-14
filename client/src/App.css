@@ -2,23 +2,20 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Asap&display=swap');
 
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
 * {
   margin: 0 0 0 0;
   padding: 0 0 0 0;
-  font-family: 'Poppins';
+  font-family: 'Asap';
 }
 
 .App {
   text-align: center;
-  /* background: linear-gradient(to bottom, #C0C0C0, #D3D3D3); */
   min-height: 100vh;
   width: auto;
-  /* display: flex;
-  flex-direction: column; */
-
 }
 
 button {
