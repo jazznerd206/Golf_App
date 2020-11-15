@@ -41,8 +41,8 @@ function ViewRounds() {
                         <td>{round.course}</td>
                         <td>{round.coursePar}</td>
                         {/* <td>{round.par}</td> */}
+                        <td>{round.totalScore} ({round.totalScore - round.coursePar})</td>
                         <td>{round.putts}</td>
-                        <td>{round.totalScore}</td>
                         <td>{round.totalAWstrokes}</td>
                     </tr>
                 )
@@ -53,7 +53,7 @@ function ViewRounds() {
                         <td>{round.date.slice(0,10)}</td>
                         <td>{round.course}</td>
                         <td>{round.coursePar}</td>
-                        <td>{round.totalScore}</td>
+                        <td>{round.totalScore} ({round.totalScore - round.coursePar})</td>
                         <td>{round.putts}</td>
                         <td>{round.totalAWstrokes}</td>
                         <td>
