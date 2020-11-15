@@ -32,7 +32,7 @@ function DataBoard(props) {
                                 {score.totalScore}
                             </div>
                         ))}
-                        {console.log(lowRound)}
+                        {/* {console.log(lowRound)} */}
                     </div>
                     <ViewRounds />
                 </div>

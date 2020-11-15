@@ -67,3 +67,20 @@
     border: 1px solid #CFCFCF;
     padding: 5px 5px;
 }
+
+#rounds {
+    border: 1px solid black;
+    margin: 0 auto;
+}
+
+#rounds th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: green;
+    color: white;
+}
+#rounds td, #rounds th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }

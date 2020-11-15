@@ -36,7 +36,7 @@ function App() {
     } else {
       const userData = await API.findUser(result);
       const dataHolder = await userData.data;
-      console.log(`dataHolder ${JSON.stringify(dataHolder)}`)
+      // console.log(`dataHolder ${JSON.stringify(dataHolder)}`)
       applyUser(dataHolder);
       setRounds(dataHolder.rounds)
       setLoggedIn(true);
