@@ -28,7 +28,7 @@ function DataBoard(props) {
                 <div>
                     <div className="best-round">
                         {lowRound.map((score, index) => (
-                            <div key={index}>
+                            <div key={index - 2}>
                                 {score.totalScore}
                             </div>
                         ))}

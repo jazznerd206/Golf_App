@@ -33,6 +33,7 @@ function Dashboard(props) {
     // }, [])
 
         return (
+        <div className="background-wrapper">
             <div className="dashboard-wrapper">
                 <Navbar />
                 <div className="router-wrapper">
@@ -58,6 +59,7 @@ function Dashboard(props) {
                 </div>
 
             </div>
+        </div>
         )
     }
 

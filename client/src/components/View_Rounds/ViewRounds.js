@@ -22,7 +22,8 @@ function ViewRounds() {
         const userID = user.id
         const data = await API.getRounds(userID);
         // console.log(data.data);
-        data.data.forEach(newRound => {
+        const d = await data.data;
+        d.forEach(newRound => {
             setRound(round => [...round, newRound])
 
         })
@@ -45,7 +46,8 @@ function ViewRounds() {
                         <td>{round.totalAWstrokes}</td>
                     </tr>
                 )
-            } else if (round.userHoles.length > 0) {
+            } 
+            else if (round.userHoles.length > 0) {
                 return (
                     <tr key={round.id}>
                         <td>{round.date.slice(0,10)}</td>
@@ -60,13 +62,12 @@ function ViewRounds() {
                                 value={round.id}
                                 onClick={askForRoundData} 
                                 className="">
-                                    View Round
+                                    Scorecard
                             </button>
                         </td>
                     </tr>
                 )
             }
-            
         })
     }
 
@@ -79,6 +80,7 @@ function ViewRounds() {
                 <th>SCORE</th>
                 <th>PUTTS</th>
                 <th>AW STROKES</th>
+                <th>SCORECARD</th>
                 </>
             )    
     }
@@ -90,7 +92,7 @@ function ViewRounds() {
 
     const askForRoundData = async (event) => {
         event.preventDefault();
-        // console.log(`ask for round data ${event.target.value}`);
+        console.log(`ask for round data ${event.target.value}`);
         const roundToSet = await API.getRound(event.target.value);
         console.log(roundToSet)
         setIndividualRound(roundToSet.data[0])
