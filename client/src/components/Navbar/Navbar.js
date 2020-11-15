@@ -1,10 +1,12 @@
 // REACT DEPENDENCIES
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Route, Link } from 'react-router-dom';
 import './styles.css';
 import Cookie from 'js-cookie';
 import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
+// import Container from 'react-bootstrap/Container';
+import Login from '../Login/Login.js';
+import Register from '../Register/Register.js';
 
 // API FUNCTIONS
 import API from '../../utils/API';
@@ -16,11 +18,16 @@ import { UserContext } from '../../UserContext.js';
 function NavbarContainer() {
 
     const { isLoggedIn, setLoggedIn } = useContext(UserContext);
-    // const { applyUser } = useContext(UserContext);
     const { user, applyUser } = useContext(UserContext);
+    const [ login, setShowLogin ] = useState(false);
+    const [ register, setShowRegister ] = useState(false);
 
-    // const history = useHistory();
-
+    const showLogin = () => {
+        setShowLogin(true);
+    }
+    const showReg = () => {
+        setShowRegister(true);
+    }
 
     const submitLogout = (event) => {
         event.preventDefault();
@@ -84,16 +91,32 @@ function NavbarContainer() {
                                 Home
                             </button>
                         </Link>
-                        <Link to="/login">
-                            <button type="button">
+                        {/* <Link to="/login"> */}
+                            {/* <button type="button"> */}
+                                {/* Login */}
+                            {/* </button> */}
+                        {/* </Link> */}
+                        {login ? (
+                            <Login />
+                        ):(
+                            <button type="button" onClick={showLogin}>
                                 Login
                             </button>
-                        </Link>
+                        )}
+                        {register ? (
+                            <Register />
+                        ):(
+                            <button type="button" onClick={showReg}>
+                                Register
+                            </button>
+                        )}
+
+                        {/* <Route exact path="/login" component={Login} />
                         <Link to="/register">
                             <button type="button">
                                 Register
                             </button>
-                        </Link>
+                        </Link> */}
                     </Navbar.Collapse>
             </Navbar>
         </div>

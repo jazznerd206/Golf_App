@@ -63,11 +63,10 @@ function Register() {
         return (
             <div className="register-wrapper">
                 <div className="register-form">
-                    <h3>Sign Up</h3>
                     <form>
                         <div className="form-group row">
-                            <label htmlFor="username" className="col-sm-2 col-form-label fadeUp">User Name</label>
-                            <div className="col-sm-10">
+                            <label htmlFor="username" className="">User Name</label>
+                            <div className="">
                                 <input
                                     type="text"
                                     className="form-control fadeUp"
@@ -80,8 +79,8 @@ function Register() {
                             </div>
                         </div>
                         <div className="form-group row">
-                            <label htmlFor="inputPassword" className="col-sm-2 col-form-label fadeUp">Password</label>
-                            <div className="col-sm-10">
+                            <label htmlFor="inputPassword" className="">Password</label>
+                            <div className="">
                                 <input
                                     type="password"
                                     className="form-control fadeUp"

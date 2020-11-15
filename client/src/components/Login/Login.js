@@ -62,10 +62,9 @@ function Login() {
         <div className="login-wrapper">
             <div className="login-form">
                 <form>
-                    <h3>Log In</h3>
                     <div className="form-group row">
                         <label htmlFor="username" className="">User Name</label>
-                        <div className="col-sm-10">
+                        <div className="">
                             <input
                                 type="text"
                                 className=""
@@ -79,7 +78,7 @@ function Login() {
                     </div>
                     <div className="form-group row">
                         <label htmlFor="inputPassword" className="">Password</label>
-                        <div className="col-sm-10">
+                        <div className="">
                             <input
                                 type="password"
                                 className=""
@@ -98,6 +97,12 @@ function Login() {
                             onClick={submitLogin} 
                             className="btn btn-outline-light fadeUp">
                             Log In
+                        </button>
+                        <button 
+                            type="submit" 
+                            href='/'
+                            className="btn btn-outline-light fadeUp">
+                            Back
                         </button>
                     </div>
                     <div className="error-message">
