@@ -1,5 +1,6 @@
 // REACT DEPENDENCIES
 import React, { useState, useEffect, useContext } from 'react';
+import './styles.css';
 
 // USER CONTEXT
 import { UserContext } from '../../UserContext.js';
@@ -20,6 +21,32 @@ function DataBoard(props) {
         bestRound();
     }, []);
 
+    const avgAw = function () {
+        let num = 0;
+        user.rounds.forEach(round => {
+            num += round.totalAWstrokes;
+        })
+        num = Math.floor(num / user.rounds.length);
+        return (
+            <div>
+                {num}
+            </div>
+        )
+    }
+
+    const avgScore = function () {
+        let num = 0;
+        user.rounds.forEach(round => {
+            num += round.totalScore;
+        })
+        num = Math.floor(num / user.rounds.length);
+        return (
+            <div>
+                {num}
+            </div>
+        )
+    }
+
     return (
         
         <div className="dataBoard-wrapper">
@@ -27,11 +54,24 @@ function DataBoard(props) {
             (
                 <div>
                     <div className="best-round">
+                        <div className="user-data total-rounds">
+                            <p>ROUNDS</p>
+                            {user.rounds.length}
+                        </div>
+                        <div className=" user-data avg-score">
+                            <p>AVERAGE</p>
+                            {avgScore()}
+                        </div>
                         {lowRound.map((score, index) => (
-                            <div key={index - 2}>
-                                {score.totalScore}
+                            <div className="user-data" key={index - 2}>
+                                <p>BEST</p>
+                               {score.totalScore}
                             </div>
                         ))}
+                        <div className="user-data avg-aw">
+                            <p>AW/round</p>
+                            {avgAw()}
+                        </div>
                         {/* {console.log(lowRound)} */}
                     </div>
                     <ViewRounds />
