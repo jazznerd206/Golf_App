@@ -134,8 +134,8 @@ exports.read_a_user = (req, res, next) => {
         where: {
         id: req.params.userId
     }, include: [{
-        model: UserRounds,
-        as: 'rounds'
+        all: true,
+        nested: true
       }]
     })
     .then(user => {
