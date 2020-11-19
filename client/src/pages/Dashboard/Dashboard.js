@@ -1,17 +1,6 @@
 import React from 'react';
 import './styles.css';
 import { Route, Switch, Link } from 'react-router-dom';
-// import Cookies from 'js-cookie';
-// import API from '../../utils/API.js';
-
-// USER CONTEXT
-// import { UserContext } from '../../UserContext.js';
-
-
-
-// COMPONENT IMPORTS
-import AddCourse from '../../components/Add_Course/AddCourse';
-import AddRound from '../../components/Add_Round/AddRound';
 import Navbar from '../../components/Navbar/Navbar';
 
 import DataBoard from '../../components/Data_Board/DataBoard';
@@ -36,24 +25,6 @@ function Dashboard(props) {
         <div className="background-wrapper">
             <div className="dashboard-wrapper">
                 <Navbar />
-                <div className="router-wrapper">
-                    <Link to="/dashboard/addcourse">
-                    <button type="button">
-                        Add Course
-                    </button>
-                    </Link>
-                    <Link to="/dashboard/addRound">
-                    <button type="button">
-                        Add Round
-                    </button>
-                    </Link>
-
-
-                    <Switch>
-                        <Route exact path='/dashboard/addCourse' component={AddCourse} />
-                        <Route exact path='/dashboard/addRound' component={AddRound} />
-                    </Switch>
-                </div>
                 <div className="dataBoard-wrapper">
                     <DataBoard data={props.data} />
                 </div>

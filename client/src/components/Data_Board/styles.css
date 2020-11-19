@@ -1,5 +1,14 @@
+.rounds {
+    width: 1000px;
+    height: auto;
+    margin: 0 auto;
+    padding: 50px 0px;
+    background-color: rgb(102,178,114,.25)
+}
+
 .best-round {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
     opacity: 1;
@@ -11,7 +20,7 @@
     justify-content: space-around;
     width: 250px;
     height: 250px;
-    margin: 0 auto;
+    margin: 25px 25px;
     background: #D3D3D3;
     font-size: 2rem;
 }
