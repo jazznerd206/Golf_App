@@ -24,7 +24,7 @@ function BestRound(props) {
             <h1> best round here 
                 {lowRound.map((score, index) => (
                     <div className="user-data" key={index - 2}>
-                        <p>BEST</p>
+                        <p>BEST ROUND</p>
                         {score.totalScore}
                     </div>
             ))}</h1>
