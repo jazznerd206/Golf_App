@@ -11,14 +11,13 @@ import ViewRounds from '../View_Rounds/ViewRounds.js';
 import AddCourse from '../../components/Add_Course/AddCourse';
 import AddRound from '../../components/Add_Round/AddRound';
 import BestRound from './Best_Round/BestRound.js';
+import RoundData from './Round_Data/RoundData.js';
 
 function DataBoard(props) {
 
     const { user } = useContext(UserContext);
     const [ lowRound, setLowRound ] = useState([]);
-    const [ par3avg, setPar3Avg] = useState(0);
-    const [ par4avg, setPar4Avg] = useState(0);
-    const [ par5avg, setPar5Avg] = useState(0);
+  
 
     const bestRound = async () => {
         const dataHolder = await API.getLowRound();
@@ -33,22 +32,25 @@ function DataBoard(props) {
         
         <div className="dataBoard-wrapper">
                 <div className="rounds">
+
                     <div className="best-round">
                         <BestRound />
                     </div>
-                        <div className="router-wrapper">
+                    <div className="round-data">
+                        <RoundData />
+                    </div>
+                    
+                    <div className="router-wrapper">
                         <Link to="/dashboard/addcourse">
-                        <button type="button">
+                            <button type="button">
                             Add Course
-                        </button>
+                            </button>
                         </Link>
                         <Link to="/dashboard/addRound">
-                        <button type="button">
+                            <button type="button">
                             Add Round
-                        </button>
+                            </button>
                         </Link>
-
-
                         <Switch>
                             <Route exact path='/dashboard/addCourse' component={AddCourse} />
                             <Route exact path='/dashboard/addRound' component={AddRound} />
