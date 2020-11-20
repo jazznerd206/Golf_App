@@ -25,7 +25,7 @@ exports.get_all_userRounds = (req, res) => {
 exports.get_all_userRounds_lowest = (req, res) => {
   // console.log(req.params.value);
   UserRounds.findAll({
-      where: { userID: 1 },
+      where: { userID: req.params.userID },
       attributes: [[sequelize.fn('min', sequelize.col('totalScore')), 'totalScore']],
       raw: true,
       // include: [{

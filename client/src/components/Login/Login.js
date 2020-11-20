@@ -38,10 +38,10 @@ function Login() {
                     // console.log("logged in user response on front end " + JSON.stringify(response.data))
                     // console.log('===============================================================');
                     // console.log('===============================================================');
-                    setLoggedIn(true);
                     applyUser(response.data.data);
                     setName('');
                     setPassword('');
+                    setLoggedIn(true);
                 }
                 if (response.data.loggedIn === false) {
                     // console.log(response.data)

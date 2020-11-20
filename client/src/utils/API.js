@@ -173,10 +173,10 @@ export default {
     // =======================================
     // GET ALL ROUNDS
     // =======================================
-    getLowRound: function () {
+    getLowRound: function (userID) {
         // console.log(`api axios post get all scores`);
         return new Promise((resolve, reject) => {
-            axios.get(`/api/userRounds/lowest`)
+            axios.get(`/api/userRounds/lowest/${userID}`)
                 .then(response => {
                     // console.log(`response.data from get all scores where ${JSON.stringify(response.data)}`)
                     if (response.data) {

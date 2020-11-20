@@ -10,6 +10,7 @@ import API from '../../utils/API.js';
 import ViewRounds from '../View_Rounds/ViewRounds.js';
 import AddCourse from '../../components/Add_Course/AddCourse';
 import AddRound from '../../components/Add_Round/AddRound';
+import BestRound from './Best_Round/BestRound.js';
 
 function DataBoard(props) {
 
@@ -55,55 +56,56 @@ function DataBoard(props) {
     //     )
     // }
 
-    const dataByHole = async () => {
-        const data = user.rounds;
-        let par3 = [];
-        let par4 = []
-        let par5 = [];
-        data.forEach(round => {
-            if (round.userHoles.length > 0) {
-                round.userHoles.forEach(hole => {
-                    if (hole.par === 3) {
-                        par3.push(hole);
-                    } else if (hole.par === 4) {
-                        par4.push(hole);
-                    } else if (hole.par === 5) {
-                        par5.push(hole);
-                    }
-                })
-            }
-        })
-        const Par3 = () => {
-            let num = 0;
-            par3.forEach(hole => {
-                num += hole.score;
-            })
-            let avg = num/par3.length;
-            setPar3Avg(avg.toFixed(1));
-        }
-        Par3();
-        const Par4 = () => {
-            let num = 0;
-            par4.forEach(hole => {
-            num += hole.score;
-            })
-            let avg = num/par4.length;
-            setPar4Avg(avg.toFixed(1));
-        }
-        Par4();
-        const Par5 = () => {
-            let num = 0;
-            par5.forEach(hole => {
-            num += hole.score;
-            })
-            let avg = num/par5.length;
-            setPar5Avg(avg.toFixed(1));
-        }
-        Par5();
-    }
-    useEffect(() => {
-        dataByHole();
-    }, [])
+    // const dataByHole = async () => {
+    //     const data = user.rounds;
+    //     let par3 = [];
+    //     let par4 = []
+    //     let par5 = [];
+    //     data.forEach(round => {
+    //         if (round.userHoles.length > 0) {
+    //             round.userHoles.forEach(hole => {
+    //                 if (hole.par === 3) {
+    //                     par3.push(hole);
+    //                 } else if (hole.par === 4) {
+    //                     par4.push(hole);
+    //                 } else if (hole.par === 5) {
+    //                     par5.push(hole);
+    //                 }
+    //             })
+    //         }
+    //     })
+    //     const Par3 = () => {
+    //         let num = 0;
+    //         par3.forEach(hole => {
+    //             num += hole.score;
+    //         })
+    //         let avg = num/par3.length;
+    //         setPar3Avg(avg.toFixed(1));
+    //     }
+    //     Par3();
+    //     const Par4 = () => {
+    //         let num = 0;
+    //         par4.forEach(hole => {
+    //         num += hole.score;
+    //         })
+    //         let avg = num/par4.length;
+    //         setPar4Avg(avg.toFixed(1));
+    //     }
+    //     Par4();
+    //     const Par5 = () => {
+    //         let num = 0;
+    //         par5.forEach(hole => {
+    //         num += hole.score;
+    //         })
+    //         let avg = num/par5.length;
+    //         setPar5Avg(avg.toFixed(1));
+    //     }
+    //     Par5();
+    // }
+    // useEffect(() => {
+    //     if (!user) return;
+    //     dataByHole();
+    // }, [])
 
     return (
         
@@ -124,6 +126,8 @@ function DataBoard(props) {
                                {score.totalScore}
                             </div>
                         ))}
+                        <hr></hr>
+                        <BestRound />
                         {/* <div className="user-data avg-aw">
                             <p>AW/round</p>
                             {avgAw()}

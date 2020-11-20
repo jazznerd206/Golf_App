@@ -19,14 +19,18 @@ function ViewRounds() {
     const { user } = useContext(UserContext)
 
     const roundFetch = async () => {
-        const userID = user.id
-        const data = await API.getRounds(userID);
+        const userID = user.id;
+        const response = await API.getRounds(userID);
         // console.log(data.data);
-        const d = await data.data;
-        d.forEach(newRound => {
-            setRound(round => [...round, newRound])
+        if (response === null) {
+            return;
+        } else  {
+            const d = await response.data;
+            d.forEach(newRound => {
+                setRound(round => [...round, newRound])
+            })
+        }
 
-        })
     }
     useEffect(() => {
         roundFetch();

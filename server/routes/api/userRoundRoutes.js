@@ -14,7 +14,7 @@ console.log('user round routes');
     router.route('/single/:roundID')
         .get(userRound.get_single_round)
 
-    router.route('/lowest')
+    router.route('/lowest/:userID')
         .get(userRound.get_all_userRounds_lowest)
         
     router.route('/:Id')

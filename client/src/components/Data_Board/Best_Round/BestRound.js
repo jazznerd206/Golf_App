@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import API from '../../../utils/API.js';
+import { UserContext } from '../../../UserContext.js';
 
 
 function BestRound(props) {
 
     const [ lowRound, setLowRound ] = useState([]);
+    const { user } = useContext(UserContext);
 
     const bestRound = async () => {
-        const dataHolder = await API.getLowRound();
+        const dataHolder = await API.getLowRound(user.id);
         const d = await dataHolder.data;
+        console.log(d)
         setLowRound(d);
     }
     useEffect(() => {
@@ -18,12 +21,13 @@ function BestRound(props) {
 
     return (
         <div>
-            <h1> best round here {lowRound.map((score, index) => (
-                            <div className="user-data" key={index - 2}>
-                                <p>BEST</p>
-                               {score.totalScore}
-                            </div>
-                        ))}</h1>
+            <h1> best round here 
+                {lowRound.map((score, index) => (
+                    <div className="user-data" key={index - 2}>
+                        <p>BEST</p>
+                        {score.totalScore}
+                    </div>
+            ))}</h1>
         </div>
     )
 }
