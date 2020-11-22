@@ -14,10 +14,12 @@ function RoundData() {
 
     const roundData = () => {
         let allHoles = [];
+        // console.log(user.rounds)
         user.rounds.forEach(round => {
-            datas.push([round.totalScore, round.coursePar, round.totalAWstrokes, round.putts])
+            // datas.push({score: round.totalScore, par: round.coursePar, putts:round.putts});
+            datas.push({name:round.id, date:round.date, score:+round.totalScore, par:round.coursePar, putts:+round.putts});
         })
-        
+        // console.log(datas)
     }
 
     useEffect(() => {
@@ -26,16 +28,16 @@ function RoundData() {
     }, []);
 
     const changeData = () => {
-        setData(datas[i++]);
-        if(i === datas.length) i = 0;
+        setData(datas);
+        // if(i === datas.length) i = 0;
     }
 
 
     return (
-        <div className="App">
-            <h2>Hole Data</h2>
+        <div className="hole-data">
+            <h2>ALL ROUNDS</h2>
             <button onClick={changeData}>Change Data</button>
-            <BarChart width={300} height={400} data={data} />
+            <BarChart width={300} height={200} data={data} />
         </div>
     );
 }

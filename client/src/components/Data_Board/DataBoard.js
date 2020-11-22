@@ -34,7 +34,7 @@ function DataBoard(props) {
                 <div className="rounds">
 
                     <div className="best-round">
-                        <BestRound />
+                        {/* <BestRound /> */}
                     </div>
                     <div className="round-data">
                         <RoundData />

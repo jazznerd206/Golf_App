@@ -11,7 +11,7 @@ function BestRound(props) {
     const bestRound = async () => {
         const dataHolder = await API.getLowRound(user.id);
         const d = await dataHolder.data;
-        console.log(d)
+        // console.log(d)
         setLowRound(d);
     }
     useEffect(() => {
