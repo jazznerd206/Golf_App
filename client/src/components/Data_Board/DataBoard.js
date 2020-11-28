@@ -10,7 +10,7 @@ import API from '../../utils/API.js';
 import ViewRounds from '../View_Rounds/ViewRounds.js';
 import AddCourse from '../../components/Add_Course/AddCourse';
 import AddRound from '../../components/Add_Round/AddRound';
-import BestRound from './Best_Round/BestRound.js';
+// import BestRound from './Best_Round/BestRound.js';
 import RoundData from './Round_Data/RoundData.js';
 import RoundAverages from './Averages/RoundAverages.js';
 import Averages from './Averages/HoleAverages.js';
@@ -36,13 +36,13 @@ function DataBoard(props) {
                 <div className="rounds">
                     <div className="round-averages">
                         <div className="db-title">
-                            <h1>Rounds</h1>
+                            <h1>Totals</h1>
                         </div>
                         <RoundAverages />
                     </div>
                     <div className="hole-averages">
                         <div className="db-title">
-                            <h1>My Birdshots</h1>
+                            <h1>Birdshots</h1>
                         </div>
                         <Averages />
                     </div>
@@ -67,7 +67,6 @@ function DataBoard(props) {
                         </Switch>
                     </div>
                     <ViewRounds />
-                    {/* {dataByHole()} */}
                 </div>
   
             
