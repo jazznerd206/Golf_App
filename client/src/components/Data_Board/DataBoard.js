@@ -12,6 +12,8 @@ import AddCourse from '../../components/Add_Course/AddCourse';
 import AddRound from '../../components/Add_Round/AddRound';
 import BestRound from './Best_Round/BestRound.js';
 import RoundData from './Round_Data/RoundData.js';
+import RoundAverages from './Averages/RoundAverages.js';
+import Averages from './Averages/HoleAverages.js';
 
 function DataBoard(props) {
 
@@ -19,22 +21,30 @@ function DataBoard(props) {
     const [ lowRound, setLowRound ] = useState([]);
   
 
-    const bestRound = async () => {
-        const dataHolder = await API.getLowRound();
-        const d = await dataHolder.data;
-        setLowRound(d);        
-    }
-    useEffect(() => {
-        bestRound();
-    }, []);
+    // const bestRound = async () => {
+    //     const dataHolder = await API.getLowRound();
+    //     const d = await dataHolder.data;
+    //     setLowRound(d);        
+    // }
+    // useEffect(() => {
+    //     bestRound();
+    // }, []);
 
     return (
         
         <div className="dataBoard-wrapper">
                 <div className="rounds">
-
-                    <div className="best-round">
-                        {/* <BestRound /> */}
+                    <div className="round-averages">
+                        <div className="db-title">
+                            <h1>Rounds</h1>
+                        </div>
+                        <RoundAverages />
+                    </div>
+                    <div className="hole-averages">
+                        <div className="db-title">
+                            <h1>My Birdshots</h1>
+                        </div>
+                        <Averages />
                     </div>
                     <div className="round-data">
                         <RoundData />
