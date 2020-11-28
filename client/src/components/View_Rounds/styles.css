@@ -1,48 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+
 .viewRound-wrapper {
     margin: 50px 50px;
     background: grey;
     height: auto;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
-}
-
-.round-container {
-    margin: 10px 10px;
-    padding: 20px 20px;
-    background: silver;
-    height: auto;
-    line-height: 2em;
-    border-radius: 25px;
-}
-
-.round-container p {
-    font-weight: bolder;
-    font-size: xx-large;
-    font-family: monospace;
-}
-
-.round-container .round-data-point {
-    font-family: 'Roboto';
 }
 
 .singleRound-wrapper {
     display: flex;
     flex-direction: column;
-    width: 600px;
+    width: auto;
     margin: 0 auto;
     padding: 50px 100px;
-    color: white;
-    background: linear-gradient(to bottom, #192841, #152238);
-    border-radius: 25px;
-    border: 5px solid white;
+    color: black;
+    font-family: 'Asap';
+}
+
+.scorecard {
+    font-family: 'Poppins';
+    text-align: center;
+    font-weight: 900;
 }
 
 .scoreCard-wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     margin: 0 auto;
 }
 
@@ -51,25 +39,43 @@
     flex-direction: column;
     justify-content: space-around;
     text-align: right;
+    width: 100px;
 }
 
-.hole-container {
-    width: auto;
+.holes-container {
+    width: 60px;
 }
 
 .hole-data-column {
     display: flex;
-    flex-direction: column;
-
+    flex-direction: row;
 }
 
 .hole-data-point {
-    border: 1px solid #CFCFCF;
+    font-family: 'Asap';
+    width: auto;
+    /* border: 1px solid black; */
     padding: 5px 5px;
 }
 
+.hole-container .course-data-point {
+    width: auto;
+    /* border: 1px solid black; */
+    padding: 5px 5px;
+}
+
+.darkest {
+    background-color: #000000;
+    color: white;
+}
+
+.dark {
+    background-color: #666666;
+    color: white;
+}
+
 #rounds {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin: 0 auto;
     background: #ffffff;
 }
@@ -82,6 +88,6 @@
     color: white;
 }
 #rounds td, #rounds th {
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     padding: 8px;
   }

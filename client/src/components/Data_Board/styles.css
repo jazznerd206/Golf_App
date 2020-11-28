@@ -1,9 +1,17 @@
 .rounds {
-    width: 1000px;
+    width: auto;
     height: auto;
     margin: 0 auto;
     padding: 50px 0px;
     background-color: rgb(102,178,114,.25)
+}
+
+.viewRounds {
+    padding: 50px 0px;
+}
+
+.round-data {
+    padding: 50px 0px;
 }
 
 .best-round {
@@ -16,7 +24,7 @@
 
 .db-title h1 {
     font-weight: 900;
-    font-size: 5em;
+    font-size: 3em;
     letter-spacing: .1em;
     padding: 10px 10px;
 }

@@ -15,7 +15,7 @@ function RoundAverages() {
         return (
             <div className="lower-row">
                 <div className="title">
-                    <p>Average: </p>
+                    <p>Average score: </p>
                 </div>
                 <div className="value">
                     {average}
@@ -32,7 +32,7 @@ function RoundAverages() {
         return (
             <div className="lower-row">
                 <div className="title">
-                    <p>Putts: </p>
+                    <p>Average putts: </p>
                 </div>
                 <div className="value">
                     {average}
@@ -40,6 +40,7 @@ function RoundAverages() {
             </div>
         )
     }
+
     const averageMistakes = () => {
         let count = 0;
         user.rounds.forEach(round => {
@@ -49,7 +50,7 @@ function RoundAverages() {
         return (
             <div className="lower-row">
                 <div className="title">
-                    <p>Mistakes: </p>
+                    <p>Average mistakes: </p>
                 </div>
                 <div className="value">
                     {average}
@@ -58,8 +59,22 @@ function RoundAverages() {
         )
     }
 
+    const totalRounds = () => {
+        return (
+            <div className="lower-row">
+                <div className="title">
+                    <p>Total rounds: </p>
+                </div>
+                <div className="value">
+                    {user.rounds.length}
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div className="averages-wrapper">
+            {totalRounds()}
             {averageScore()}
             {averagePutts()}
             {averageMistakes()}

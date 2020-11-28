@@ -126,40 +126,42 @@ function ViewRounds() {
     if (viewHoles === true) {
         return (
         <div className="singleRound-wrapper" key={individualRound.id}>
-            <div className="hole-container">
-                <div className="hole-data-point">{individualRound.course}</div>
-                <div className="hole-data-point">{individualRound.coursePar}</div>
-                <div className="hole-data-point">{individualRound.courseRating}</div>
-            </div>
-            <div className="scoreCard-wrapper">
-                <div className="course-data-column">
-                    <div className="hole-data-point">Hole</div>
-                    <div className="hole-data-point">Par</div>
-                    <div className="hole-data-point">{individualRound.userName}</div>
-                    <div className="hole-data-point">Putts</div>
-                    <div className="hole-data-point">AW Strokes</div>
+            <div className="scorecard">
+                <div className="hole-container">
+                    <div className="course-data-point">{individualRound.course}</div>
+                    <div className="course-data-point">{individualRound.coursePar}</div>
+                    <div className="course-data-point">{individualRound.courseRating}</div>
                 </div>
-                {individualRound.userHoles.map((hole, index) => (
-                    <div className="hole-container" key={hole.id}>
-                        <div className="hole-data-point">{index + 1}</div>
-                        <div className="hole-data-point">{hole.par}</div>
-                        <div className="hole-data-point">{hole.score}</div>
-                        <div className="hole-data-point">{hole.putts}</div>
-                        <div className="hole-data-point">{hole.anywayStroke}</div>
+                <div className="scoreCard-wrapper">
+                    <div className="course-data-column">
+                        <div className="hole-data-point">Hole</div>
+                        <div className="hole-data-point">Par</div>
+                        <div className="hole-data-point">{individualRound.userName}</div>
+                        <div className="hole-data-point">Putts</div>
+                        <div className="hole-data-point">AW Strokes</div>
                     </div>
-                ))}
-                <div className="course-data-column">
-                    <div className="hole-data-point">Out</div>
-                    <div className="hole-data-point">{individualRound.coursePar}</div>
-                    <div className="hole-data-point">{individualRound.totalScore}</div>
-                    <div className="hole-data-point">{individualRound.putts}</div>
-                    <div className="hole-data-point">{individualRound.totalAWstrokes}</div>
+                    {individualRound.userHoles.map((hole, index) => (
+                        <div className="holes-container" key={hole.id}>
+                            <div className="hole-data-point darkest">{index + 1}</div>
+                            <div className="hole-data-point dark">{hole.par}</div>
+                            <div className="hole-data-point">{hole.score}</div>
+                            <div className="hole-data-point">{hole.putts}</div>
+                            <div className="hole-data-point">{hole.anywayStroke}</div>
+                        </div>
+                    ))}
+                    <div className="course-data-column">
+                        <div className="hole-data-point">Out</div>
+                        <div className="hole-data-point">{individualRound.coursePar}</div>
+                        <div className="hole-data-point">{individualRound.totalScore}</div>
+                        <div className="hole-data-point">{individualRound.putts}</div>
+                        <div className="hole-data-point">{individualRound.totalAWstrokes}</div>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <button onClick={backToRounds}>
-                    Back To Rounds
-                </button>
+                <div>
+                    <button onClick={backToRounds}>
+                        Back To Rounds
+                    </button>
+                </div>
             </div>
         </div>
         )

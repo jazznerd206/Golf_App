@@ -19,16 +19,6 @@ function DataBoard(props) {
 
     const { user } = useContext(UserContext);
     const [ lowRound, setLowRound ] = useState([]);
-  
-
-    // const bestRound = async () => {
-    //     const dataHolder = await API.getLowRound();
-    //     const d = await dataHolder.data;
-    //     setLowRound(d);        
-    // }
-    // useEffect(() => {
-    //     bestRound();
-    // }, []);
 
     return (
         
@@ -36,7 +26,7 @@ function DataBoard(props) {
                 <div className="rounds">
                     <div className="round-averages">
                         <div className="db-title">
-                            <h1>Totals</h1>
+                            <h1>Bird's Eye View</h1>
                         </div>
                         <RoundAverages />
                     </div>
@@ -46,10 +36,6 @@ function DataBoard(props) {
                         </div>
                         <Averages />
                     </div>
-                    <div className="round-data">
-                        <RoundData />
-                    </div>
-                    
                     <div className="router-wrapper">
                         <Link to="/dashboard/addcourse">
                             <button type="button">
@@ -66,7 +52,12 @@ function DataBoard(props) {
                             <Route exact path='/dashboard/addRound' component={AddRound} />
                         </Switch>
                     </div>
-                    <ViewRounds />
+                    <div className="viewRounds">
+                        <ViewRounds />
+                    </div>
+                    <div className="round-data">
+                        <RoundData />
+                    </div>
                 </div>
   
             
