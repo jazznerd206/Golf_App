@@ -57,7 +57,7 @@ function NavbarContainer() {
                     <div className="">
                         
                     </div>
-                    <Navbar.Collapse className="justify-content-end">
+                    {/* <Navbar.Collapse className="justify-content-end"> */}
                         <Link to="/">
                             <button type="button">
                                 Home
@@ -69,7 +69,7 @@ function NavbarContainer() {
                             className="">
                             Log Out
                         </button>
-                    </Navbar.Collapse>
+                    {/* </Navbar.Collapse> */}
             </Navbar>
         </div>
     )}
@@ -77,9 +77,9 @@ function NavbarContainer() {
         <div className="navbar-wrapper">
             <Navbar
                 sticky="top"
-                expand="sm"
+                expand="lg"
             >
-                <Navbar.Collapse className="justify-content-end">
+                {/* <Navbar.Collapse className="justify-content-end"> */}
                     <Link to="/">
                         <button type="button">
                             Home
@@ -114,7 +114,7 @@ function NavbarContainer() {
                             Register
                         </button>
                     </Link> */}
-                </Navbar.Collapse>
+                {/* </Navbar.Collapse> */}
             </Navbar>
         </div>
         
