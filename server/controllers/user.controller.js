@@ -85,8 +85,8 @@ exports.login_user = (req, res, next) => {
                 where: {
                     id: user.id
                 }, include: [{
-                    model: UserRounds,
-                    as: 'rounds'
+                    all: true,
+                    nested: true
                   }]
                 }).then(data => {
                     console.log(`data from users login ${JSON.stringify(data)}`)

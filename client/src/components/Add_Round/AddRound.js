@@ -98,7 +98,7 @@ function AddRound() {
             handicap: courseSelected.holes[objIndex].handicap,
             yardage: courseSelected.holes[objIndex].yardage, 
             score: holeByHoleScore,
-            greenInRegulation: holeByHoleGIR,
+            greenInRegulation: holeByHoleScore - holeByHolePutts <= courseSelected.holes[objIndex].par - 2,
             putts: holeByHolePutts,
             anywayStroke: holeByHoleAWstrokes,
             anywayType: holeByHoleAWstrokeType
