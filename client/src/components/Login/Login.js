@@ -25,7 +25,6 @@ function Login() {
 
     const submitLogin = (event) => {
         event.preventDefault();
-        // console.log(`User log in clicked ====== ${username} +++ ${password} ======`);
         API.loginUser(
             {
                 username,
@@ -45,17 +44,13 @@ function Login() {
                 }
                 if (response.data.loggedIn === false) {
                     // console.log(response.data)
-                    setMsg(response.data)
+                    console.log(response.data.data.id)
                 }
             }).catch(err => {
                 console.log("front end err " + err);
                 // setMsg(err);
-            })
-        
-        
+            })   
     }
-    // console.log(JSON.stringify(user))
-
     
     if (isLoggedIn === false) {
     return (
@@ -91,6 +86,9 @@ function Login() {
                             />
                         </div>
                     </div>
+                    <div className="error-msg">
+                        <span>{msg}</span>
+                    </div>
                     <div className="form-group row">
                         <button 
                             type="submit" 
@@ -106,7 +104,7 @@ function Login() {
                         </button>
                     </div>
                     <div className="error-message">
-                        {msg}
+                        {msg} error message here
                     </div>
                 </form>
             </div>

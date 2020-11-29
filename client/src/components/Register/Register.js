@@ -19,6 +19,7 @@ function Register() {
     // ON PAGE STATE
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+    const [ msg, setMsg ] = useState('');
 
     // HISTORY
     // const history = useHistory();
@@ -40,21 +41,51 @@ function Register() {
                 username: name,
                 password: password
             }
-        );
-        API.loginUser(
-            {
-                username: name,
-                password: password
-            }).then(response => {
-                if (response.data.loggedIn === true ) {
-                    console.log("logged in user response on front end " + JSON.stringify(response.data))
-                    Cookie.set('auth', response.data.id);
-                    applyUser(response.data.user);
-                    setLoggedIn(true);
-                }
-            }).catch(err => {
-                console.log(err);
-            })
+        ).then(response => {
+            if (response.success === true) {
+                API.loginUser(
+                    {
+                        username: name,
+                        password: password
+                    }).then(response => {
+                        if (response.data.loggedIn === true ) {
+                            Cookie.set('auth', response.data.data.id);
+                            // console.log('===============================================================');
+                            // console.log('===============================================================');
+                            // console.log("logged in user response on front end " + JSON.stringify(response.data))
+                            // console.log('===============================================================');
+                            // console.log('===============================================================');
+                            applyUser(response.data.data);
+                            setName('');
+                            setPassword('');
+                            setLoggedIn(true);
+                        }
+                        if (response.data.loggedIn === false) {
+                            // console.log(response.data)
+                            console.log(response.data.data.id)
+                        }
+                    }).catch(err => {
+                        console.log("front end err " + err);
+                        // setMsg(err);
+                    })
+            } else {
+                setMsg(response.error)
+            }
+;        })
+        // API.loginUser(
+        //     {
+        //         username: name,
+        //         password: password
+            // }).then(response => {
+            //     if (response.data.loggedIn === true ) {
+            //         console.log("logged in user response on front end " + JSON.stringify(response.data))
+            //         Cookie.set('auth', response.data.id);
+            //         applyUser(response.data.user);
+            //         setLoggedIn(true);
+            //     }
+        //     }).catch(err => {
+        //         console.log(err);
+        //     })
         setName('');
         setPassword('');
     }
@@ -92,6 +123,9 @@ function Register() {
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
+                        </div>
+                        <div className="error-msg">
+                            <span>{msg}</span>
                         </div>
                         <div className="form-group row">
                             <button 

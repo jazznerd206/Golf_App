@@ -27,17 +27,20 @@ export default {
 
     signUpUser: function (newUser) {
         console.log('axios post on the API page');
-        axios.post("/api/users", newUser)
+        return new Promise ((resolve, reject) => {
+            axios.post("/api/users", newUser)
             .then(response => {
                 if (response.data) {
-                    console.log(response.data);
+                    console.log(JSON.stringify(response.data));
+                    resolve(response.data);
                 } else {
                     console.log('Sign-up error');
                 }
             }).catch(error => {
                 console.log('Sign up server error: ');
-                console.log(error);
+                reject(Error('find user sign up error: ' + JSON.stringify(error)))
             });
+        })
     },
 
     loginUser: function (user) {

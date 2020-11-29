@@ -91,11 +91,11 @@ function NavbarContainer() {
                                 Home
                             </button>
                         </Link>
-                        {/* <Link to="/login"> */}
-                            {/* <button type="button"> */}
-                                {/* Login */}
-                            {/* </button> */}
-                        {/* </Link> */}
+                        <Link to="/login">
+                            <button type="button">
+                                Login
+                            </button>
+                        </Link>
                         {login ? (
                             <Login />
                         ):(
@@ -111,12 +111,12 @@ function NavbarContainer() {
                             </button>
                         )}
 
-                        {/* <Route exact path="/login" component={Login} />
+                        <Route exact path="/login" component={Login} />
                         <Link to="/register">
                             <button type="button">
                                 Register
                             </button>
-                        </Link> */}
+                        </Link>
                     </Navbar.Collapse>
             </Navbar>
         </div>

@@ -7,8 +7,8 @@ const passport = require('passport');
 exports.get_all_users = (req, res) => {
     Users.findAll({
         include: [{
-          model: UserRounds,
-          as: 'rounds'
+            all: true,
+            nested: true
         }]
       })
         .then(users => {
@@ -92,11 +92,11 @@ exports.login_user = (req, res, next) => {
                     console.log(`data from users login ${JSON.stringify(data)}`)
                     req.logIn(user, err => {
                         if (err) {return next(JSON.stringify(err))}
-                        console.log('===============================================================');
-                        console.log('===============================================================');
-                        console.log("logged in user response on front end " + JSON.stringify(user))
-                        console.log('===============================================================');
-                        console.log('===============================================================');
+                        // console.log('===============================================================');
+                        // console.log('===============================================================');
+                        // console.log("logged in user response on front end " + JSON.stringify(user))
+                        // console.log('===============================================================');
+                        // console.log('===============================================================');
                         return res.json({
                             success: true,
                             username: user.username,
