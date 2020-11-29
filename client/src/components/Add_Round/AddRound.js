@@ -131,7 +131,7 @@ function AddRound() {
             userID: user.id
         }
         API.createNewRound(newUserRound);
-        const roundID = rounds.length + 1;
+        const roundID = user.rounds.length + 1;
         console.log(roundID);
         arrayOfHoleByHole.forEach(hole => {
             const holeToDB = {
@@ -160,9 +160,10 @@ function AddRound() {
         setHoleByHole(false);
         setFullRoundScore(0);
         setAnywayStrokes(0);
+        setHoleByHoleAWstrokeType('');
         setArrayOfHoleByHole([]);
     }
-    console.log(`user on add round ${JSON.stringify(user.rounds)}`)
+    // console.log(`user on add round ${JSON.stringify(user.rounds)}`)
 
     // console.log(`course selected ${JSON.stringify(courseSelected)}`);
 
@@ -381,6 +382,7 @@ function AddRound() {
                                         onChange={(e) => setHoleByHoleAWstrokes(e.target.value)}
                                     />
                                 </div>
+                            </div>
                         <div className="form-group row">
                             <div className="course-data-point">
                             <label htmlFor="holeByHoleAWstrokeType" className=""><p>Type: </p></label>
@@ -399,7 +401,7 @@ function AddRound() {
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    
                         <button 
                             type="submit" 
                             onClick={submitHoleByHoleToHook} 
@@ -415,11 +417,47 @@ function AddRound() {
                     <h1>Review and submit round</h1>
                     <h3>round details</h3>
                     {arrayOfHoleByHole.map((hole, index) => (
-                        <div key={index}>
-                            {index + 1}
-                            {hole.par}
-                            {hole.score}
-                            {hole.anywayStroke}
+                        <div key={index} className="hole-row">
+                            <div className="individual-hole">
+                                <div className="text">
+                                    <p>Hole: </p>
+                                </div>
+                                <div className="value">
+                                    {index + 1}
+                                </div>
+                            </div>
+                            <div className="individual-hole">
+                                <div className="text">
+                                    <p>Par:</p>
+                                </div>
+                                <div className="value">
+                                    {hole.par}
+                                </div>
+                            </div>
+                            <div className="individual-hole">
+                                <div className="text">
+                                    <p>Score: </p>
+                                </div>
+                                <div className="value">
+                                    {hole.score}
+                                </div>
+                            </div>
+                            <div className="individual-hole">
+                                <div className="text">
+                                    <p>Putts: </p>
+                                </div>
+                                <div className="value">
+                                    {hole.putts}
+                                </div>
+                            </div>
+                            <div className="individual-hole">
+                                <div className="text">
+                                    <p>Mistakes: </p>
+                                </div>
+                                <div className="value">
+                                    {hole.anywayStroke}
+                                </div>
+                            </div>
                         </div>
                     ))}
                     <button 

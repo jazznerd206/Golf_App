@@ -1,10 +1,10 @@
 .addRound-wrapper {
-    background: linear-gradient(to top, #192841, #152238);
+    /* background: linear-gradient(to top, #192841, #152238); */
     padding: 50px 50px;
     margin: 50px 50px;
     margin-top: 100px;
     border-radius: 25px;
-    box-shadow: 0px 0px 25px #165b13;
+    /* box-shadow: 0px 0px 25px #165b13; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -14,10 +14,10 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    border: 1px solid silver;
-    background: silver;
-    color: white;
-    background: linear-gradient(to bottom, #192841, #152238);
+    /* border: 1px solid silver; */
+    /* background: silver; */
+    color: black;
+    /* background: linear-gradient(to bottom, #192841, #152238); */
     padding: 10px 10px;
 }
 
@@ -31,9 +31,9 @@
 .course-data-point {
     display: flex;
     flex-direction: row;
-    justify-items: space-between;
+    justify-items: center;
     padding: 0 10px;
-    border: 1px solid silver;
+    /* border: 1px solid silver; */
 }
 
 .form-group-row {
@@ -66,7 +66,21 @@
 }
 
 .input-field {
-    max-width: 40px;
+    max-width: 100px;
     margin-left: 10px;
     text-align: center;
+}
+
+.hole-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.individual-hole {
+    display: flex;
+    flex-direction: row;
+}
+
+.individual-hole p {
+    padding: 10px 10px;
 }
