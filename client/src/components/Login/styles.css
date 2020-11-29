@@ -10,8 +10,8 @@
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
-    color: white;
-    background: linear-gradient(to bottom, #192841, #152238);
+    color: black;
+    /* background: linear-gradient(to bottom, #192841, #152238); */
     padding: 30px 30px 30px 30px;
     /* width: 500px; */
     border-radius: 25px;

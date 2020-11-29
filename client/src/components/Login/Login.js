@@ -12,7 +12,7 @@ import API from '../../utils/API';
 import { UserContext } from '../../UserContext.js';
 
 
-function Login() {
+function Login(props) {
 
     const { isLoggedIn, setLoggedIn } = useContext(UserContext);
     const { applyUser } = useContext(UserContext)    
@@ -93,18 +93,19 @@ function Login() {
                         <button 
                             type="submit" 
                             onClick={submitLogin} 
-                            className="btn btn-outline-light fadeUp">
+                            className="">
                             Log In
                         </button>
                         <button 
-                            type="submit" 
-                            href='/'
-                            className="btn btn-outline-light fadeUp">
+                            // type="submit"
+                            // href='/'
+                            // onClick={props.onClick}
+                            className="">
                             Back
                         </button>
                     </div>
                     <div className="error-message">
-                        {msg} error message here
+                        {msg}
                     </div>
                 </form>
             </div>

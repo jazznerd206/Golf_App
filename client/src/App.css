@@ -35,3 +35,10 @@ button:hover {
   color: #d2dcfe;
   background: #192841;
 }
+
+.body-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}

@@ -51,13 +51,18 @@ function App() {
     <div className="App">
       <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser, rounds}}>
       <Router>
-        {/* <NavbarContainer /> */}
+        <div className="nav-top">
+          <NavbarContainer />
+        </div>
+        <div className="body-div">
           <Switch>
               <Route exact path="/" component={Main} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
               <ProtectedRoute path="/dashboard" component={Dashboard} data={rounds}/>
           </Switch>
+        </div>
+          
       </Router>
       </UserContext.Provider>
     </div>

@@ -1,5 +1,5 @@
 .background-wrapper {
-    position: relative;
+    position: absolute;
     min-height: 100vh;
     height: auto;
     width: 100%;

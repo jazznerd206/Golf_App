@@ -14,7 +14,7 @@ function Header() {
 
     return (
         <div className="header-wrapper">
-            <Navbar />
+            {/* <Navbar /> */}
             <div className="header-title">
                 <h1>THINK MORE, SWING LESS</h1>
             </div>
@@ -22,9 +22,9 @@ function Header() {
                 <HeaderChartOne />
                 <HeaderChartTwo />
             </div> */}
-            <div className="header-ball">
+            {/* <div className="header-ball">
                 <img src={GolfBall} alt="GolfBall"></img>
-            </div>
+            </div> */}
         </div>
     )
 }

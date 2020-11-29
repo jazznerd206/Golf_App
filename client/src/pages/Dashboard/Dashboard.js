@@ -24,7 +24,7 @@ function Dashboard(props) {
         return (
         <div className="background-wrapper">
             <div className="dashboard-wrapper">
-                <Navbar />
+                {/* <Navbar /> */}
                 <div className="dataBoard-wrapper">
                     <DataBoard data={props.data} />
                 </div>

@@ -100,7 +100,7 @@ function Register() {
                             <div className="">
                                 <input
                                     type="text"
-                                    className="form-control fadeUp"
+                                    className=""
                                     id="name"
                                     name={name}
                                     value={name}
@@ -114,7 +114,7 @@ function Register() {
                             <div className="">
                                 <input
                                     type="password"
-                                    className="form-control fadeUp"
+                                    className=""
                                     name={password}
                                     value={password}
                                     id="password"
@@ -131,9 +131,16 @@ function Register() {
                             <button 
                                 type="submit" 
                                 onClick={registerUser} 
-                                className="btn btn-outline-light fadeUp">
+                                className="">
                                 Register
                             </button>
+                            <button 
+                            type="submit" 
+                            // href='/'
+                            // onClick={props.onClick}
+                            className="">
+                            Back
+                        </button>
                         </div>
                     </form>
                 </div>

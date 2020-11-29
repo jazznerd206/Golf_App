@@ -23,7 +23,7 @@ function NavbarContainer() {
     const [ register, setShowRegister ] = useState(false);
 
     const showLogin = () => {
-        setShowLogin(true);
+        setShowLogin(!login);
     }
     const showReg = () => {
         setShowRegister(true);
@@ -74,50 +74,47 @@ function NavbarContainer() {
         </div>
     )}
     return (
-        <div>
+        <div className="navbar-wrapper">
             <Navbar
                 sticky="top"
                 expand="sm"
             >
-                    {/* <Navbar.Brand href="#"> */}
-                       {/* <h1>Rare Bird Society</h1>  */}
-                    {/* </Navbar.Brand>*/}
-                    <div className="">
+                <Navbar.Collapse className="justify-content-end">
+                    <Link to="/">
+                        <button type="button">
+                            Home
+                        </button>
+                    </Link>
+                    {/* <Link to="/login">
+                        <button type="button">
+                            Login
+                        </button>
+                    </Link> */}
+                    {login ? (
+                        <div>
+                            <Login onClick={setShowLogin}/>
+                            {/* <button  onClick={setShowLogin}>Back</button> */}
+                        </div>
                         
-                    </div>
-                    <Navbar.Collapse className="justify-content-end">
-                        <Link to="/">
-                            <button type="button">
-                                Home
-                            </button>
-                        </Link>
-                        <Link to="/login">
-                            <button type="button">
-                                Login
-                            </button>
-                        </Link>
-                        {login ? (
-                            <Login />
-                        ):(
-                            <button type="button" onClick={showLogin}>
-                                Login
-                            </button>
-                        )}
-                        {register ? (
-                            <Register />
-                        ):(
-                            <button type="button" onClick={showReg}>
-                                Register
-                            </button>
-                        )}
-
-                        <Route exact path="/login" component={Login} />
-                        <Link to="/register">
-                            <button type="button">
-                                Register
-                            </button>
-                        </Link>
-                    </Navbar.Collapse>
+                    ):(
+                        <button type="button" onClick={setShowLogin}>
+                            Login
+                        </button>
+                    )}
+                    {register ? (
+                        <Register />
+                    ):(
+                        <button type="button" onClick={showReg}>
+                            Register
+                        </button>
+                    )}
+                    {/* <Route exact path="/login" component={Login} /> */}
+                    {/* <Link to="/register">
+                        <button type="button">
+                            Register
+                        </button>
+                    </Link> */}
+                </Navbar.Collapse>
             </Navbar>
         </div>
         
