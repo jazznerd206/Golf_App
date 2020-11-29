@@ -278,17 +278,21 @@ export default {
 
     createNewRound: function (newUserRound) {
         console.log('axios post create round on the API page');
-        axios.post("/api/userRounds", newUserRound)
+        return new Promise((resolve, reject) => {
+            axios.post("/api/userRounds", newUserRound)
             .then(response => {
                 if (response.data) {
-                    console.log(response.data);
+                    console.log(response.data)
+                    resolve(response.data);
                 } else {
                     console.log('create user round error');
                 }
             }).catch(error => {
                 console.log('create user round server error: ');
-                console.log(error);
+                reject(error);
             });
+        })
+        
     },
 
     // =======================================

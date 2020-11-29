@@ -31,13 +31,14 @@ function AddRound() {
     const [ holeByHoleAWstrokes, setHoleByHoleAWstrokes ] = useState(0);
     const [ holeByHoleAWstrokeType, setHoleByHoleAWstrokeType ] = useState('');
     const [ arrayOfHoleByHole, setArrayOfHoleByHole ] = useState([]);
+    // const [ roundID, setRoundID ] = useState(0);
 
     const loadCourses = () => {
         API.getCourses().then(response => {
             setCourses(response.data)
         })
         let options = JSON.stringify({where:{id:user.id}});
-        API.getAllHolesWhere(options).then(response => {
+        API.getRounds(options).then(response => {
             setRounds(response.data)
         })
     }
@@ -130,25 +131,45 @@ function AddRound() {
             totalAWstrokes: anywayStrokes,
             userID: user.id
         }
-        API.createNewRound(newUserRound);
-        const roundID = user.rounds.length + 1;
-        console.log(roundID);
-        arrayOfHoleByHole.forEach(hole => {
-            const holeToDB = {
-                par: hole.par,
-                handicap: hole.handicap,
-                yardage: hole.yardage, 
-                score: hole.score,
-                putts: hole.putts,
-                greenInRegulation: hole.greenInRegulation,
-                scoreType: hole.score - hole.par,
-                anywayStroke: hole.anywayStroke,
-                anywayType: hole.anywayType,
-                courseID: roundID
-            }
-            // console.log(holeToDB);
-            API.createNewHole(holeToDB);
-        })
+        API.createNewRound(newUserRound)
+            .then(response => {
+                // setRoundID(response.roundIdent)
+                // console.log('roundID ' + roundID)
+                arrayOfHoleByHole.forEach(hole => {
+                    const holeToDB = {
+                        par: hole.par,
+                        handicap: hole.handicap,
+                        yardage: hole.yardage, 
+                        score: hole.score,
+                        putts: hole.putts,
+                        greenInRegulation: hole.greenInRegulation,
+                        scoreType: hole.score - hole.par,
+                        anywayStroke: hole.anywayStroke,
+                        anywayType: hole.anywayType,
+                        courseID: response.roundIdent
+                    }
+                    // console.log(holeToDB);
+                    API.createNewHole(holeToDB);
+                })
+            })
+            .catch(err => console.log(err));
+
+        // arrayOfHoleByHole.forEach(hole => {
+        //     const holeToDB = {
+        //         par: hole.par,
+        //         handicap: hole.handicap,
+        //         yardage: hole.yardage, 
+        //         score: hole.score,
+        //         putts: hole.putts,
+        //         greenInRegulation: hole.greenInRegulation,
+        //         scoreType: hole.score - hole.par,
+        //         anywayStroke: hole.anywayStroke,
+        //         anywayType: hole.anywayType,
+        //         courseID: roundID
+        //     }
+        //     // console.log(holeToDB);
+        //     API.createNewHole(holeToDB);
+        // })
         // ======================================
         // clear all data
         // ======================================

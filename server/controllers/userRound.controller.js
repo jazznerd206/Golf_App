@@ -45,16 +45,24 @@ exports.get_all_userRounds_lowest = (req, res) => {
 }
 
 exports.create_userRound = async (req,res) => {
+  console.log("============================")
+  console.log("============================")
   console.log(JSON.stringify(req.body));
-  //handles null error
+  console.log("============================")
+  console.log("============================")
   const roundCreate = await UserRounds.create(req.body)
       .then(round => {
           // console.log(course);
           // console.log(course.name);
-          res.send('round created');
+          console.log(`round id ${round.id}`)
+          return res.json({
+            success: true,
+            roundIdent: round.id
+          })
+          // res.sendStatus(round.id);
           })
       .catch(error => {
-              console.log('create a round error ' + JSON.stringify(error));
+              console.log('create a round error ' + error);
   })
 }
 
