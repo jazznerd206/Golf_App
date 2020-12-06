@@ -54,10 +54,8 @@ function NavbarContainer() {
                     {/* <Navbar.Brand href="#">
                        <h1>Rare Bird Society {user.username}</h1> 
                     </Navbar.Brand>                         */}
-                    <div className="">
-                        
-                    </div>
-                    {/* <Navbar.Collapse className="justify-content-end"> */}
+                    <Navbar.Toggle />
+                    <Navbar.Collapse className="justify-content-end">
                         <Link to="/">
                             <button type="button">
                                 Home
@@ -69,7 +67,7 @@ function NavbarContainer() {
                             className="">
                             Log Out
                         </button>
-                    {/* </Navbar.Collapse> */}
+                    </Navbar.Collapse>
             </Navbar>
         </div>
     )}
