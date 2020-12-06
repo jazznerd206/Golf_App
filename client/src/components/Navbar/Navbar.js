@@ -77,7 +77,8 @@ function NavbarContainer() {
                 sticky="top"
                 expand="lg"
             >
-                {/* <Navbar.Collapse className="justify-content-end"> */}
+                <Navbar.Toggle />
+                <Navbar.Collapse className="justify-content-end">
                     <Link to="/">
                         <button type="button">
                             Home
@@ -112,7 +113,7 @@ function NavbarContainer() {
                             Register
                         </button>
                     </Link> */}
-                {/* </Navbar.Collapse> */}
+                </Navbar.Collapse>
             </Navbar>
         </div>
         
