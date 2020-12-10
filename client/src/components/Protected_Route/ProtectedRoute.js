@@ -9,7 +9,7 @@ import { UserContext } from '../../UserContext.js';
 function ProtectedRoute({ component: Component, ...rest } ) {
 
 
-    const {isLoggedIn} = useContext(UserContext)
+    const { isLoggedIn } = useContext(UserContext)
     // console.log(`is logged in bool ${isLoggedIn}`);
 
     return (

@@ -103,11 +103,11 @@ function Login(props) {
                 </form>
             </div>
         </div>
-    )
-}
-    return(
-        <Redirect to='/dashboard'/>
-    )
+    )} else {
+        return(
+            <Redirect to='/dashboard'/>
+        )
+    }
 }
 
 export default Login;
