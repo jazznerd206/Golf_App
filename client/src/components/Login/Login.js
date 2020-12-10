@@ -32,23 +32,16 @@ function Login(props) {
             }).then(response => {
                 if (response.data.loggedIn === true ) {
                     Cookie.set('auth', response.data.data.id);
-                    // console.log('===============================================================');
-                    // console.log('===============================================================');
-                    // console.log("logged in user response on front end " + JSON.stringify(response.data))
-                    // console.log('===============================================================');
-                    // console.log('===============================================================');
                     applyUser(response.data.data);
                     setName('');
                     setPassword('');
                     setLoggedIn(true);
                 }
                 if (response.data.loggedIn === false) {
-                    // console.log(response.data)
                     console.log(response.data.data.id)
                 }
             }).catch(err => {
                 console.log("front end err " + err);
-                // setMsg(err);
             })   
     }
     
