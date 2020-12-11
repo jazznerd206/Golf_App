@@ -4,6 +4,7 @@ import './styles.css';
 
 // COMPONENTS
 import Header from '../../components/Header/Header';
+import Login from '../../components/Login/Login';
 import HeaderBelow from '../../components/Header_Below/HeaderBelow.js';
 // import Navbar from '../../components/Navbar/Navbar'
 // import TopScores from '../../components/Top_Scores/Top_Scores';
@@ -15,8 +16,8 @@ function Landing() {
 
     return (
             <div className="page-container">
-                {/* <Navbar /> */}
                 <Header />
+                <Login />
                 <HeaderBelow />
             </div>
     )

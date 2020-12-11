@@ -1,7 +1,7 @@
 // REACT DEPENDENCIES
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, useRouteMatch } from 'react-router-dom';
 import API from './utils/API'
 import './App.css';
 
@@ -21,7 +21,13 @@ import { UserContext } from './UserContext.js';
 
 
 
-function App() {
+function App(props) {
+
+  // console.log("===============================")
+  // console.log(props)
+  // console.log("===============================")
+  // console.log(useRouteMatch())
+  // console.log("===============================")
 
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [user, applyUser] = useState({});
@@ -49,24 +55,34 @@ function App() {
 
 
   return (
+    <BrowserRouter>
     <div className="App">
       <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser, rounds}}>
-      <Router>
+      
         <div className="nav-top">
           <NavbarContainer />
         </div>
         <div className="body-div">
           <Switch>
-              <Route exact path="/" component={Main} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/register" component={Register} />
-              <ProtectedRoute exact path="/dashboard" component={Dashboard} data={rounds}/>
+              <Route exact path="/">
+                <Landing />  
+              </Route>
+              <Route path="/login" >
+                <Login /> 
+              </Route>
+              <Route path="/register">
+                <Register />  
+              </Route>
+              <ProtectedRoute path="/dashboard">
+                <Dashboard  data={rounds}/>
+              </ProtectedRoute> 
           </Switch>
         </div>
           
-      </Router>
+      
       </UserContext.Provider>
     </div>
+    </BrowserRouter>
     
 
   );
