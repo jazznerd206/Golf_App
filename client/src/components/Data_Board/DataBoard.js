@@ -1,12 +1,12 @@
 // REACT DEPENDENCIES
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 
 import './styles.css';
 
 // USER CONTEXT
-import { UserContext } from '../../UserContext.js';
-import API from '../../utils/API.js';
+// import { UserContext } from '../../UserContext.js';
+// import API from '../../utils/API.js';
 import ViewRounds from '../View_Rounds/ViewRounds.js';
 import AddCourse from '../../components/Add_Course/AddCourse';
 import AddRound from '../../components/Add_Round/AddRound';
@@ -17,8 +17,8 @@ import Averages from './Averages/HoleAverages.js';
 
 function DataBoard(props) {
 
-    const { user } = useContext(UserContext);
-    const [ lowRound, setLowRound ] = useState([]);
+    // const { user } = useContext(UserContext);
+    // const [ lowRound, setLowRound ] = useState([]);
 
     return (
         

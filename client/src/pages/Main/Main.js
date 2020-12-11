@@ -10,6 +10,7 @@ function Main() {
 
     // CONTEXT FUNCTIONS FROM APP.JS
     const { isLoggedIn } = useContext(UserContext);
+    console.log(isLoggedIn)
 
 
     if (isLoggedIn === true) {

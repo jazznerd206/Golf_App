@@ -1,0 +1,15 @@
+.form-wrapper {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.form-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}

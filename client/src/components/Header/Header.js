@@ -1,14 +1,15 @@
 import React from 'react';
-import Navbar from '../Navbar/Navbar'
-import GolfBall from '../../Images/GolfBall.jpg'
+import Auth from '../Auth/Auth';
+import Login from '../Login/Login';
 
 import './styles.css';
+import { Redirect } from 'react-router-dom';
 
 // COMPONENTS
 // import HeaderChartOne from '../Header_Chart_One/HeaderChartOne.js';
 // import HeaderChartTwo from '../Header_Chart_One/HeaderChartTwo.js';
 
-function Header() {
+function Header(props) {
 
     
 
@@ -18,13 +19,8 @@ function Header() {
             <div className="header-title">
                 <h1>THINK MORE, SWING LESS</h1>
             </div>
-            {/* <div className="stat-container">
-                <HeaderChartOne />
-                <HeaderChartTwo />
-            </div> */}
-            {/* <div className="header-ball">
-                <img src={GolfBall} alt="GolfBall"></img>
-            </div> */}
+            <Login />
+            {/* <Auth data={props.login} datas={props.register}/> */}
         </div>
     )
 }

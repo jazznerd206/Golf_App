@@ -19,6 +19,7 @@ function ViewRounds() {
     const { user } = useContext(UserContext)
 
     const roundFetch = async () => {
+        console.log(`user.id ${user.id}`)
         const userID = user.id;
         const response = await API.getRounds(userID);
         // console.log(data.data);

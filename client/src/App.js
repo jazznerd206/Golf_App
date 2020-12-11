@@ -1,17 +1,17 @@
 // REACT DEPENDENCIES
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import { BrowserRouter, Route, Switch, useRouteMatch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import API from './utils/API'
 import './App.css';
 
 // REQUIRED COMPONENTS
-import Main from './pages/Main/Main.js';
+// import Main from './pages/Main/Main.js';
 import Landing from './pages/Landing/Landing'
-import NavbarContainer from './components/Navbar/Navbar.js';
+// import NavbarContainer from './components/Navbar/Navbar.js';
 import Dashboard from './pages/Dashboard/Dashboard.js';
-import Login from './components/Login/Login.js';
-import Register from './components/Register/Register.js';
+// import Login from './components/Login/Login.js';
+// import Register from './components/Register/Register.js';
 
 // ROUTE PROTECTION
 import ProtectedRoute from './components/Protected_Route/ProtectedRoute.js';
@@ -23,15 +23,16 @@ import { UserContext } from './UserContext.js';
 
 function App(props) {
 
-  // console.log("===============================")
-  // console.log(props)
-  // console.log("===============================")
-  // console.log(useRouteMatch())
-  // console.log("===============================")
-
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [user, applyUser] = useState({});
   const [ rounds, setRounds ] = useState([]);
+
+  const submitReg = () => {
+    console.log('registration')
+  }
+  const submitLogin = () => {
+      console.log('login')
+  }
   
 
   const userFetch = async () => {
@@ -54,35 +55,35 @@ function App(props) {
   }, [])
 
 
+  // if (isLoggedIn) {
+  //   return( 
+  //     <Redirect to='/dashboard'/>
+  //   )
+  // }
+
+
   return (
-    <BrowserRouter>
-    <div className="App">
-      <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser, rounds}}>
-      
-        <div className="nav-top">
-          <NavbarContainer />
-        </div>
-        <div className="body-div">
-          <Switch>
-              <Route exact path="/">
-                <Landing />  
-              </Route>
-              <Route path="/login" >
-                <Login /> 
-              </Route>
-              <Route path="/register">
-                <Register />  
-              </Route>
-              <ProtectedRoute path="/dashboard">
-                <Dashboard  data={rounds}/>
-              </ProtectedRoute> 
-          </Switch>
-        </div>
-          
-      
-      </UserContext.Provider>
-    </div>
-    </BrowserRouter>
+    // <BrowserRouter>
+      <div className="App">
+        <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser, rounds}}>
+            {/* <NavbarContainer /> */}
+            <Switch>
+                <Route exact path="/">
+                  <Landing login={submitLogin} register={submitReg}/>  
+                </Route>
+                {/* <Route path="/login" >
+                  <Login /> 
+                </Route>
+                <Route path="/register">
+                  <Register />
+                </Route> */}
+                <ProtectedRoute path="/dashboard">
+                  <Dashboard  data={rounds}/>
+                </ProtectedRoute> 
+            </Switch>
+        </UserContext.Provider>
+      </div>
+    // </BrowserRouter>
     
 
   );

@@ -17,7 +17,6 @@ function Landing() {
     return (
             <div className="page-container">
                 <Header />
-                <Login />
                 <HeaderBelow />
             </div>
     )

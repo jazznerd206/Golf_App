@@ -6,7 +6,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { UserContext } from '../../UserContext.js';
 
 
-function ProtectedRoute({ component: Component, ...rest } ) {
+function ProtectedRoute({ comp: Component, ...rest } ) {
 
 
     const { user, isLoggedIn } = useContext(UserContext)
@@ -16,7 +16,7 @@ function ProtectedRoute({ component: Component, ...rest } ) {
     return (
         <div>
                 <Route {...rest} render={(props) => (
-                    isLoggedIn === true
+                    user.id
                     ? <Component {...props} />
                     : <Redirect to={{
                         pathname: "/login"
