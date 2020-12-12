@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import './styles.css';
 // import { Route, Switch, Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
@@ -10,12 +10,12 @@ function Dashboard(props) {
 
         const { user } = useContext(UserContext)
 
-        if (props.loading === true) {
-            console.log('loading')
-            return (
-              <Loader />
-            )
-          }
+        // if (props.loading === true) {
+        //     console.log('loading')
+        //     return (
+        //       <Loader />
+        //     )
+        //   }
 
         return (
         <div className="background-wrapper">
