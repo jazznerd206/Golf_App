@@ -26,8 +26,6 @@ exports.create_course = async (req,res) => {
     //handles null error
     const courseCreate = await Courses.create(req.body)
         .then(course => {
-            // console.log(course);
-            // console.log(course.name);
             res.send('course created');
             })
         .catch(error => {
@@ -46,7 +44,6 @@ exports.read_a_course = (req, res) => {
         }
     ]
       }).then(course => {
-        console.log(`course FROM READ A COURSE ${JSON.stringify(course)}`)
             res.send(course);
     })
     .catch(error => {

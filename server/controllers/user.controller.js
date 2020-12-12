@@ -43,8 +43,6 @@ exports.create_user = (req,res) => {
             else {
                 console.log(`no user found, ready to create`)
                 Users.create(req.body).then(user => {
-                    // console.log(user);
-                    console.log(user.username);
                     return res.json({
                         success: true,
                         username: user.username,
@@ -62,14 +60,6 @@ exports.create_user = (req,res) => {
 }
 
 exports.login_user = (req, res, next) => {
-    // console.log('=================================')
-    // console.log('login user on controller');
-    // console.log("name " + req.body.username);
-    // console.log("password " + req.body.password);
-    // console.log('login user on controller');
-    // console.log('=================================')
-    // console.log(`body parsing ${JSON.stringify(req.body)}`);
-    console.log(`req.user before p.auth ${req.user}`)
     passport.authenticate('local', { session: true, successRedirect: '/dashboard', failureRedirect: '/' } ,function(err, user) {
         if (err) {
             return next(err);
@@ -89,7 +79,6 @@ exports.login_user = (req, res, next) => {
                     nested: true
                   }]
                 }).then(data => {
-                    console.log(`data from users login ${JSON.stringify(data)}`)
                     req.logIn(user, err => {
                         if (err) {return next(JSON.stringify(err))}
                         // console.log('===============================================================');
@@ -139,7 +128,6 @@ exports.read_a_user = (req, res, next) => {
       }]
     })
     .then(user => {
-            // console.log(`user object returned === ${user}`)
             res.send(user);
     })
     .catch(error => {

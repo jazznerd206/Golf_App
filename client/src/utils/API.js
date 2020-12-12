@@ -31,7 +31,7 @@ export default {
             axios.post("/api/users", newUser)
             .then(response => {
                 if (response.data) {
-                    console.log(JSON.stringify(response.data));
+                    // console.log(JSON.stringify(response.data));
                     resolve(response.data);
                 } else {
                     console.log('Sign-up error');

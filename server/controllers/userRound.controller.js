@@ -45,11 +45,6 @@ exports.get_all_userRounds_lowest = (req, res) => {
 }
 
 exports.create_userRound = async (req,res) => {
-  console.log("============================")
-  console.log("============================")
-  console.log(JSON.stringify(req.body));
-  console.log("============================")
-  console.log("============================")
   const roundCreate = await UserRounds.create(req.body)
       .then(round => {
           // console.log(course);

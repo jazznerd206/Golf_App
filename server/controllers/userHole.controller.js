@@ -20,8 +20,6 @@ exports.create_userHole = async (req,res) => {
     //handles null error
     const userHoleCreate = await UserHoles.create(req.body)
         .then(userHole => {
-            // console.log(userHole);
-            // console.log(userHole.name);
             res.send('userHole created');
             })
         .catch(error => {
@@ -41,11 +39,7 @@ exports.read_a_userHole = (req, res) => {
 }
 
 exports.read_all_userHoles_where = (req, res) => {
-    console.log(req.params.options)
     const urlParams = JSON.parse(req.params.options)
-    console.log('=======================================')
-    console.log(`url params ${urlParams}`)
-    console.log('=======================================')
     UserHoles.findAll(urlParams)
         .then(holes => {
             res.send(holes);

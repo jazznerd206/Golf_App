@@ -21,8 +21,6 @@ exports.create_hole = async (req,res) => {
     const findCourse = await Courses.findOne({ where: {courseName: 'Jackson'}});
     const createHole = await Holes.create(req.body)
         .then(hole => {
-            // console.log(hole);
-            // console.log(hole.name);
             res.send('hole created');
             })
         .catch(error => {

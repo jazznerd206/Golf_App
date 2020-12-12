@@ -11,7 +11,8 @@ module.exports = {
         "password": process.env.MYSQL_PW,
         "database": 'golf_db',
         "host": 'localhost',
-        "dialect": "mysql"
+        "dialect": "mysql",
+        "logging": false
     },
     "test": {
         "username": "root",
