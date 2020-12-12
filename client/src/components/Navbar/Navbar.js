@@ -52,7 +52,7 @@ function NavbarContainer() {
                 expand="sm"
             >
                     <Navbar.Brand href="#">
-                       <h1>Rare Bird Society {user.username}</h1> 
+                       <h1>{user.username}</h1> 
                     </Navbar.Brand>                        
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">

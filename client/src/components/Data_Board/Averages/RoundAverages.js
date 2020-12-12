@@ -41,6 +41,30 @@ function RoundAverages() {
         )
     }
 
+    const averagePuttsPerHole = () => {
+        let count = 0;
+        let holeCount = 0;
+        user.rounds.forEach(round => {
+            count += round.putts;
+            if (round.userHoles.length) {
+                round.userHoles.forEach(hole => {
+                    holeCount++;
+                })
+            }
+        })
+        const average = (count / user.rounds.length * 18).toFixed(1);
+        return (
+            <div className="lower-row">
+                <div className="title">
+                    <p>Putts per hole: </p>
+                </div>
+                <div className="value">
+                    {average}
+                </div>
+            </div>
+        )
+    }
+
     const averageMistakes = () => {
         let count = 0;
         user.rounds.forEach(round => {
@@ -72,13 +96,13 @@ function RoundAverages() {
         )
     }
 
-    if (user === undefined) {
+    if (user.rounds.length === 0) {
         return (
             <div className="averages-wrapper">
                 no rounds yet
             </div>
         )
-    } else if (user.rounds.length === 0 ) {
+    } else {
         return (
             <div className="averages-wrapper">
                 {totalRounds()}
