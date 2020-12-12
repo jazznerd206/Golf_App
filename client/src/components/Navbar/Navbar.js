@@ -51,9 +51,9 @@ function NavbarContainer() {
                 sticky="top"
                 expand="sm"
             >
-                    {/* <Navbar.Brand href="#">
+                    <Navbar.Brand href="#">
                        <h1>Rare Bird Society {user.username}</h1> 
-                    </Navbar.Brand>                         */}
+                    </Navbar.Brand>                        
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
                         <Link to="/">

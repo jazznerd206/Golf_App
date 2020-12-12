@@ -1,7 +1,7 @@
 // REACT DEPENDENCIES
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import API from './utils/API'
 import './App.css';
 
@@ -12,6 +12,7 @@ import Landing from './pages/Landing/Landing'
 import Dashboard from './pages/Dashboard/Dashboard.js';
 // import Login from './components/Login/Login.js';
 // import Register from './components/Register/Register.js';
+import Loader from './components/Loader/Loader.js';
 
 // ROUTE PROTECTION
 import ProtectedRoute from './components/Protected_Route/ProtectedRoute.js';
@@ -26,6 +27,7 @@ function App(props) {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [user, applyUser] = useState({});
   const [ rounds, setRounds ] = useState([]);
+  const [ loading, setLoading ] = useState(true)
 
   const submitReg = () => {
     console.log('registration')
@@ -36,11 +38,13 @@ function App(props) {
   
 
   const userFetch = async () => {
+    console.log('userFetch');
     const result = Cookies.get('auth');
     // console.log(`result ${result}`)
     if (result === undefined) { 
         console.log(`no user to log in`)
         setLoggedIn(false);
+        setLoading(false);
     } else {
       const userData = await API.findUser(result);
       const dataHolder = await userData.data;
@@ -48,19 +52,27 @@ function App(props) {
       applyUser(dataHolder);
       setRounds(dataHolder.rounds)
       setLoggedIn(true);
+      setLoading(false);
     }
   }
   useEffect(() => {
+      console.log(`loading 1 ${loading}`)
       userFetch();
   }, [])
 
-
   // if (isLoggedIn) {
+  //   console.log('redirect from App')
   //   return( 
   //     <Redirect to='/dashboard'/>
   //   )
   // }
 
+  if (loading === true) {
+    console.log('loading')
+    return (
+      <Loader />
+    )
+  }
 
   return (
     // <BrowserRouter>
@@ -77,9 +89,7 @@ function App(props) {
                 <Route path="/register">
                   <Register />
                 </Route> */}
-                <ProtectedRoute path="/dashboard">
-                  <Dashboard  data={rounds}/>
-                </ProtectedRoute> 
+                <ProtectedRoute exact path="/dashboard" loading={loading} loggedIn={isLoggedIn} component={Dashboard} />
             </Switch>
         </UserContext.Provider>
       </div>

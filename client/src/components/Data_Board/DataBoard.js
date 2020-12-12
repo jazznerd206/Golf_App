@@ -28,7 +28,7 @@ function DataBoard(props) {
                         <div className="db-title">
                             <h1>Bird's Eye View</h1>
                         </div>
-                        <RoundAverages />
+                        {/* <RoundAverages /> */}
                     </div>
                     <div className="hole-averages">
                         <div className="db-title">
@@ -56,7 +56,7 @@ function DataBoard(props) {
                         <ViewRounds />
                     </div>
                     <div className="round-data">
-                        <RoundData />
+                        {/* <RoundData /> */}
                     </div>
                 </div>
   

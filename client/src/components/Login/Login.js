@@ -103,7 +103,8 @@ function Login(props) {
                 </form>
             </div>
         </div>
-    )} else {
+    )} 
+    else {
         return(
             <Redirect to='/dashboard'/>
         )

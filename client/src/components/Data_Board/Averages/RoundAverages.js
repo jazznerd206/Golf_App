@@ -72,14 +72,23 @@ function RoundAverages() {
         )
     }
 
-    return (
-        <div className="averages-wrapper">
-            {totalRounds()}
-            {averageScore()}
-            {averagePutts()}
-            {averageMistakes()}
-        </div>
-    )
+    if (user === undefined) {
+        return (
+            <div className="averages-wrapper">
+                no rounds yet
+            </div>
+        )
+    } else if (user.rounds.length === 0 ) {
+        return (
+            <div className="averages-wrapper">
+                {totalRounds()}
+                {averageScore()}
+                {averagePutts()}
+                {averageMistakes()}
+            </div>
+        )    
+    }
+
 }
 
 export default RoundAverages;
