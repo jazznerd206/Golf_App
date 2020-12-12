@@ -54,13 +54,13 @@ const routes = require('./routes');
 app.use(routes);
 
 // Send every other request to the React app
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
 app.get("*", (req, res) => {
-  const index = path.join(__dirname, 'build', 'index.html');
-  res.sendFile(index);
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
+// app.get("*", (req, res) => {
+//   const index = path.join(__dirname, 'build', 'index.html');
+//   res.sendFile(index);
+// });
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
