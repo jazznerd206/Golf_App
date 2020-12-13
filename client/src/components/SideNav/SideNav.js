@@ -9,7 +9,7 @@ function SideNav() {
     //   sideDrawerOpen: false,
     // };
     const [ reveal, setReveal ] = useState(false)
-    const { user, setLoggedIn, applyUser } = useContext(UserContext)
+    const { user, isLoggedIn, setLoggedIn, applyUser } = useContext(UserContext)
   
     // drawerToggleClickHandler = () => {
     //   this.setState(prevState => {
@@ -52,7 +52,12 @@ function SideNav() {
         
         return (
           <div style={{height: '100%'}}>
-            <Toolbar logout={submitLogout} drawerClickHandler={drawerToggleClickHandler} />
+            {isLoggedIn ? (
+              <Toolbar logout={submitLogout} drawerClickHandler={drawerToggleClickHandler} />
+            ) : (
+              <HomeBar />
+            )}
+            
             <SideDrawer show={reveal} />
             {backdrop}
             {/* <main style={{marginTop: '150px'}}>
@@ -73,8 +78,26 @@ function SideNav() {
             <div className="spacer" />
             <div className="toolbar__navigation-items">
               <ul>
-                <li><a href="/">User</a></li>
+                <li><a href="/">Dashboard</a></li>
                 <li onClick={props.logout}><a>Logout</a></li>
+              </ul>
+            </div>
+          </nav>
+        </header>
+      );
+    
+      const HomeBar = props => (
+        <header className="toolbar">
+          <nav className="toolbar__navigation">
+            {/* <div>
+              <DrawerToggleButton click={props.drawerClickHandler} />
+            </div> */}
+            <div className="toolbar__logo"><a href="/">Rare Bird Society</a></div>
+            <div className="spacer" />
+            <div className="toolbar__navigation-items">
+              <ul>
+                {/* <li><a href="/">Dashboard</a></li> */}
+                <li><a href="/register">New? Register here!</a></li>
               </ul>
             </div>
           </nav>

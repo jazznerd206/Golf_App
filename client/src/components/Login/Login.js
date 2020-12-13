@@ -44,6 +44,51 @@ function Login(props) {
                 console.log("front end err " + err);
             })   
     }
+
+    const registerUser = event => {
+        event.preventDefault();
+        const newUser = {
+            name: username,
+            passwd: password
+        }
+        if ( !username || !password) {
+            console.log('must provide name and password, pass this message to user eventually');
+        }
+        console.log('new user ' + newUser);
+        API.signUpUser(
+            {
+                username: username,
+                password: password
+            }
+        ).then(response => {
+            if (response.success === true) {
+                API.loginUser(
+                    {
+                        username: username,
+                        password: password
+                    }).then(response => {
+                        if (response.data.loggedIn === true ) {
+                            Cookie.set('auth', response.data.data.id);
+                            applyUser(response.data.data);
+                            setName('');
+                            setPassword('');
+                            setLoggedIn(true);
+                        }
+                        if (response.data.loggedIn === false) {
+                            // console.log(response.data)
+                            console.log(response.data.data.id)
+                        }
+                    }).catch(err => {
+                        console.log("front end err " + err);
+                        // setMsg(err);
+                    })
+            } else {
+                setMsg(response.error)
+            };
+        })
+        setName('');
+        setPassword('');
+    }
     
     if (isLoggedIn === false) {
     return (
@@ -51,7 +96,7 @@ function Login(props) {
             <div className="login-form">
                 <form>
                     <div className="form-group row">
-                        <label htmlFor="username" className="">User Name</label>
+                        <label htmlFor="username" className="">USERNAME</label>
                         <div className="">
                             <input
                                 type="text"
@@ -65,7 +110,7 @@ function Login(props) {
                         </div>
                     </div>
                     <div className="form-group row">
-                        <label htmlFor="inputPassword" className="">Password</label>
+                        <label htmlFor="inputPassword" className="">PASSWORD</label>
                         <div className="">
                             <input
                                 type="password"
@@ -86,19 +131,15 @@ function Login(props) {
                         <button 
                             type="submit" 
                             onClick={submitLogin} 
-                            className="">
+                            className="button">
                             Log In
                         </button>
                         <button 
-                            // type="submit"
-                            // href='/'
-                            // onClick={props.onClick}
-                            className="">
-                            Back
+                            type="submit" 
+                            onClick={registerUser} 
+                            className="button">
+                            Register
                         </button>
-                    </div>
-                    <div className="error-message">
-                        {msg}
                     </div>
                 </form>
             </div>

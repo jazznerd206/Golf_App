@@ -35,6 +35,8 @@
     margin: 0;
     padding: 0;
     display: flex;
+    color: white;
+
   }
   
   .toolbar__navigation-items li {
@@ -120,4 +122,4 @@
     .toolbar__navigation-items {
       display: none;
     }
-  }     
+  } 

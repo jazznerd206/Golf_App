@@ -55,7 +55,6 @@ function AddCourse() {
             yardage: holeLength,
             courseID: objectID
         }
-        // console.log(`courseIdent ${courseIdent}`)
         API.addHole(newHole);
         setHoles(holes => [...holes, newHole]);
         setHolePar(0);
@@ -82,19 +81,6 @@ function AddCourse() {
         event.preventDefault();
         setFormIndex(formIndex - 1);
     }
-
-    // const retrieveID = () => { 
-    //     API.getCourse(courseName).then(response => {
-    //         console.log(response.data)
-    //         // setCourseIdent(response.data.id);
-    //         // setCourseName('')
-    //         })
-    // }
-
-    // useEffect(() => {
-    //     retrieveID();
-    // }, [courseCreated])
-
 
     return (
         <div className="addCourse-wrapper">

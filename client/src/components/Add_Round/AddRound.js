@@ -5,14 +5,13 @@ import './styles.css';
 // API FUNCTIONS
 import API from '../../utils/API.js';
 
-// USER CONTEXT AND HISTORY
+// USER CONTEXT
 import { UserContext } from '../../UserContext.js';
-// import createHistory from './components/History/index';
+
 
 function AddRound() {
 
     const { user } = useContext(UserContext);
-
     const [ formIndex, setFormIndex ] = useState(0);
     const [ holeFormIndex, setholeFormIndex ] = useState(0);
     const [ holeIndex, setholeIndex ] = useState(0);
@@ -83,7 +82,6 @@ function AddRound() {
             userID: user.id
         }
         API.createNewRound(newUserRound);
-        // console.log(`new user round: ${JSON.stringify(newUserRound)}`);
         setFormIndex(formIndex + 1);
         setFullRound(false);
     }
@@ -119,8 +117,6 @@ function AddRound() {
     }
 
     const submitHoleByHoleScore = async event => {
-        // console.log(`submit score`)
-        // console.log(fullRoundScore, anywayStrokes)
         const newUserRound = {
             userName: user.username,
             course: courseSelected.courseName,
@@ -133,8 +129,6 @@ function AddRound() {
         }
         API.createNewRound(newUserRound)
             .then(response => {
-                // setRoundID(response.roundIdent)
-                // console.log('roundID ' + roundID)
                 arrayOfHoleByHole.forEach(hole => {
                     const holeToDB = {
                         par: hole.par,
@@ -148,28 +142,12 @@ function AddRound() {
                         anywayType: hole.anywayType,
                         courseID: response.roundIdent
                     }
-                    // console.log(holeToDB);
                     API.createNewHole(holeToDB);
                 })
             })
             .catch(err => console.log(err));
 
-        // arrayOfHoleByHole.forEach(hole => {
-        //     const holeToDB = {
-        //         par: hole.par,
-        //         handicap: hole.handicap,
-        //         yardage: hole.yardage, 
-        //         score: hole.score,
-        //         putts: hole.putts,
-        //         greenInRegulation: hole.greenInRegulation,
-        //         scoreType: hole.score - hole.par,
-        //         anywayStroke: hole.anywayStroke,
-        //         anywayType: hole.anywayType,
-        //         courseID: roundID
-        //     }
-        //     // console.log(holeToDB);
-        //     API.createNewHole(holeToDB);
-        // })
+        
         // ======================================
         // clear all data
         // ======================================
@@ -184,32 +162,19 @@ function AddRound() {
         setHoleByHoleAWstrokeType('');
         setArrayOfHoleByHole([]);
     }
-    // console.log(`user on add round ${JSON.stringify(user.rounds)}`)
-
-    // console.log(`course selected ${JSON.stringify(courseSelected)}`);
 
     const backForm = event => {
         event.preventDefault();
         setCourseSelected({});
         setFormIndex(formIndex - 1);
     }
-    // const clearForm = event => {
-    //     event.preventDefault();
-    //     setFormIndex(0);
-    // }
+
     const backFromFullRound = event => {
         event.preventDefault();
         setFullRound(false)
         setFormIndex(formIndex - 1);
     }
-    // const backFromHoleByHole = event => {
-    //     event.preventDefault();
-    //     setHoleByHole(false)
-    //     setFormIndex(formIndex - 1);
-    // }
-
-    // console.log(arrayOfHoleByHole);
-
+   
     return (
         <div className="addRound-wrapper">
             {formIndex === 0 && (

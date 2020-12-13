@@ -1,14 +1,13 @@
 // REACT DEPENDENCIES
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import API from './utils/API'
 import './App.css';
 
 // REQUIRED COMPONENTS
 import Landing from './pages/Landing/Landing'
 import SideNav from './components/SideNav/SideNav.js';
-// import NavbarContainer from './components/Navbar/Navbar.js';
 import Dashboard from './pages/Dashboard/Dashboard.js';
 import Loader from './components/Loader/Loader.js';
 
@@ -46,7 +45,6 @@ function App(props) {
     } else {
       const userData = await API.findUser(result);
       const dataHolder = await userData.data;
-      // console.log(`dataHolder ${JSON.stringify(dataHolder)}`)
       applyUser(dataHolder);
       setRounds(dataHolder.rounds)
       setLoggedIn(true);
@@ -58,13 +56,6 @@ function App(props) {
       userFetch();
   }, [])
 
-  // if (isLoggedIn) {
-  //   console.log('redirect from App')
-  //   return( 
-  //     <Redirect to='/dashboard'/>
-  //   )
-  // }
-
   if (loading === true) {
     console.log('loading')
     return (
@@ -73,28 +64,17 @@ function App(props) {
   }
 
   return (
-    // <BrowserRouter>
       <div className="App">
         <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser, rounds}}>
-            {/* <SideNav /> */}
-            {/* <NavbarContainer /> */}
+            <SideNav />
             <Switch>
                 <Route exact path="/">
                   <Landing login={submitLogin} register={submitReg}/>  
                 </Route>
-                {/* <Route path="/login" >
-                  <Login /> 
-                </Route>
-                <Route path="/register">
-                  <Register />
-                </Route> */}
                 <ProtectedRoute path="/dashboard" loading={loading} loggedIn={isLoggedIn} component={Dashboard} />
             </Switch>
         </UserContext.Provider>
       </div>
-    // </BrowserRouter>
-    
-
   );
 }
 
