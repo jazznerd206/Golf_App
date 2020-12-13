@@ -1,5 +1,5 @@
 .background-wrapper {
-    position: absolute;
+    /* position: absolute; */
     min-height: 100vh;
     height: auto;
     width: 100%;
@@ -10,7 +10,7 @@
 }
 
 .background-wrapper::before {
-    content: "";
+    /* content: ""; */
     background-image: url('../../Images/Aldarra.jpg');
     background-size: cover;
     position: absolute;
@@ -23,7 +23,7 @@
 }
 
 .dashboard-wrapper {
-    position: relative;
+    /* position: relative; */
     min-height: 100vh;
     height: auto;
     width: 100%;

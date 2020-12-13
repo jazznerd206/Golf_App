@@ -6,13 +6,10 @@ import API from './utils/API'
 import './App.css';
 
 // REQUIRED COMPONENTS
-// import Main from './pages/Main/Main.js';
 import Landing from './pages/Landing/Landing'
 import SideNav from './components/SideNav/SideNav.js';
 // import NavbarContainer from './components/Navbar/Navbar.js';
 import Dashboard from './pages/Dashboard/Dashboard.js';
-// import Login from './components/Login/Login.js';
-// import Register from './components/Register/Register.js';
 import Loader from './components/Loader/Loader.js';
 
 // ROUTE PROTECTION
@@ -79,7 +76,7 @@ function App(props) {
     // <BrowserRouter>
       <div className="App">
         <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser, rounds}}>
-          {/* <SideNav /> */}
+            {/* <SideNav /> */}
             {/* <NavbarContainer /> */}
             <Switch>
                 <Route exact path="/">
@@ -91,7 +88,7 @@ function App(props) {
                 <Route path="/register">
                   <Register />
                 </Route> */}
-                <ProtectedRoute exact path="/dashboard" loading={loading} loggedIn={isLoggedIn} component={Dashboard} />
+                <ProtectedRoute path="/dashboard" loading={loading} loggedIn={isLoggedIn} component={Dashboard} />
             </Switch>
         </UserContext.Provider>
       </div>

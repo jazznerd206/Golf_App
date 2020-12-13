@@ -1,0 +1,123 @@
+
+.toolbar {
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    height: 100px;
+  }
+  
+  .toolbar__navigation {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding: 0 1rem;
+  }
+  
+  .toolbar__logo {
+    font-size: 2em;
+    margin-left: 1em;
+  }
+  
+  .toolbar__logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 2.5em;
+  }
+  
+  .spacer {
+    flex: 1;
+  }
+  
+  .toolbar__navigation-items ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .toolbar__navigation-items li {
+    padding: 0 0.5rem;
+  }
+  
+  .toolbar__navigation-items a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .toolbar__navigation-items a:hover,
+  .toolbar__navigation-items a:active {
+    color: orange;
+  }
+  
+  .toggle-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 24px;
+    width: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: white;
+  }
+  
+  .side-drawer {
+    height: 100%;
+    background: white;
+    box-shadow: 1px 0px 7px rgba(0,0,0,.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    max-width: 400px;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform .3s ease-out;
+  }
+  
+  .side-drawer.open {
+    transform: translateX(0);
+    
+  }
+  
+  .side-drawer ul {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .side-drawer li {
+    margin: 0.5rem 0;
+  }
+  
+  .side-drawer a {
+    color: #521751;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+  
+  .backdrop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.3);
+    z-index: 100;
+  }
+  
+  .side-drawer a:hover,
+  .side-drawer a:active {
+    color: #fa923f;
+  }
+  
+  @media (max-width: 768px) {
+    .toolbar__navigation-items {
+      display: none;
+    }
+  }     

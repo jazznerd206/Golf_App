@@ -1,9 +1,12 @@
 import React, { useEffect, useContext } from 'react';
 import './styles.css';
-// import { Route, Switch, Link } from 'react-router-dom';
-import Navbar from '../../components/Navbar/Navbar';
-import Loader from '../../components/Loader/Loader.js'
-import DataBoard from '../../components/Data_Board/DataBoard';
+import { Route, Switch, Link } from 'react-router-dom';
+import SideNav from '../../components/SideNav/SideNav';
+import ViewRounds from '../../components/View_Rounds/ViewRounds.js';
+import Charts from '../../components/Data_Board/Round_Data/RoundData';
+import Data from '../../components/Data_Board/Averages/HoleAverages.js';
+import Data2 from '../../components/Data_Board/Averages/RoundAverages.js';
+// import DataBoard from '../../components/Data_Board/DataBoard';
 import { UserContext } from '../../UserContext';
 
 function Dashboard(props) {
@@ -19,13 +22,24 @@ function Dashboard(props) {
 
         return (
         <div className="background-wrapper">
-            <Navbar />
+            <SideNav />
+            {/* <Navbar /> */}
             <div className="dashboard-wrapper">
-                {/* <Navbar /> */}
+                <Switch>
+                    <Route exact path="/dashboard" >
+                        <Data />
+                        <Data2 />
+                    </Route>
+                    <Route exact path="/dashboard/charts" >
+                        <Charts />
+                    </Route>
+                    <Route exact path="/dashboard/rounds" >
+                        <ViewRounds />
+                    </Route>
+                </Switch>
                 <div className="dataBoard-wrapper">
-                    <DataBoard data={props.data} />
+                    {/* <DataBoard data={props.data} /> */}
                 </div>
-
             </div>
         </div>
         )
