@@ -8,6 +8,7 @@ import './App.css';
 // REQUIRED COMPONENTS
 // import Main from './pages/Main/Main.js';
 import Landing from './pages/Landing/Landing'
+import SideNav from './components/SideNav/SideNav.js';
 // import NavbarContainer from './components/Navbar/Navbar.js';
 import Dashboard from './pages/Dashboard/Dashboard.js';
 // import Login from './components/Login/Login.js';
@@ -78,6 +79,7 @@ function App(props) {
     // <BrowserRouter>
       <div className="App">
         <UserContext.Provider value={{isLoggedIn, setLoggedIn, user, applyUser, rounds}}>
+          {/* <SideNav /> */}
             {/* <NavbarContainer /> */}
             <Switch>
                 <Route exact path="/">
