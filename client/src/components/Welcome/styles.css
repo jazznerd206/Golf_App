@@ -10,9 +10,9 @@
     padding-top: 20px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
     .header-wrapper {
-        display: flex;
+        display: none;
         flex-direction: column;
         justify-content: space-around;
         padding: 190px 0px;
