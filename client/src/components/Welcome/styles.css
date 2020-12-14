@@ -12,7 +12,7 @@
 
 @media only screen and (max-width: 768px) {
     .header-wrapper {
-        display: none;
+        display: flex;
         flex-direction: column;
         justify-content: space-around;
         padding: 190px 0px;
