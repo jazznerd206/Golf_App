@@ -43,7 +43,7 @@ function ViewRounds() {
                 return (
                     <tr key={round.id}>
                         <td>{round.date.slice(0,10)}</td>
-                        <td>{round.course}{round.id}</td>
+                        <td>{round.course}</td>
                         <td>{round.coursePar}</td>
                         {/* <td>{round.par}</td> */}
                         <td>{round.totalScore} ({round.totalScore - round.coursePar})</td>
@@ -56,7 +56,7 @@ function ViewRounds() {
                 return (
                     <tr key={round.id}>
                         <td>{round.date.slice(0,10)}</td>
-                        <td>{round.course}{round.id}</td>
+                        <td>{round.course}</td>
                         <td>{round.coursePar}</td>
                         <td>{round.totalScore} ({round.totalScore - round.coursePar})</td>
                         <td>{round.putts}</td>
@@ -66,7 +66,7 @@ function ViewRounds() {
                                 type="submit"
                                 value={round.id}
                                 onClick={askForRoundData} 
-                                className="">
+                                className="button">
                                     Scorecard
                             </button>
                         </td>

@@ -1,6 +1,10 @@
 // REACT DEPENDENCIES
 import React, { useState, useEffect, useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 import './styles.css';
+
+// FILE DEPENDENCIES
+import FullRoundFinal from './FullRoundFinal.js';
 
 // API FUNCTIONS
 import API from '../../utils/API.js';
@@ -30,7 +34,7 @@ function AddRound() {
     const [ holeByHoleAWstrokes, setHoleByHoleAWstrokes ] = useState(0);
     const [ holeByHoleAWstrokeType, setHoleByHoleAWstrokeType ] = useState('');
     const [ arrayOfHoleByHole, setArrayOfHoleByHole ] = useState([]);
-    // const [ roundID, setRoundID ] = useState(0);
+    // const [ redirect, setRedirect ] = useState(false);
 
     const loadCourses = () => {
         API.getCourses().then(response => {
@@ -48,7 +52,6 @@ function AddRound() {
     const selectCourse = async event => {
         event.preventDefault();
         const courseToApply = await API.getCourse(event.target.value);
-        // console.log(`course to apply ${JSON.stringify(courseToApply.data)}`)
         setCourseSelected(courseToApply.data);
         setFormIndex(formIndex + 1);
     }
@@ -66,7 +69,6 @@ function AddRound() {
         setholeFormIndex(1);
         setHoleByHole(true);
         setFormIndex(formIndex + 1);
-        // console.log(courseSelected.holes)
     }
 
     const submitFullScore = event => {
@@ -81,9 +83,20 @@ function AddRound() {
             totalAWstrokes: anywayStrokes,
             userID: user.id
         }
-        API.createNewRound(newUserRound);
-        setFormIndex(formIndex + 1);
-        setFullRound(false);
+        API.createNewRound(newUserRound)
+            .then(response => {
+                if (response.success === true) {
+                    console.log(response)
+                    window.location.assign('/dashboard');
+                }
+            })
+            .catch(err => console.log(err));
+        // setFormIndex(formIndex + 1);
+        // setFullRound(false);
+        // setRedirect(true);
+        // return (
+        //     <FullRoundFinal data={newUserRound}/>
+        // )
     }
 
     const submitHoleByHoleToHook = async event => {
@@ -114,6 +127,16 @@ function AddRound() {
         setHoleByHoleAWstrokes(0);
         setObjIndex(objIndex + 1);
         setFormIndex(formIndex + 1);
+        if (arrayOfHoleByHole.length) {
+            console.log(`${arrayOfHoleByHole.length} holes saved`)
+            return (
+                <>
+                {arrayOfHoleByHole.map(hole => (
+                    <p>{hole.score}</p>
+                ))}
+                </>
+            )
+        }
     }
 
     const submitHoleByHoleScore = async event => {
@@ -186,7 +209,7 @@ function AddRound() {
                             <button 
                                 type="submit" 
                                 onClick={selectCourse}
-                                className=""
+                                className="button"
                                 value={course.courseName}
                                 >
                                 {course.courseName}
@@ -198,7 +221,8 @@ function AddRound() {
             </div>
             )}
             {formIndex === 1 && (
-            <div className="form-container">
+        <div>
+            <div className="form-container-row">
                 <div className="course-data-point">
                     <p>Course: </p><span>{courseSelected.courseName}</span>
                 </div>
@@ -214,86 +238,99 @@ function AddRound() {
                 <div className="course-data-point">
                     <p>Yardage: </p><span>{courseSelected.lengthYards}</span>
                 </div>
+            </div>
+            <div>
                 <div className="flex-column">
                     <button 
                         type="submit" 
                         onClick={selectFullScore} 
-                        className="">
+                        className="button">
                         Totals
                     </button>
                     <button 
                         type="submit" 
                         onClick={selectHoleByHole} 
-                        className="">
+                        className="button">
                         Hole By Hole
                     </button>
                     <button 
                         type="submit" 
                         onClick={backForm} 
-                        className="">
+                        className="button">
                         Back
                     </button>
                 </div>
             </div>
+        </div>  
             )}
             {formIndex === 2 && fullRound === true && (
                 <div className="form-container">
-                    <div className="course-data-point">
-                        <p>Course: </p><div className="data-point">{courseSelected.courseName}</div>
+                    <div className="form-container-row">
+                        <div className="course-data-point">
+                            <p>Course: </p><span>{courseSelected.courseName}</span>
+                        </div>
+                        <div className="course-data-point">
+                            <p>Holes: </p><span>{courseSelected.lengthHoles}</span>
+                        </div>
+                        <div className="course-data-point">
+                            <p>Par: </p><span>{courseSelected.par}</span>
+                        </div>
+                        <div className="course-data-point">
+                            <p>Rating: </p><span>{courseSelected.rating}</span>
+                        </div>
+                        <div className="course-data-point">
+                            <p>Yardage: </p><span>{courseSelected.lengthYards}</span>
+                        </div>
                     </div>
-                    <div className="course-data-point">
-                        <p>Par: </p><div className="data-point">{courseSelected.par}</div>
-                    </div>
-                    <div className="course-data-point">
-                        <p>Rating: </p><div className="data-point">{courseSelected.rating}</div>
-                    </div>
-                    <div className="course-data-point">
-                        <label htmlFor="fullRoundScore">Score: </label>
-                        <input
-                            type="number"
-                            className="data-point input-field"
-                            id="fullRoundScore"
-                            name={fullRoundScore}
-                            value={fullRoundScore}
-                            // ref={fullRoundScore}
-                            onChange={(e) => setFullRoundScore(e.target.value)}
-                        />
-                    </div>
-                    <div className="course-data-point">
-                        <label htmlFor="fullRoundPutts">Putts: </label>
-                        <input
-                            type="number"
-                            className="data-point input-field"
-                            id="fullRoundPutts"
-                            name={fullRoundPutts}
-                            value={fullRoundPutts}
-                            // ref={fullRoundPutts}
-                            onChange={(e) => setFullRoundPutts(e.target.value)}
-                        />
-                    </div>
-                    <div className="course-data-point">
-                        <label htmlFor="anywayStrokes">Anyway Strokes: </label>
-                        <input
-                            type="number"
-                            className="data-point input-field"
-                            id="anywayStrokes"
-                            name={anywayStrokes}
-                            value={anywayStrokes}
-                            // ref={anywayStrokes}
-                            onChange={(e) => setAnywayStrokes(e.target.value)}
-                        />
+                    <div className="form-container-row">
+                        <div className="course-data-point">
+                            <p htmlFor="fullRoundScore">Score: </p>
+                            <input
+                                type="number"
+                                className="data-point input-field"
+                                id="fullRoundScore"
+                                name={fullRoundScore}
+                                // value={fullRoundScore}
+                                // ref={fullRoundScore}
+                                onChange={(e) => setFullRoundScore(e.target.value)}
+                            />
+                        </div>
+                        <div className="course-data-point">
+                            <p htmlFor="fullRoundPutts">Putts: </p>
+                            <input
+                                type="number"
+                                className="data-point input-field"
+                                id="fullRoundPutts"
+                                name={fullRoundPutts}
+                                // value={fullRoundPutts}
+                                // ref={fullRoundPutts}
+                                onChange={(e) => setFullRoundPutts(e.target.value)}
+                            />
+                        </div>
+                        <div className="course-data-point">
+                            <p htmlFor="anywayStrokes">Mistakes: </p>
+                            <input
+                                type="number"
+                                className="data-point input-field"
+                                id="anywayStrokes"
+                                name={anywayStrokes}
+                                // value={anywayStrokes}
+                                // ref={anywayStrokes}
+                                onChange={(e) => setAnywayStrokes(e.target.value)}
+                            />
+                        </div>
                     </div>
                     <div className="flex-column">
                         <button 
                             type="submit" 
                             onClick={submitFullScore} 
-                            className="">
+                            className="button">
                             Submit Score
                         </button>
                         <button 
                             type="submit" 
                             onClick={backFromFullRound} 
-                            className="">
+                            className="button">
                             Back
                         </button>
                     </div>
@@ -312,13 +349,26 @@ function AddRound() {
                     
                     {holeFormIndex < courseSelected.lengthHoles && formIndex < courseSelected.lengthHoles + 3 && (
                         <div>
-                            <div className="form-container">
-                                <h1>HOLE BY HOLE</h1>
+                            <div className="form-container-row">
                                 <div className="course-data-point">
-                                <p>Course: </p><div className="data-point">{courseSelected.courseName}</div>
+                                    <p>Course: </p><span>{courseSelected.courseName}</span>
                                 </div>
                                 <div className="course-data-point">
-                                <p>Hole: </p><div className="data-point">{holeIndex + 1}</div>
+                                    <p>Holes: </p><span>{courseSelected.lengthHoles}</span>
+                                </div>
+                                <div className="course-data-point">
+                                    <p>Par: </p><span>{courseSelected.par}</span>
+                                </div>
+                                <div className="course-data-point">
+                                    <p>Rating: </p><span>{courseSelected.rating}</span>
+                                </div>
+                                <div className="course-data-point">
+                                    <p>Yardage: </p><span>{courseSelected.lengthYards}</span>
+                                </div>
+                            </div>
+                            <div className="form-container-row">
+                                <div className="course-data-point">
+                                    <p>Hole: </p><div className="data-point">{holeIndex + 1}</div>
                                 </div>
                                 <div className="course-data-point">
                                 <p>Par: </p><div className="data-point">{courseSelected.holes[holeIndex].par}</div>
@@ -327,71 +377,73 @@ function AddRound() {
                                 <p>Hdcp: </p><div className="data-point">{courseSelected.holes[holeIndex].handicap}</div>
                                 </div>
                             </div>
-                        <div className="form-group row">
-                                <div className="course-data-point">
-                                <label htmlFor="holeByHoleScore" className=""><p>Score: </p></label>
-                                    <input
-                                        type="number"
-                                        className="data-point input-field"
-                                        id="name"
-                                        name={holeByHoleScore}
-                                        value={holeByHoleScore}
-                                        // ref={holeByHoleScore}
-                                        onChange={(e) => setHoleByHoleScore(e.target.value)}
-                                    />
+                            <div className="form-container-row">
+                                <div className="form-group row">
+                                        <div className="course-data-point">
+                                        <label htmlFor="holeByHoleScore" className=""><p>Score: </p></label>
+                                            <input
+                                                type="number"
+                                                className="data-point input-field"
+                                                id="name"
+                                                name={holeByHoleScore}
+                                                // value={holeByHoleScore}
+                                                // ref={holeByHoleScore}
+                                                onChange={(e) => setHoleByHoleScore(e.target.value)}
+                                            />
+                                        </div>
                                 </div>
-                        </div>
-                        <div className="form-group row">
-                                <div className="course-data-point">
-                                <label htmlFor="holeByHolePutts" className=""><p>Putts: </p></label>
-                                    <input
-                                        type="number"
-                                        className="data-point input-field"
-                                        id="name"
-                                        name={holeByHolePutts}
-                                        value={holeByHolePutts}
-                                        // ref={holeByHolePutts}
-                                        onChange={(e) => setHoleByHolePutts(e.target.value)}
-                                    />
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                                <div className="course-data-point">
-                                <label htmlFor="holeByHoleAWstrokes" className=""><p>Anyway: </p></label>
-                                    <input
-                                        type="number"
-                                        className="data-point input-field"
-                                        id="name"
-                                        name={holeByHoleAWstrokes}
-                                        value={holeByHoleAWstrokes}
-                                        // ref={holeByHoleAWstrokes}
-                                        onChange={(e) => setHoleByHoleAWstrokes(e.target.value)}
-                                    />
+                                <div className="form-group row">
+                                        <div className="course-data-point">
+                                        <label htmlFor="holeByHolePutts" className=""><p>Putts: </p></label>
+                                            <input
+                                                type="number"
+                                                className="data-point input-field"
+                                                id="name"
+                                                name={holeByHolePutts}
+                                                // value={holeByHolePutts}
+                                                // ref={holeByHolePutts}
+                                                onChange={(e) => setHoleByHolePutts(e.target.value)}
+                                            />
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                        <div className="course-data-point">
+                                        <label htmlFor="holeByHoleAWstrokes" className=""><p>Anyway: </p></label>
+                                            <input
+                                                type="number"
+                                                className="data-point input-field"
+                                                id="name"
+                                                name={holeByHoleAWstrokes}
+                                                // value={holeByHoleAWstrokes}
+                                                // ref={holeByHoleAWstrokes}
+                                                onChange={(e) => setHoleByHoleAWstrokes(e.target.value)}
+                                            />
+                                        </div>
+                                    </div>
+                                <div className="form-group row">
+                                    <div className="course-data-point">
+                                    <label htmlFor="holeByHoleAWstrokeType" className=""><p>Type: </p></label>
+                                        <select
+                                            className="data-point input-field"
+                                            name={holeByHoleAWstrokeType}
+                                            // value={holeByHoleAWstrokeType}
+                                            onChange={(e) => setHoleByHoleAWstrokeType(e.target.value)}
+                                        > 
+
+                                            <option name=""></option>
+                                            <option name="Driver"> Driver</option>
+                                            <option name="Wood">Wood</option>
+                                            <option name="Iron">Iron</option>
+                                            <option name="Wedge">Wedge</option>
+                                            <option name="Putter">Putter</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        <div className="form-group row">
-                            <div className="course-data-point">
-                            <label htmlFor="holeByHoleAWstrokeType" className=""><p>Type: </p></label>
-                                <select
-                                    className="data-point input-field"
-                                    name={holeByHoleAWstrokeType}
-                                    value={holeByHoleAWstrokeType}
-                                    onChange={(e) => setHoleByHoleAWstrokeType(e.target.value)}
-                                > 
-                                    <option name="none"> none</option>
-                                    <option name="Driver"> Driver</option>
-                                    <option name="Wood">Wood</option>
-                                    <option name="Iron">Iron</option>
-                                    <option name="Wedge">Wedge</option>
-                                    <option name="Putter">Putter</option>
-                                </select>
-                            </div>
-                        </div>
-                    
                         <button 
                             type="submit" 
                             onClick={submitHoleByHoleToHook} 
-                            className="">
+                            className="button">
                             Submit
                         </button>
                     </div>
@@ -449,7 +501,7 @@ function AddRound() {
                     <button 
                         type="submit" 
                         onClick={submitHoleByHoleScore} 
-                        className="">
+                        className="button">
                         Submit
                     </button>
                 </div>

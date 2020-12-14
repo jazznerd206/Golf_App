@@ -118,9 +118,11 @@ function SideNav() {
         return (
           <nav className={drawerClasses}>
             <ul>
-              <li><a href="/dashboard">Data</a></li>
+              <li><a href="/dashboard">Home</a></li>
+              <li><a href="/dashboard/data">Data</a></li>
               <li><a href="/dashboard/charts">Charts</a></li>
-              <li><a href="/dashboard/rounds">Rounds</a></li>
+              <li><a href="/dashboard/rounds">My Rounds</a></li>
+              <li><a href="/dashboard/addRound">New Round</a></li>
             </ul>
           </nav>
         )

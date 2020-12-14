@@ -75,19 +75,26 @@
 }
 
 #rounds {
-    /* border: 1px solid black; */
+    border: 1px solid black;
     margin: 0 auto;
     background: #ffffff;
+    width: 90%;    
 }
 
 #rounds th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: green;
+    background: darkslategray;
     color: white;
+    border-bottom: .5px solid #000;
 }
 #rounds td, #rounds th {
     /* border: 1px solid #ddd; */
     padding: 8px;
   }
+
+#rounds tr:hover {
+    background: slategray;
+    color: white;
+}

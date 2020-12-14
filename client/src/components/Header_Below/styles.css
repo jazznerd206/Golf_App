@@ -1,57 +1,46 @@
-.header-below-wrapper {
-    padding-top: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+.page-container {
+    padding: 50px 0px;
+    width: 100%;
+    background-color: darkslategrey;
 }
 
-.first-level-flex {
-    background: linear-gradient(to bottom, white, skyblue);
+.flex-row {
+    padding: 50px 0px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    /* padding: 20px 20px; */
-    /* margin: 20px 0px; */
-    /* border: 1px solid black; */
-}
-
-.card {
+    justify-content: right;
+    align-items: center;
     margin: 0 auto;
-    height: auto;
-    width: 350px;
-    border: 5px solid green;
-    border-radius: 25px;
-    padding: 10px 10px;
-    box-shadow: 0px 0px 250px skyblue;
-    background: none;
 }
 
-.card-image {
-    margin: 10px 0px;
-    padding: 20px 0px;
-    border-bottom: 2px dashed green;
+.image {
+    width: 50%;
 }
 
-.material-icons {
-    font-size: 15rem;
-    color: green;
+.content {
+    text-align: center;
+    color: white;
 }
 
-.card-text {
-    background: green;
-    border-radius: 25px;
-    margin: 10px 0px;
-    padding: 20px 0px 20px 0px;
-}
-.card-text h3 {
-    font-family: 'Asap';
-    text-transform: uppercase;
-    color: skyblue;
+.content p {
+    font-size: 5em;
 }
 
 
 @media only screen and (max-width: 600px) {
-    .first-level-flex {
+    .flex-row {
+        padding: 25px 0px;
+        display: flex;
         flex-direction: column;
+        flex-wrap: wrap-reverse;
+        /* justify-content: space-around; */
+        align-items: center;
+        margin: 0 auto;
+    }
+    .image {
+        width: 100%;    
+    }
+    .image img {
+        max-width: 350px;
     }
   }

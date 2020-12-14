@@ -3,10 +3,7 @@ import Login from '../Login/Login';
 import { Zoom, Fade } from 'react-reveal';
 import './styles.css';
 
-function Header(props) {
-
-    
-
+function Header() {
     return (
         <div className="header-wrapper">
             {/* <Navbar /> */}

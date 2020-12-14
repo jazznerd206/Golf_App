@@ -1,18 +1,18 @@
-.landing-container {
-    margin: 50px 0px;
-}
-
-.scores-container {
+.header-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding-top: 200px;
-    padding-bottom: 200px;
+    width: auto;
+}
+
+.message-block {
+    padding-top: 20px;
 }
 
 @media only screen and (max-width: 600px) {
-    .scores-container {
+    .header-wrapper {
+        display: flex;
         flex-direction: column;
-        height: auto;
+        justify-content: space-around;
     }
   }
