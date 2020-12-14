@@ -25,6 +25,17 @@
     text-decoration: none;
     font-size: 2.5em;
   }
+
+  .toolbar__logo_home {
+    font-size: 2em;
+    margin-left: 1em;
+  }
+  
+  .toolbar__logo_home a {
+    color: white;
+    text-decoration: none;
+    /* font-size: 2.5em; */
+  }
   
   .spacer {
     flex: 1;

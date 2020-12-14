@@ -92,14 +92,14 @@ function SideNav() {
             {/* <div>
               <DrawerToggleButton click={props.drawerClickHandler} />
             </div> */}
-            <div className="toolbar__logo"><a href="/">Rare Bird Society</a></div>
+            <div className="toolbar__logo_home"><a href="/">Rare Bird Society</a></div>
             <div className="spacer" />
-            <div className="toolbar__navigation-items">
+            {/* <div className="toolbar__navigation-items">
               <ul>
-                {/* <li><a href="/">Dashboard</a></li> */}
+                <li><a href="/">Dashboard</a></li>
                 <li><a href="/register">New? Register here!</a></li>
               </ul>
-            </div>
+            </div> */}
           </nav>
         </header>
       );

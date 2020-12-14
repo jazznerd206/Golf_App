@@ -16,10 +16,6 @@ function Welcome() {
             <div>
                 <Message user={user} />
             </div>
-            {/* <div className="stats-table">
-                <HoleAverages />
-                <RoundAverages />
-            </div> */}
         </div>
     </div>
     )

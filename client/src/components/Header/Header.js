@@ -7,6 +7,9 @@ function Header() {
     return (
         <div className="header-wrapper">
             {/* <Navbar /> */}
+            <Fade>
+                <Login />
+            </Fade>
             <div className="tag">
                 <Zoom>
                     <div className="motion">
@@ -24,9 +27,7 @@ function Header() {
                     </div>
                 </Zoom>
             </div>
-            <Fade>
-                <Login />
-            </Fade>
+            
         </div>
     )
 }
