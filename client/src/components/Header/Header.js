@@ -24,7 +24,7 @@ function Header() {
                     </div>
                 </Zoom>
             </div>
-            <Fade delay={1250}>
+            <Fade>
                 <Login />
             </Fade>
         </div>

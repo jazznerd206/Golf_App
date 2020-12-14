@@ -119,7 +119,7 @@
   }
   
   @media (max-width: 768px) {
-    .toolbar__navigation-items {
+    .toolbar__logo {
       display: none;
     }
   } 

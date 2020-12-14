@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import './styles.css';
 import { Route, Switch } from 'react-router-dom';
 import Welcome from '../../components/Welcome/Welcome.js';
+import Widgets from '../../components/Widgets/Board.js';
 import ViewRounds from '../../components/View_Rounds/ViewRounds.js';
 import AddRound from '../../components/Add_Round/AddRound.js';
 import Charts from '../../components/Data_Board/Round_Data/RoundData';
@@ -15,7 +16,7 @@ function Dashboard() {
 
     const getUser = () => {
         API.findUser(user.id).then(response => {
-            console.log(response.data)
+            // console.log(response.data)
             applyUser(response.data)
         }).catch(err => console.log(err))
     }
@@ -30,6 +31,7 @@ function Dashboard() {
                 <Switch>
                     <Route exact path="/dashboard" >
                         <Welcome />
+                        <Widgets user={user}/>
                     </Route>
                     <Route exact path="/dashboard/data" >
                         <Data />

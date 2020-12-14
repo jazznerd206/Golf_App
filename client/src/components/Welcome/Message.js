@@ -25,14 +25,15 @@ function Message(props) {
         )
     } else {
         return (
-            <div className="message-block">
-                <div className="message-title">
-                    <h1>Welcome {props.user.username}</h1>
-                </div>
-                <div className="round-count">
-                    <p>{props.user.rounds.length} rounds tracked.</p>
-                </div>
-            </div>
+            null
+            // <div className="message-block">
+            //     <div className="message-title">
+            //         <h1>Welcome {props.user.username}</h1>
+            //     </div>
+            //     <div className="round-count">
+            //         <p>{props.user.rounds.length} rounds tracked.</p>
+            //     </div>
+            // </div>
         )
     }
 }

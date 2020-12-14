@@ -35,11 +35,11 @@ function App(props) {
   
 
   const userFetch = async () => {
-    console.log('userFetch');
+    // console.log('userFetch');
     const result = Cookies.get('auth');
     // console.log(`result ${result}`)
     if (result === undefined) { 
-        console.log(`no user to log in`)
+        // console.log(`no user to log in`)
         setLoggedIn(false);
         setLoading(false);
     } else {
@@ -52,12 +52,12 @@ function App(props) {
     }
   }
   useEffect(() => {
-      console.log(`loading 1 ${loading}`)
+      // console.log(`loading 1 ${loading}`)
       userFetch();
   }, [])
 
   if (loading === true) {
-    console.log('loading')
+    // console.log('loading')
     return (
       <Loader />
     )

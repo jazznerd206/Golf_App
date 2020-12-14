@@ -1,0 +1,58 @@
+.widget-board {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    margin: 0 auto;
+    width: 80%;
+    border-left: 1px solid darkslategrey;
+    border-right: 1px solid darkslategrey;
+}
+
+.widget {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 25px 25px;
+    padding: 25px 25px;
+    min-width: 350px;
+    width: auto;
+    border: 1px solid darkslategrey;
+    text-align: left;
+}
+
+.widget h1 {
+    font-size: 3em;
+    color: slategray;
+}
+.widget p {
+    color: slategray;
+}
+.widget .data-span {
+    font-size: 1.5em;
+    color: black;
+}
+
+.super-widget {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 1px solid darkslategrey;
+    margin: 25px 25px;
+    padding: 25px 25px;
+}
+
+@media (max-width: 768px) {
+    .widget-board {
+        width: 100%;
+    }
+    .widget {
+        margin: 10px 10px;
+        padding: 15px 15px;
+    }
+    svg {
+        height: 250px;
+        width: 350px;
+    }
+  }
