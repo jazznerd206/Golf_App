@@ -1,4 +1,5 @@
 import React from 'react';
+import RareBird from '../Widgets/RareBird.js';
 import './styles.css';
 
 function Message(props) {
@@ -25,15 +26,9 @@ function Message(props) {
         )
     } else {
         return (
-            null
-            // <div className="message-block">
-            //     <div className="message-title">
-            //         <h1>Welcome {props.user.username}</h1>
-            //     </div>
-            //     <div className="round-count">
-            //         <p>{props.user.rounds.length} rounds tracked.</p>
-            //     </div>
-            // </div>
+            <div className="bird-block">
+                <RareBird rounds={props.user.rounds}/>
+            </div>
         )
     }
 }

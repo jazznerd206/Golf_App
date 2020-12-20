@@ -30,19 +30,20 @@
 .scoreCard-wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     margin: 0 auto;
 }
 
 .course-data-column {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     text-align: right;
-    width: 100px;
+    /* width: 100px ; */
 }
 
 .holes-container {
+    align-content: center;
     width: 60px;
 }
 
@@ -60,7 +61,9 @@
 
 .hole-container .course-data-point {
     width: auto;
-    /* border: 1px solid black; */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     padding: 5px 5px;
 }
 
@@ -75,7 +78,7 @@
 }
 
 #rounds {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin: 0 auto;
     background: #ffffff;
     width: 90%;    
@@ -91,10 +94,12 @@
 }
 #rounds td, #rounds th {
     /* border: 1px solid #ddd; */
-    padding: 8px;
+    padding: 8px 0px;
+    width: 100px;
   }
 
 #rounds tr:hover {
-    background: slategray;
-    color: white;
+    /* background: slategray; */
+    /* color: white; */
+    box-shadow: inset 0px 0px 10px rgb(112,128,144,.5);
 }

@@ -101,11 +101,18 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
   }
   
   .side-drawer li {
-    margin: 0.5rem 0;
+    text-align: right;
+    padding: 25px 50px;
+    border-bottom: .5px solid rgba(0,0,0,.3);
+    /* margin: 0.5rem 0; */
+  }
+
+  .side-drawer li:hover {
+    box-shadow: inset 0px 0px 10px rgba(0,0,0,.3);
   }
   
   .side-drawer a {

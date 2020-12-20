@@ -52,21 +52,32 @@ function RoundLevel(props) {
       .y(d => yScale(d.value))
       .curve(curveMonotoneX);
 
-    return (
-      <div>
-        {/* <button onClick={this.randomData}>Randomize data</button> */}
-        <svg
-          className="lineChartSvg"
-          width={width + margins.left + margins.right}
-          height={height + margins.top + margins.bottom}
-        >
-          <g transform={`translate(${margins.left}, ${margins.top})`}>
-            <XYAxis {...{ xScale, yScale, height, ticks, t }} />
-            <Line data={data} xScale={xScale} yScale={yScale} lineGenerator={lineGenerator} width={width} height={height} />
-          </g>
-        </svg>
-      </div>
-    );
+
+    if (props.user.rounds.length > 5) {
+      return (
+        <div>
+          {/* <button onClick={this.randomData}>Randomize data</button> */}
+          <svg
+            className="lineChartSvg"
+            width={width + margins.left + margins.right}
+            height={height + margins.top + margins.bottom}
+          >
+            <g transform={`translate(${margins.left}, ${margins.top})`}>
+              <XYAxis {...{ xScale, yScale, height, ticks, t }} />
+              <Line data={data} xScale={xScale} yScale={yScale} lineGenerator={lineGenerator} width={width} height={height} />
+            </g>
+          </svg>
+        </div>
+      );
+    } else {
+      return (
+        <div className="no-data">
+          <div className="text">
+            <p>Track 5 rounds to gain access to graph data</p>
+          </div>
+        </div>
+      )
+    }
   }
 
 export default RoundLevel;
