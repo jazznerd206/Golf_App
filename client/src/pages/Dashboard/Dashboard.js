@@ -5,6 +5,7 @@ import Welcome from '../../components/Welcome/Welcome.js';
 import Widgets from '../../components/Widgets/Board.js';
 import ViewRounds from '../../components/View_Rounds/ViewRounds.js';
 import AddRound from '../../components/Add_Round/AddRound.js';
+import AddCourse from '../../components/Add_Course/AddCourse.js';
 import Charts from '../../components/Data_Board/Round_Data/RoundData';
 import Data from '../../components/Data_Board/Averages/HoleAverages.js';
 import { UserContext } from '../../UserContext';
@@ -44,6 +45,9 @@ function Dashboard() {
                     </Route>
                     <Route exact path="/dashboard/addround" >
                         <AddRound />
+                    </Route>
+                    <Route exact path="/dashboard/addcourse" >
+                        <AddCourse />
                     </Route>
                 </Switch>
             </div>

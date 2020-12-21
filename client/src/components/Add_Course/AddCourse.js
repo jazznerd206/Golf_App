@@ -93,76 +93,86 @@ function AddCourse() {
             {formIndex === 0 && (
                 <form>
                     <div className="form-title">
-                        <h3>Add new course</h3>
+                        <h3>ADD COURSE</h3>
+                        <ul>
+                            <li>Due to the prohibitively high cost of purchasing golf course database access, this utility allows the user to add golf courses to the database as they play them.</li>
+                            <ul>
+                                <strong>Required:</strong>
+                                <ol>
+                                    <li>Course Name, </li>
+                                    <li>Length in Yards, </li>
+                                    <li>Number of holes, </li>
+                                    <li>Total Par, </li>
+                                    <li>Course rating.</li>
+                                </ol>
+                            </ul>
+                        </ul>
                     </div>
                     <div className="form-wrapper">
-                        
                         <div className="form-group row">
-                            <label htmlFor="courseName" className="">Course Name</label>
                             <div className="">
+                            <label htmlFor="courseName" className="">Course Name</label>
                                 <input
                                     type="text"
                                     className="form-control fadeUp"
                                     id="name"
                                     name={courseName}
                                     value={courseName}
+                                    placeholder="Course Name"
                                     // ref={courseName}
                                     onChange={(e) => setCourseName(e.target.value)}
                                 />
                             </div>
                         </div>
                         <div className="form-group row">
-                            <label htmlFor="lengthYards" className="">Total Yardage</label>
                             <div className="">
+                            <label htmlFor="lengthYards" className="">Total Yardage</label>
                                 <input
                                     type="number"
                                     className="form-control fadeUp"
                                     id="name"
                                     name={lengthYards}
                                     value={lengthYards}
+                                    placeholder="0000"
                                     // ref={lengthYards}
                                     onChange={(e) => setLengthYards(e.target.value)}
                                 />
                             </div>
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="lengthHoles" className="">Holes</label>
                             <div className="">
+                            <label htmlFor="lengthHoles" className="">Holes</label>
                                 <input
                                     type="number"
                                     className="form-control fadeUp"
                                     id="name"
                                     name={lengthHoles}
                                     value={lengthHoles}
-                                    // ref={lengthHoles}
+                                    placeholder="18"
                                     onChange={(e) => setLengthHoles(e.target.value)}
                                 />
                             </div>
                         </div>
                         <div className="form-group row">
-                            <label htmlFor="par" className="">Course par</label>
                             <div className="">
+                            <label htmlFor="par" className="">Course par</label>
                                 <input
                                     type="number"
                                     className="form-control fadeUp"
                                     id="name"
                                     name={par}
                                     value={par}
-                                    // ref={par}
+                                    placeholder="72"
                                     onChange={(e) => setPar(e.target.value)}
                                 />
                             </div>
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="rating" className="">Course Rating</label>
                             <div className="">
+                            <label htmlFor="rating" className="">Course Rating</label>
                                 <input
                                     type="number"
                                     className="form-control fadeUp"
                                     id="name"
                                     name={rating}
                                     value={rating}
-                                    // ref={rating}
+                                    placeholder="72.0"
                                     onChange={(e) => setRating(e.target.value)}
                                 />
                             </div>
@@ -171,7 +181,7 @@ function AddCourse() {
                             <button 
                                 type="submit" 
                                 onClick={submitCourse} 
-                                className="">
+                                className="button">
                                 Add Holes
                             </button>
                         </div>
@@ -188,14 +198,15 @@ function AddCourse() {
             {formIndex > 0 && formIndex - 1 < lengthHoles && (
                 <form>
                     <div className="form-title">
-                        <h3>Add Holes</h3>  
+                        <h1>{courseName.toUpperCase()}</h1>
+                        <h4>HOLE {formIndex}</h4>  
                     </div>
                     <div className="form-wrapper">
                         
-                        <h3>Hole {formIndex}</h3>
+                        {/* <h3>Hole {formIndex}</h3> */}
                         <div className="form-group row">
-                            <label htmlFor="holePar" className="">Hole Par</label>
                             <div className="">
+                            <label htmlFor="holePar" className="">Hole Par</label>
                                 <input
                                     type="number"
                                     className="form-control fadeUp"
@@ -206,10 +217,8 @@ function AddCourse() {
                                     onChange={(e) => setHolePar(e.target.value)}
                                 />
                             </div>
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="holeLength" className="">Hole Length</label>
                             <div className="">
+                            <label htmlFor="holeLength" className="">Hole Length</label>
                                 <input
                                     type="number"
                                     className="form-control fadeUp"
@@ -222,8 +231,8 @@ function AddCourse() {
                             </div>
                         </div>
                         <div className="form-group row">
-                            <label htmlFor="handicap" className="">Hole Rating</label>
                             <div className="">
+                            <label htmlFor="handicap" className="">Hole Rating</label>
                                 <input
                                     type="number"
                                     className="form-control fadeUp"
@@ -239,23 +248,19 @@ function AddCourse() {
                             <button 
                                 type="submit" 
                                 onClick={addHole} 
-                                className="">
+                                className="button">
                                 Add Holes
                             </button>
-                        </div>
-                        <div className="form-group row">
                             <button 
                                 type="submit" 
                                 onClick={formBack} 
-                                className="">
+                                className="button">
                                 Back
                             </button>
-                        </div>
-                        <div className="form-group row">
                             <button 
                                 type="submit" 
                                 onClick={resetForm} 
-                                className="">
+                                className="button">
                                 Cancel and Reset
                             </button>
                         </div>
@@ -271,22 +276,31 @@ function AddCourse() {
             {lengthHoles !== 0 && formIndex > lengthHoles && (
                 <div>
                     <div className="form-title">
-                            <h3>Add new course</h3>
+                        <h3>Course added!</h3>
                     </div>
                     <div className="course-data-review">
                         <div className="course-level-data">
-                            <span>Course Name: {courseName},  </span>
-                            <span>Yardage: {lengthYards},  </span>
-                            <span>Holes: {lengthHoles},  </span>
-                            <span>Par: {par},  </span>
-                            <span>Rating: {rating},  </span>
+                            <span>Name: {courseName}</span>
+                            <span>Yardage: {lengthYards}</span>
+                            <span>Holes: {lengthHoles}</span>
+                            <span>Par: {par}</span>
+                            <span>Rating: {rating}</span>
                         </div>
                         <div className="hole-level-data">
                             <ol>
+                                <li>
+                                    <span>HOLE</span>
+                                    <span>PAR</span>
+                                    <span>YRDG</span>
+                                    <span>HDCP</span>
+                                </li>
                                 {holes.map(hole => (
-                                        <li key={hole.hole}><span>Par: {hole.par},  </span>
-                                        <span>Length: {hole.yardage},  </span>
-                                        <span>Handicap: {hole.handicap},  </span></li>
+                                        <li key={hole.hole}>
+                                            <span>{hole.hole}</span>
+                                            <span>{hole.par}</span>
+                                            <span>{hole.yardage}</span>
+                                            <span>{hole.handicap}</span>
+                                        </li>
                                 ))}
                             </ol>
                         </div>
@@ -295,7 +309,7 @@ function AddCourse() {
                         <button 
                             type="submit" 
                             onClick={resetForm}
-                            className="">
+                            className="button">
                             Reset
                         </button>
                     </div>

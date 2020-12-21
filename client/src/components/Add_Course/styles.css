@@ -1,44 +1,111 @@
+.addCourse-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 10px rgb(0,0,0,.5);
+    max-width: 1000px;
+    width: auto;
+    margin: 25px auto;
+    padding-top: 25px;
+}
+
+.form-title {
+    /* margin: 0 25px; */
+    width: auto;
+}
+
+.form-title ul {
+    list-style-type: none;
+}
+
+.form-title li {
+    max-width: auto;
+    display: inline;
+}
+
 .form-wrapper {
-    background: grey;
-    padding: 50px 50px;
+    /* background: grey; */
+    /* margin: 0 auto; */
+    /* padding: 50px 50px; */
+    /* width: 750px; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+}
+
+.form-group {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    flex-grow: 1;
 }
 
 .course-data-review {
-    background: #D3D3D3;
-    width: 50%;
+    /* background: #D3D3D3; */
+    /* width: 50%; */
     margin: 0 auto;
+    /* padding: 25px 25px; */
+}
+
+.course-level-data {
+    display: flex;
+    flex-direction: column;
 }
 
 .hole-level-data {
-    margin: auto;
-    padding: 25px 25px;
+    width: 700px;
 }
 
 .hole-level-data ol {
-    background: #C0C0C0;
-    width: 400px;
-    margin: auto;
+    /* background: #C0C0C0; */
+    width: 100%;
+    /* margin: auto; */
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    list-style-type: decimal;
-    list-style-position: inside;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* list-style-type: decimal; */
+    /* list-style-position: inside; */
 }
 
 .hole-level-data ol li {
-    background: #D3D3D3;
-    width: auto;
-    margin: 5px 5px;
-    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* background: #D3D3D3; */
+    width: 15px;
+    /* margin: 5px 5px; */
+    /* padding: 10px 10px; */
+}
+.hole-level-data ol li span {
+    width: 25px;
+    border: .5px sold rgb(0,0,0,.5);
 }
 
-@media only screen and (max-width: 600px) {
+form label {
+    background: rgb(0,0,0,.1);
+    text-transform: uppercase;
+    text-align: right;
+    padding: 10px 10px;
+    margin: 10px 0px 10px 15px;
+}
+
+
+@media only screen and (max-width: 768px) {
     .form-wrapper {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+    }
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-evenly;
+        flex-grow: 1; */
+    }
+    .addCourse-wrapper {
+        box-shadow: inset 0 0 10px rgb(0,0,0,.5);
+        width: auto;
+        margin: 0px auto;
+        padding-top: 25px;
     }
   }

@@ -122,7 +122,8 @@ function SideNav() {
               <li><a href="/dashboard/data">Data</a></li>
               <li><a href="/dashboard/charts">Charts</a></li>
               <li><a href="/dashboard/rounds">My Rounds</a></li>
-              <li><a href="/dashboard/addRound">New Round</a></li>
+              <li><a href="/dashboard/addround">New Round</a></li>
+              <li><a href="/dashboard/addcourse">Add Course</a></li>
             </ul>
           </nav>
         )
