@@ -1,5 +1,5 @@
 .page-container {
-    padding: 50px 0px;
+    /* padding: 50px 0px; */
     width: 100%;
     /* background-color: darkslategrey; */
 }
@@ -42,5 +42,8 @@
     }
     .image img {
         max-width: 350px;
+    }
+    .content p {
+        font-size: 3em;
     }
   }

@@ -4,6 +4,7 @@
 .viewRound-wrapper {
     margin: 50px 50px;
     background: grey;
+    width: auto;
     height: auto;
     display: flex;
     flex-direction: row;

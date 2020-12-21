@@ -15,4 +15,7 @@
         flex-direction: column;
         height: auto;
     }
+    .landing-container {
+        margin: 0px 0px;
+    }
   }

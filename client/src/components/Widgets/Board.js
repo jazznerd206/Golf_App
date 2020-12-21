@@ -6,7 +6,6 @@ import './styles.css'
 function Board(props) {
     return (
         <div className="widget-board">
-            <User user={props.user}/>
             <RoundLevel user={props.user}/>
         </div>
     )

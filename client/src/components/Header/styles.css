@@ -6,8 +6,9 @@
     height: auto;
     text-align: left;
     /* padding-left: 15px; */
+    padding: none;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
     position: relative;
 }
