@@ -42,6 +42,15 @@
  box-shadow: inset 0 0 10px rgba(0,0,0,0.35);
 }
 
+
+.error-msg {
+  color: brown;
+  text-emphasis: 5;
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}
+
 @media screen and (max-width:30em){
   .button {
     display: block;

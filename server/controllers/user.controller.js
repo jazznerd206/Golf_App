@@ -65,10 +65,20 @@ exports.login_user = (req, res, next) => {
             return next(err);
           }
         if (!user) {
-            return res.json('User does not exist');
+            return res.json({ 
+                success: false,
+                username: null,
+                loggedIn: false,
+                error: 'Username/Password combination does not exist'
+            });
         }
         if (user.password != req.body.password) {
-            return res.json('Incorrect password.');
+            return res.json({
+                success: false,
+                username: null,
+                loggedIn: false,
+                error: 'Username/Password combination does not exist'
+            });
         }
         Users.findOne(
             {
@@ -97,9 +107,6 @@ exports.login_user = (req, res, next) => {
                 }).catch(err => {
                     console.log(err);
                 })
-        
-        // next()
-        // console.log('req.user after p.auth' + req.user.username)
     })(req, res, next)
 }
 
