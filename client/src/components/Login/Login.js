@@ -38,7 +38,9 @@ function Login(props) {
                     setLoggedIn(true);
                 }
                 if (response.data.loggedIn === false) {
-                    console.log(response.data.data.id)
+                    setName('');
+                    setPassword('');
+                    setMsg(response.data.error)
                 }
             }).catch(err => {
                 console.log("front end err " + err);
@@ -54,7 +56,7 @@ function Login(props) {
         if ( !username || !password) {
             console.log('must provide name and password, pass this message to user eventually');
         }
-        console.log('new user ' + newUser);
+        // console.log('new user ' + newUser);
         API.signUpUser(
             {
                 username: username,
@@ -68,7 +70,7 @@ function Login(props) {
                         password: password
                     }).then(response => {
                         if (response.data.loggedIn === true ) {
-                            Cookie.set('auth', response.data.data.id);
+                            Cookie.set('auth', response.data.id);
                             applyUser(response.data.data);
                             setName('');
                             setPassword('');

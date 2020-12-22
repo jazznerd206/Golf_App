@@ -1,5 +1,25 @@
 .message-block {
-    padding-top: 20px;
+    /* padding-top: 20px; */
+    padding: 0px 25px;
+}
+
+.message-block h1 {
+    padding: 25px 0px;
+}
+
+.box {
+    display: flex;
+    flex-direction: row;
+}
+
+.box-number {
+    margin: 25px 25px;
+    font-size: 3em;
+}
+
+.box-text {
+    display: flex;
+    align-items: center;
 }
 
 .bird-block {
@@ -17,6 +37,6 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        padding: 190px 0px;
+        padding: 50px 0px;
     }
   }

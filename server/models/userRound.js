@@ -52,7 +52,7 @@ module.exports = function(sequelize, DataTypes) {
         UserRound.belongsTo(models.user, {foreignKey: { name: 'userID', allowNull: false }, as: 'rounds'})
     }
     UserRound.associate = function(models) {
-        UserRound.hasMany(models.userHole, { foreignKey: { name: 'courseID', allowNull: false }, as: 'userHoles'}
+        UserRound.hasMany(models.userHole, { foreignKey: { name: 'courseID', allowNull: false }, onDelete: 'cascade', as: 'userHoles'}
         )
     }
 

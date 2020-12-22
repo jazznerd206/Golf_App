@@ -53,7 +53,7 @@ module.exports = function(sequelize, DataTypes) {
     })
 
     UserHole.associate = function(models) {
-        UserHole.belongsTo(models.userRound, {foreignKey: { name: 'courseID', allowNull: false }, as: 'userHoles'})
+        UserHole.belongsTo(models.userRound, { foreignKey: { name: 'courseID', allowNull: false }, onDelete: 'cascade', as: 'userHoles'})
     }
 
     return UserHole;

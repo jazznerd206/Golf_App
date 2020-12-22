@@ -94,8 +94,12 @@ exports.get_single_round = (req, res) => {
 exports.delete_a_userRound = (req, res) => {
   UserRounds.destroy({ where: {
       id: req.params.Id
-  }}).then(user => {
-          res.send(user);
+    }, 
+    include: [{
+      model: UserHoles,
+      as: 'userHoles'
+    }]}).then(round => {
+      res.send(`round destroyed ${round}`);
   })
   .catch(error => {
       console.log(error);
