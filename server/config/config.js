@@ -1,17 +1,12 @@
 require('dotenv').config();
 
-// console.log(process.env.MYSQL_PW)
-// console.log('+++++++++++++++++++++++++');
-// console.log(' === this is the config.js file');
-// console.log('+++++++++++++++++++++++++');
-
 module.exports = {
     "development": {
-        "username": 'root',
+        "username": 'rarebird',
         "password": process.env.MYSQL_PW,
         "database": 'golf_db',
         "host": 'localhost',
-        "dialect": "mysql",
+        "dialect": "postgres",
         "logging": false
     },
     "test": {

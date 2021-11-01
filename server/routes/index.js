@@ -7,7 +7,7 @@ router.use('/api', apiRoutes);
 
 // If no API routes are hit, send the request to the React app
 router.use(function(req, res) {
-  const index = path.join(__dirname, '../../client/build/index.html')
+  const index = path.join(__dirname, '../../src/public/index.html')
   console.log("=======================================")
   console.log(`index url link to public folder ${index}`)
   console.log("=======================================")

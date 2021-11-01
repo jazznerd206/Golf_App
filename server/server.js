@@ -49,18 +49,14 @@ sessionStore.sync();
 app.use(passport.initialize());
 app.use(passport.session());
 require('./Passport/index');
-
+console.log('before routes');
 const routes = require('./routes');
 app.use(routes);
-
+console.log('after routes');
 // Send every other request to the React app
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  res.sendFile(path.join(__dirname, "../src/public/index.html"));
 });
-// app.get("*", (req, res) => {
-//   const index = path.join(__dirname, 'build', 'index.html');
-//   res.sendFile(index);
-// });
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
@@ -77,4 +73,8 @@ db.sequelize.sync(syncOptions).then(function() {
       PORT
     );
   });
-}).catch(err => console.log(err));
+}).catch(err => {
+  console.log('shit happened');
+  console.log(err);
+  throw(err);
+});
